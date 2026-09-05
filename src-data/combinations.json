@@ -1,0 +1,1916 @@
+[
+  {
+    "index": 1,
+    "id": "wrath_of_sky",
+    "nameKo": "창공의 분노",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "thunderstorm",
+        "traitId": "lightning_explosion",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "meteor_shower",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "meteor",
+      "thunderstorm"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 2,
+    "id": "flying_sword",
+    "nameKo": "이기어검",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "magic_blade",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "chain_lightning",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 3,
+    "id": "photon_barrage",
+    "nameKo": "광탄난사",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "charged_particle",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "familiar",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "energy_bolt",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 4,
+    "id": "terra_current",
+    "nameKo": "테라 전류",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "arcane_ray",
+        "traitId": "electromagnetic_discharge",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "superconductivity",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "arcane_ray",
+      "electric_shock"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 5,
+    "id": "war_climate",
+    "nameKo": "전쟁 기후",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "meteor_shower",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "shooting_star",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "meteor"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 6,
+    "id": "demon_equation",
+    "nameKo": "데몬 방정식",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "fireball",
+        "traitId": "big_explosion",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "flare",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "energy_bolt",
+      "fireball"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 7,
+    "id": "frenzy",
+    "nameKo": "프렌지",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "devils_claw",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "barrage",
+        "role": "material",
+        "traitStage": 7
+      }
+    ],
+    "activeMagicLocks": [
+      "flash_shock",
+      "magic_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 8,
+    "id": "night_parade",
+    "nameKo": "백귀야행",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "fireball",
+        "traitId": "constellation",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "will_o_wisp",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "fireball",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 9,
+    "id": "reaction",
+    "nameKo": "반작용",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "spark",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "shield",
+        "traitId": "destruction_field",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "energy_bolt",
+      "shield"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 10,
+    "id": "vortex",
+    "nameKo": "볼텍스",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "cyclone",
+        "traitId": "void",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "anti_gravity",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "cyclone",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 11,
+    "id": "breath_of_fire",
+    "nameKo": "불의 숨결",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "incineration",
+        "traitId": "cerberus_flame",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "arcane_ray",
+        "traitId": "reflection",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "arcane_ray",
+      "incineration"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 12,
+    "id": "ether_blaze",
+    "nameKo": "에테르 방화",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "conflagration",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "incineration",
+        "traitId": "flame_strike",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "incineration"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 13,
+    "id": "orbital_bombardment",
+    "nameKo": "궤도 폭격",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "thunderstorm",
+        "traitId": "lightning_explosion",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "shooting_star",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "thunderstorm"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 14,
+    "id": "neutron_generation",
+    "nameKo": "중성자 발생",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "cyclone",
+        "traitId": "electric_orb",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "nuclear_fusion",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "cyclone",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 15,
+    "id": "winter_storm",
+    "nameKo": "겨울 폭풍",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "sub_zero",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "fireball",
+        "traitId": "toxic_gas",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "fireball"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 16,
+    "id": "plasma_ray",
+    "nameKo": "플라즈마 광선",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "arcane_ray",
+        "traitId": "destruction_ray",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "nuclear_fusion",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "arcane_ray",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 17,
+    "id": "lightning_blast",
+    "nameKo": "번개 작렬",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "thunderstorm",
+        "traitId": "thunderclap",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "chain_lightning",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "thunderstorm"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 18,
+    "id": "quantum_explosion",
+    "nameKo": "양자폭발",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "shield",
+        "traitId": "destruction_field",
+        "role": "primary"
+      },
+      {
+        "type": "passiveMagic",
+        "magicId": "arcane_effuse",
+        "minLevel": 1,
+        "role": "condition"
+      }
+    ],
+    "activeMagicLocks": [
+      "shield"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "user_verified_game_screenshot",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 19,
+    "id": "inferno",
+    "nameKo": "인페르노",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "incineration",
+        "traitId": "flame_strike",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "lava_zone",
+        "traitId": "melting",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "incineration",
+      "lava_zone"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 20,
+    "id": "lightning_tuning",
+    "nameKo": "번개의 조율",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_zone",
+        "traitId": "electric_discharge",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "will_o_wisp",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_zone",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 21,
+    "id": "furnace",
+    "nameKo": "용광로",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "lava_zone",
+        "traitId": "magma_eruption",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "volcanic_eruption",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "lava_zone",
+      "meteor"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 22,
+    "id": "current_overload",
+    "nameKo": "전류폭주",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "chain_lightning",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "familiar",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 23,
+    "id": "deluge",
+    "nameKo": "대홍수",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "tsunami",
+        "traitId": "sirens_song",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "cyclone",
+        "traitId": "extreme_weather",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "cyclone",
+      "tsunami"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 24,
+    "id": "blooming_snowflakes",
+    "nameKo": "눈꽃 개화",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "frost_nova",
+        "traitId": "ice_age",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "tsunami",
+        "traitId": "pole",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "frost_nova",
+      "tsunami"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 25,
+    "id": "lord_of_storm",
+    "nameKo": "폭풍의 지배자",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "cyclone",
+        "traitId": "extreme_weather",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "barrage",
+        "role": "material",
+        "traitStage": 7
+      }
+    ],
+    "activeMagicLocks": [
+      "cyclone",
+      "magic_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 26,
+    "id": "overmind",
+    "nameKo": "오버마인드",
+    "requirements": [
+      {
+        "type": "passiveMagic",
+        "magicId": "intelligence",
+        "minLevel": 5,
+        "role": "condition"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "magic_circle",
+        "traitId": "great_magic_circle",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "magic_circle"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [
+      {
+        "type": "disableNonCombinationActiveMagic",
+        "value": true
+      }
+    ],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    },
+    "note": "지능 Lv.5 MAX + 마법진(대마법진). 일반 액티브 마법 시전을 중단시키는 특수 조합."
+  },
+  {
+    "index": 27,
+    "id": "perpetual_engine",
+    "nameKo": "무한동력",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "magic_circle",
+        "traitId": "mana_release",
+        "role": "primary"
+      },
+      {
+        "type": "passiveMagic",
+        "magicId": "intelligence",
+        "minLevel": 5,
+        "role": "condition"
+      }
+    ],
+    "activeMagicLocks": [
+      "magic_circle"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    },
+    "note": "마법진(마력 해방) + 지능 Lv.5 MAX."
+  },
+  {
+    "index": 28,
+    "id": "gate_of_creation",
+    "nameKo": "창조의 문",
+    "requirements": [
+      {
+        "type": "passiveMagic",
+        "magicId": "intelligence",
+        "minLevel": 5,
+        "role": "condition"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "magic_circle",
+        "traitId": "material_transmutation",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "magic_circle"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [
+      {
+        "type": "addCombinationSlots",
+        "value": 2
+      },
+      {
+        "type": "addMaxPlayerLevel",
+        "value": 5
+      }
+    ],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    },
+    "note": "지능 Lv.5 MAX + 마법진(물질 연성). 조합 슬롯 +2."
+  },
+  {
+    "index": 29,
+    "id": "origin_explosion",
+    "nameKo": "원점폭발",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "flare",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "fireball",
+        "traitId": "constellation",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "energy_bolt",
+      "fireball"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 30,
+    "id": "prism_barrage",
+    "nameKo": "프리즘 난사",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "arcane_ray",
+        "traitId": "reflection",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "barrage",
+        "role": "material",
+        "traitStage": 7
+      }
+    ],
+    "activeMagicLocks": [
+      "arcane_ray",
+      "magic_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 31,
+    "id": "great_rift",
+    "nameKo": "대균열",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "frost_nova",
+        "traitId": "earthquake",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "volcanic_eruption",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "frost_nova",
+      "meteor"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 32,
+    "id": "hyperion",
+    "nameKo": "히페리온",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "nuclear_fusion",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "asteroid",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "meteor",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 33,
+    "id": "avatar",
+    "nameKo": "아바타",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "doppelganger",
+        "role": "primary",
+        "traitStage": 7
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "magic_missile",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "magic_bolt",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 34,
+    "id": "heart_of_lightning",
+    "nameKo": "번개의 심장",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "chain_lightning",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "charged_particle",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "energy_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 35,
+    "id": "great_collision",
+    "nameKo": "대충돌",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "asteroid",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "shooting_star",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "meteor"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 36,
+    "id": "heart_of_ice",
+    "nameKo": "얼음의 심장",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_zone",
+        "traitId": "fire_aura",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "frost_nova",
+        "traitId": "ice_age",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_zone",
+      "frost_nova"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 37,
+    "id": "meissner_effect",
+    "nameKo": "마이스너 효과",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_zone",
+        "traitId": "emp",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "superconductivity",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "electric_zone"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 38,
+    "id": "energy_saturation",
+    "nameKo": "에너지 포화",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "arcane_ray",
+        "traitId": "destruction_ray",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "ragnarok",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "arcane_ray",
+      "flash_shock"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 39,
+    "id": "super_typhoon",
+    "nameKo": "슈퍼태풍",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "cyclone",
+        "traitId": "extreme_weather",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "electric_zone",
+        "traitId": "fire_aura",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "cyclone",
+      "electric_zone"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 40,
+    "id": "teleport",
+    "nameKo": "텔레포트",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "cloaking",
+        "traitId": "spatial_distortion",
+        "role": "primary"
+      },
+      {
+        "type": "passiveMagic",
+        "magicId": "concentration",
+        "minLevel": 1,
+        "role": "condition"
+      }
+    ],
+    "activeMagicLocks": [
+      "cloaking"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "user_verified_game_screenshot",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 41,
+    "id": "fire_storm",
+    "nameKo": "화염 폭풍",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "volcanic_eruption",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "incineration",
+        "traitId": "cerberus_flame",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "incineration",
+      "meteor"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 42,
+    "id": "fireworks_combination",
+    "nameKo": "불꽃놀이",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "fireworks",
+        "role": "primary",
+        "traitStage": 4
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "flare",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "energy_bolt",
+      "magic_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 43,
+    "id": "mana_spear",
+    "nameKo": "마력의 창",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "magic_missile",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "annihilation",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "flash_shock",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 44,
+    "id": "gate",
+    "nameKo": "게이트",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "ragnarok",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "magic_missile",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "flash_shock",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 45,
+    "id": "magnetic_field_generation",
+    "nameKo": "자기장 발생",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "anti_gravity",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "electric_zone",
+        "traitId": "electric_discharge",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_zone",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 46,
+    "id": "black_death",
+    "nameKo": "흑사병",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "fireball",
+        "traitId": "toxic_gas",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "barrage",
+        "role": "material",
+        "traitStage": 7
+      }
+    ],
+    "activeMagicLocks": [
+      "fireball",
+      "magic_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 47,
+    "id": "breath_of_lightning",
+    "nameKo": "번개의 숨결",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "superconductivity",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "incineration",
+        "traitId": "flame_strike",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "incineration"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 48,
+    "id": "phoenix",
+    "nameKo": "불사조",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "tsunami",
+        "traitId": "great_eruption",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "conflagration",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "tsunami"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 49,
+    "id": "brandish",
+    "nameKo": "브랜디쉬",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "annihilation",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "magic_blade",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "flash_shock",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 50,
+    "id": "black_hole",
+    "nameKo": "블랙홀",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "cyclone",
+        "traitId": "void",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "nuclear_fusion",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "cyclone",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 51,
+    "id": "genesis",
+    "nameKo": "제네시스",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "shooting_star",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "fireball",
+        "traitId": "constellation",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "fireball"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 52,
+    "id": "astrape",
+    "nameKo": "아스트라페",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "thunderstorm",
+        "traitId": "judgment",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "meteor",
+        "traitId": "asteroid",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "meteor",
+      "thunderstorm"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 53,
+    "id": "supernova",
+    "nameKo": "초신성",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "familiar",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "energy_bolt",
+        "traitId": "flare",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "energy_bolt",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 54,
+    "id": "blaster",
+    "nameKo": "블래스터",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "magic_bolt",
+        "traitId": "magic_arrow",
+        "role": "primary",
+        "traitStage": 4
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "annihilation",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "flash_shock",
+      "magic_bolt"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 55,
+    "id": "hellfire",
+    "nameKo": "헬파이어",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "incineration",
+        "traitId": "pyromaniac",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "blizzard",
+        "traitId": "conflagration",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "blizzard",
+      "incineration"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 56,
+    "id": "age_of_sun",
+    "nameKo": "태양의 시대",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "lava_zone",
+        "traitId": "crater",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "nuclear_fusion",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "lava_zone",
+      "satellite"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 57,
+    "id": "destroyer",
+    "nameKo": "디스트로이어",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_zone",
+        "traitId": "electric_discharge",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "shield",
+        "traitId": "destruction_field",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_zone",
+      "shield"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 58,
+    "id": "genocide",
+    "nameKo": "제노사이드",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "arcane_ray",
+        "traitId": "destruction_ray",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "familiar",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "arcane_ray",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 59,
+    "id": "excidium",
+    "nameKo": "엑시디움",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "flash_shock",
+        "traitId": "annihilation",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "armageddon",
+        "traitId": "rapture",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "armageddon",
+      "flash_shock"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 60,
+    "id": "deus_ex_machina",
+    "nameKo": "데우스 엑스 마키나",
+    "requirements": [
+      {
+        "type": "completedCombination",
+        "combinationId": "overmind",
+        "role": "condition"
+      }
+    ],
+    "activeMagicLocks": [],
+    "slotCost": 1,
+    "conditions": [
+      {
+        "type": "combinationOrder",
+        "value": 3
+      }
+    ],
+    "effects": [
+      {
+        "type": "blockFurtherCombinations",
+        "value": true
+      },
+      {
+        "type": "addMaxPlayerLevel",
+        "value": 10
+      }
+    ],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    },
+    "note": "오버마인드를 완료한 상태에서 3번째 조합으로만 선택 가능. 이후 추가 조합 불가."
+  },
+  {
+    "index": 61,
+    "id": "glacium",
+    "nameKo": "글레이시움",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "tsunami",
+        "traitId": "pole",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "frost_nova",
+        "traitId": "ice_age",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "frost_nova",
+      "tsunami"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 62,
+    "id": "soul_blade",
+    "nameKo": "소울 블레이드",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "satellite",
+        "traitId": "will_o_wisp",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "spirit",
+        "traitId": "magic_blade",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "satellite",
+      "spirit"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  },
+  {
+    "index": 63,
+    "id": "discharge",
+    "nameKo": "디스차지",
+    "requirements": [
+      {
+        "type": "activeMagic",
+        "magicId": "electric_shock",
+        "traitId": "high_output",
+        "role": "primary"
+      },
+      {
+        "type": "activeMagic",
+        "magicId": "thunderstorm",
+        "traitId": "lightning_explosion",
+        "role": "material"
+      }
+    ],
+    "activeMagicLocks": [
+      "electric_shock",
+      "thunderstorm"
+    ],
+    "slotCost": 1,
+    "conditions": [],
+    "effects": [],
+    "verification": {
+      "status": "web_seed_unverified_in_game",
+      "gameVersion": "0.992"
+    }
+  }
+]

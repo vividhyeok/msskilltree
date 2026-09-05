@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "gameVersion": "0.992",
+  "combinationSlots": {
+    "baseMaximum": 3,
+    "unlockPlayerLevels": [
+      25,
+      50,
+      75
+    ],
+    "manualBonusSupported": true,
+    "knownBonusArtifact": {
+      "nameKo": "권능의 영역",
+      "addSlots": 1
+    },
+    "note": "앱은 플레이 중 빠른 조작을 우선한다. 플레이어 레벨을 강제 추적하지 않고 기본 최대 3을 표시하며 보너스는 수동 토글 가능하게 구현해도 된다."
+  },
+  "combinationLockRule": {
+    "description": "완료된 조합에 참여한 액티브 마법은 이후 다른 조합의 재료/주력으로 다시 사용할 수 없는 것으로 처리한다.",
+    "lockAllActiveParticipants": true,
+    "passivesAreNotLocked": true
+  },
+  "statusModel": [
+    "READY",
+    "IN_PROGRESS",
+    "AVAILABLE",
+    "BLOCKED",
+    "COMPLETED"
+  ],
+  "blockedReasons": [
+    "required_active_magic_locked_by_completed_combination",
+    "wrong_irreversible_trait_selected",
+    "required_combination_not_completed",
+    "combination_order_mismatch",
+    "further_combinations_blocked",
+    "no_combination_slot_remaining"
+  ],
+  "magicBoltSpecialRule": "마력탄은 Lv.4와 Lv.7에 서로 다른 특성 단계가 있다. 조합 요구조건은 필요한 단계만 검사해야 한다."
+}

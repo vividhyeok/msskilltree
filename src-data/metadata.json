@@ -1,0 +1,45 @@
+{
+  "datasetName": "Magic Survival Companion seed data",
+  "datasetVersion": "0.1.0",
+  "targetGameVersion": "0.992",
+  "generatedAt": "2026-09-06",
+  "language": "ko",
+  "scope": {
+    "activeMagics": "all 21 active magics",
+    "activeTraits": "all listed trait stages for the 21 active magics",
+    "passives": "combination-relevant normal passives only",
+    "combinations": "63 magic combinations",
+    "artifacts": "not included except combination-slot rule metadata",
+    "ultimates": "not included in MVP"
+  },
+  "sources": [
+    {
+      "name": "매직서바이벌/액티브 마법 (Namu mirror)",
+      "url": "https://namu.moe/w/%EB%A7%A4%EC%A7%81%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C/%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EB%A7%88%EB%B2%95",
+      "lastObservedRevision": "2026-07-15"
+    },
+    {
+      "name": "매직서바이벌/마법 조합 (Namu mirror)",
+      "url": "https://namu.moe/w/%EB%A7%A4%EC%A7%81%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C/%EB%A7%88%EB%B2%95%20%EC%A1%B0%ED%95%A9",
+      "lastObservedRevision": "2026-07-30"
+    },
+    {
+      "name": "Magic Survival Japanese strategy wiki",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/1.html",
+      "note": "v0.992 current-version cross-check source"
+    }
+  ],
+  "manualVerification": [
+    {
+      "combinationId": "quantum_explosion",
+      "verifiedFromUserGameScreenshot": true,
+      "confirmed": "보호막(파괴장) + 마력 발산"
+    },
+    {
+      "combinationId": "teleport",
+      "verifiedFromUserGameScreenshot": true,
+      "confirmed": "유체화(공간 왜곡) + 집중"
+    }
+  ],
+  "important": "이 파일은 개발 시작용 seed dataset이다. 게임 내 도감과 대조하면서 verification.status를 갱신하는 것을 권장한다."
+}

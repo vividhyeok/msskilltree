@@ -1,0 +1,958 @@
+[
+  {
+    "id": "magic_bolt",
+    "nameKo": "마력탄",
+    "nameEn": "Magic Bolt",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "주변 적을 향해 기본 투사체를 발사한다.",
+    "traitStages": [
+      {
+        "level": 4,
+        "traits": [
+          {
+            "id": "magic_arrow",
+            "nameKo": "마력 화살",
+            "unlockLevel": 4,
+            "effectSummary": [
+              "모든 적 관통",
+              "피해량 1.5배",
+              "투사체 크기·속도 180% 증가"
+            ]
+          },
+          {
+            "id": "fireworks",
+            "nameKo": "폭죽",
+            "unlockLevel": 4,
+            "effectSummary": [
+              "3발씩 산탄해 폭발",
+              "피해량 50% 증가",
+              "기본 쿨타임 +2초"
+            ]
+          },
+          {
+            "id": "fission",
+            "nameKo": "분열",
+            "unlockLevel": 4,
+            "effectSummary": [
+              "추가 목표 2개에 투사체 발사",
+              "피해량 50% 증가"
+            ]
+          }
+        ]
+      },
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "chain_casting",
+            "nameKo": "연속시전",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "개수 +1",
+              "쿨타임 20% 감소"
+            ]
+          },
+          {
+            "id": "barrage",
+            "nameKo": "난사",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "무작위 방향 발사",
+              "개수 5배",
+              "피해량 50% 증가",
+              "기본 쿨타임 +3초"
+            ]
+          },
+          {
+            "id": "doppelganger",
+            "nameKo": "도플갱어",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "마력탄을 발사하는 환영 3개 소환",
+              "쿨타임 50% 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fireball",
+    "nameKo": "화염구",
+    "nameEn": "Fireball",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "폭발성 투사체를 발사한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "big_explosion",
+            "nameKo": "대폭발",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "첫 화염구의 크기·피해량 1.5배",
+              "피해량 80% 증가"
+            ]
+          },
+          {
+            "id": "toxic_gas",
+            "nameKo": "독가스",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "폭발이 확장하며 3회 피해",
+              "피해량 30% 감소"
+            ]
+          },
+          {
+            "id": "constellation",
+            "nameKo": "별자리",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "무작위 위치로 발사되고 잠시 캐릭터를 따라 존속",
+              "이동속도 점차 감소",
+              "관통력 +1"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "thunderstorm",
+    "nameKo": "낙뢰",
+    "nameEn": "Thunderstorm",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "주변 적에게 번개를 내리친다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "thunderclap",
+            "nameKo": "청천벽력",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "낙뢰가 1~3회 연속 생성",
+              "쿨타임 25% 감소"
+            ]
+          },
+          {
+            "id": "lightning_explosion",
+            "nameKo": "번개 폭발",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "폭발이 확장",
+              "무작위 지점에 순차 생성",
+              "피해량 80% 증가"
+            ]
+          },
+          {
+            "id": "judgment",
+            "nameKo": "심판",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "낙뢰가 하나로 통합",
+              "주변 적에게 절반 피해",
+              "개수당 폭발범위 증가",
+              "피해량 5배",
+              "쿨타임 2배"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "meteor",
+    "nameKo": "운석 낙하",
+    "nameEn": "Meteor",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "무작위 지점으로 운석을 떨어뜨린다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "volcanic_eruption",
+            "nameKo": "화산 폭발",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "즉시 폭발 후 분화구 생성",
+              "분화구가 짧게 지속 피해"
+            ]
+          },
+          {
+            "id": "meteor_shower",
+            "nameKo": "유성우",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "개수 3배",
+              "생성 간격 감소",
+              "피해량·크기 감소"
+            ]
+          },
+          {
+            "id": "asteroid",
+            "nameKo": "소행성",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "운석 하나로 통합",
+              "개수당 크기 증가",
+              "피해량 3배",
+              "쿨타임 2배"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cyclone",
+    "nameKo": "돌개바람",
+    "nameEn": "Cyclone",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "적을 추적하며 점차 커지는 회오리를 만든다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "extreme_weather",
+            "nameKo": "기상이변",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "개수 +2",
+              "쿨타임 10% 감소"
+            ]
+          },
+          {
+            "id": "electric_orb",
+            "nameKo": "전기 구체",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "서서히 축소하며 투사체 난사",
+              "피해량 2배",
+              "크기 30% 증가"
+            ]
+          },
+          {
+            "id": "void",
+            "nameKo": "보이드",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "무작위 지점에 순차 생성되고 이동하지 않음",
+              "확장속도 크게 증가",
+              "지속시간 감소",
+              "쿨타임 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "electric_shock",
+    "nameKo": "전기충격",
+    "nameEn": "Electric Shock",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "무작위 방향으로 전기를 방출한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "chain_lightning",
+            "nameKo": "연쇄 번개",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "전기충격이 1~3회 연쇄",
+              "피해량 50% 증가"
+            ]
+          },
+          {
+            "id": "high_output",
+            "nameKo": "고출력",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "사라질 때 폭발",
+              "크기 증가율이 피해량으로 전환"
+            ]
+          },
+          {
+            "id": "superconductivity",
+            "nameKo": "초전도",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "주변 적을 향해 순차 생성",
+              "피해량 3배",
+              "크기 2배"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "energy_bolt",
+    "nameKo": "에너지탄",
+    "nameEn": "Energy Bolt",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "관통형 투사체를 주변에 발사한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "charged_particle",
+            "nameKo": "하전 입자",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "지속시간 종료 후 캐릭터에게 돌아옴",
+              "개수·속도 증가"
+            ]
+          },
+          {
+            "id": "spark",
+            "nameKo": "스파크",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "0.3초 간격 다단히트",
+              "지속시간·크기 증가",
+              "피해량 감소"
+            ]
+          },
+          {
+            "id": "flare",
+            "nameKo": "플레어",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "한 번에 사방으로 퍼짐",
+              "끝날 때 2배 위력으로 폭발",
+              "피해량 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "incineration",
+    "nameKo": "소각",
+    "nameEn": "Incineration",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "전방에 연속으로 화염을 내뿜는다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "flame_strike",
+            "nameKo": "화염강타",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "발사될수록 위력·크기 증가",
+              "개수 증가"
+            ]
+          },
+          {
+            "id": "pyromaniac",
+            "nameKo": "방화광",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "각 소각마다 같은 피해량의 추가 불꽃 2개 생성",
+              "쿨타임 감소"
+            ]
+          },
+          {
+            "id": "cerberus_flame",
+            "nameKo": "케르베로스 불꽃",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "양옆으로 추가 발사",
+              "피해량·사거리 증가",
+              "가로 크기·개수 감소"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "blizzard",
+    "nameKo": "눈보라",
+    "nameEn": "Blizzard",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "적을 빙결시키는 눈보라를 넓은 범위에 떨어뜨린다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "sub_zero",
+            "nameKo": "혹한기",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "시전 중 모든 적 이동속도 점차 감소",
+              "개수 증가"
+            ]
+          },
+          {
+            "id": "shooting_star",
+            "nameKo": "별똥별",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "낙하속도 감소",
+              "피해량·폭발범위 2배",
+              "개수 감소",
+              "생성 간격 증가"
+            ]
+          },
+          {
+            "id": "conflagration",
+            "nameKo": "화재",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "빙결 제거",
+              "연속 폭발",
+              "생성 간격·반경 감소",
+              "피해량 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tsunami",
+    "nameKo": "해일",
+    "nameEn": "Tsunami",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "거대한 파도를 일으켜 필드를 가로지른다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "pole",
+            "nameKo": "극점",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "사방에서 동시에 생성",
+              "적 빙결"
+            ]
+          },
+          {
+            "id": "sirens_song",
+            "nameKo": "세이렌의 노래",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "이동 방향 쪽으로 가까이 생성",
+              "쿨타임 50% 감소",
+              "개수 50% 감소"
+            ]
+          },
+          {
+            "id": "great_eruption",
+            "nameKo": "대분화",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "생성 반경 확대",
+              "피해량 2배",
+              "크기 증가",
+              "쿨타임 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "spirit",
+    "nameKo": "정령",
+    "nameEn": "Spirit",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "공격을 보조하는 정령을 소환한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "magic_missile",
+            "nameKo": "마법 미사일",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "정령 개수에 비례해 쿨타임 가속",
+              "발사 간격 최적화",
+              "쿨타임 감소"
+            ]
+          },
+          {
+            "id": "magic_blade",
+            "nameKo": "마력 칼날",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "칼날을 목표물에 즉시 생성",
+              "피해량 2.5배"
+            ]
+          },
+          {
+            "id": "familiar",
+            "nameKo": "사역마",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "정령 하나로 통합",
+              "사방으로 대량 발사",
+              "긴 쿨타임"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "satellite",
+    "nameKo": "위성",
+    "nameEn": "Satellite",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "캐릭터 주변을 회전하는 위성을 생성한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "anti_gravity",
+            "nameKo": "반중력",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "회전속도가 주기적으로 최대 3배까지 가속"
+            ]
+          },
+          {
+            "id": "will_o_wisp",
+            "nameKo": "도깨비불",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "회전 반경 분리",
+              "개수 2배",
+              "회전속도 증가",
+              "크기 감소"
+            ]
+          },
+          {
+            "id": "nuclear_fusion",
+            "nameKo": "핵융합",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "위성 하나로 통합",
+              "다단히트",
+              "개수에 비례해 피해량·크기 증가",
+              "회전속도 감소"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "arcane_ray",
+    "nameKo": "비전 광선",
+    "nameEn": "Arcane Ray",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "모든 물체를 관통하는 광선을 발사한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "reflection",
+            "nameKo": "반사",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "반대편에도 광선 생성",
+              "피해량 증가",
+              "생성 간격 감소"
+            ]
+          },
+          {
+            "id": "destruction_ray",
+            "nameKo": "파괴 광선",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "광선이 빠르게 회전",
+              "피해량 2배",
+              "쿨타임 증가"
+            ]
+          },
+          {
+            "id": "electromagnetic_discharge",
+            "nameKo": "전자기 방출",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "무작위 방향으로 다수 생성",
+              "0.5초 간격 피해",
+              "지속시간 4배"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flash_shock",
+    "nameKo": "섬광 충격",
+    "nameEn": "Flash Shock",
+    "category": "primary_attack",
+    "maxLevel": 7,
+    "summary": "이동 방향으로 필드를 가로지르는 섬광을 생성한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "annihilation",
+            "nameKo": "섬멸",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "중심부 피해량 10배",
+              "크기 증가"
+            ]
+          },
+          {
+            "id": "ragnarok",
+            "nameKo": "라그나로크",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "생성 반경 확대",
+              "개수 +5",
+              "쿨타임 2배"
+            ]
+          },
+          {
+            "id": "devils_claw",
+            "nameKo": "악마의 손톱",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "무작위 위치·방향 생성",
+              "양옆 추가 생성",
+              "시전 횟수 중첩",
+              "피해량 증가",
+              "크기 감소"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "electric_zone",
+    "nameKo": "감전지대",
+    "nameEn": "Electric Zone",
+    "category": "auxiliary_attack",
+    "maxLevel": 7,
+    "summary": "캐릭터 주변 적에게 주기적으로 피해를 준다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "electric_discharge",
+            "nameKo": "전하방출",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "피해량 80% 증가",
+              "크기 30% 증가"
+            ]
+          },
+          {
+            "id": "emp",
+            "nameKo": "EMP",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "4회 피해마다 기절",
+              "피해 간격 감소"
+            ]
+          },
+          {
+            "id": "fire_aura",
+            "nameKo": "불의 오오라",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "주기적으로 확장 후 소멸",
+              "피해량 5배",
+              "피해 간격 3배"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "frost_nova",
+    "nameKo": "서릿발",
+    "nameEn": "Frost Nova",
+    "category": "auxiliary_attack",
+    "maxLevel": 7,
+    "summary": "주변에 폭발을 일으켜 적을 잠시 빙결시킨다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "absolute_zero",
+            "nameKo": "절대영도",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "폭발 주변 적까지 빙결",
+              "빙결 지속시간 증가"
+            ]
+          },
+          {
+            "id": "ice_age",
+            "nameKo": "빙하기",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "3회 연속 폭발",
+              "매 폭발마다 범위 증가",
+              "크기 감소",
+              "쿨타임 2배"
+            ]
+          },
+          {
+            "id": "earthquake",
+            "nameKo": "지진",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "빙결 대신 기절",
+              "피해량 2배",
+              "크기 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lava_zone",
+    "nameKo": "용암지대",
+    "nameEn": "Lava Zone",
+    "category": "auxiliary_attack",
+    "maxLevel": 7,
+    "summary": "지속 피해를 주는 용암지대를 생성한다.",
+    "traitStages": [
+      {
+        "level": 7,
+        "traits": [
+          {
+            "id": "melting",
+            "nameKo": "융해",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "피격될수록 받는 피해 증가",
+              "쿨타임 감소"
+            ]
+          },
+          {
+            "id": "crater",
+            "nameKo": "분화구",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "개수 2배",
+              "크기·지속시간 감소"
+            ]
+          },
+          {
+            "id": "magma_eruption",
+            "nameKo": "마그마 분출",
+            "unlockLevel": 7,
+            "effectSummary": [
+              "하나로 통합",
+              "개수당 크기 증가",
+              "피해량 2배",
+              "쿨타임 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shield",
+    "nameKo": "보호막",
+    "nameEn": "Shield",
+    "category": "utility_active",
+    "maxLevel": 5,
+    "summary": "피해를 1회 막는 보호막을 충전한다.",
+    "traitStages": [
+      {
+        "level": 5,
+        "traits": [
+          {
+            "id": "barrier",
+            "nameKo": "배리어",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "최대 충전 개수 +2"
+            ]
+          },
+          {
+            "id": "reconstruction",
+            "nameKo": "재구축",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "한 번에 2개 충전",
+              "최대 충전 개수 +1",
+              "쿨타임 증가"
+            ]
+          },
+          {
+            "id": "destruction_field",
+            "nameKo": "파괴장",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "보호막 소진 시 캐릭터를 따라 짧게 존속하는 폭발",
+              "4회 피해"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cloaking",
+    "nameKo": "유체화",
+    "nameEn": "Cloaking",
+    "category": "utility_active",
+    "maxLevel": 5,
+    "summary": "잠시 모든 물체를 통과하며 이동속도가 상승한다.",
+    "traitStages": [
+      {
+        "level": 5,
+        "traits": [
+          {
+            "id": "mirage",
+            "nameKo": "신기루",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "지속시간 80% 증가"
+            ]
+          },
+          {
+            "id": "spatial_distortion",
+            "nameKo": "공간 왜곡",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "종료 시 캐릭터 주변에 강력한 폭발"
+            ]
+          },
+          {
+            "id": "soul_harvest",
+            "nameKo": "영혼 수확",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "유체화 중 처치 시 체력 회복",
+              "마나 습득량 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "magic_circle",
+    "nameKo": "마법진",
+    "nameEn": "Magic Circle",
+    "category": "utility_active",
+    "maxLevel": 5,
+    "summary": "주기적으로 시전되어 지속시간 동안 공격력을 높인다.",
+    "traitStages": [
+      {
+        "level": 5,
+        "traits": [
+          {
+            "id": "mana_release",
+            "nameKo": "마력 해방",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "시전 중 모든 마법 쿨타임 15% 감소",
+              "마법진 쿨타임 감소"
+            ]
+          },
+          {
+            "id": "material_transmutation",
+            "nameKo": "물질 연성",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "시전 시 주변에 아이템 5개 생성",
+              "마나 획득량 증가"
+            ]
+          },
+          {
+            "id": "great_magic_circle",
+            "nameKo": "대마법진",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "효과량 2배",
+              "지속시간 증가",
+              "쿨타임 증가"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "armageddon",
+    "nameKo": "아마겟돈",
+    "nameEn": "Armageddon",
+    "category": "utility_active",
+    "maxLevel": 5,
+    "summary": "주기적으로 필드의 적을 제거한다.",
+    "traitStages": [
+      {
+        "level": 5,
+        "traits": [
+          {
+            "id": "apocalypse",
+            "nameKo": "아포칼립스",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "발동 후 적 최대 체력이 일시적으로 감소"
+            ]
+          },
+          {
+            "id": "rapture",
+            "nameKo": "휴거",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "4회 시전마다 모든 체력 회복",
+              "초당 체력회복률 증가"
+            ]
+          },
+          {
+            "id": "prophecy_of_end",
+            "nameKo": "종말의 예언",
+            "unlockLevel": 5,
+            "effectSummary": [
+              "마나 구슬 획득 시 남은 쿨타임 감소",
+              "기본 쿨타임 추가 감소"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "intelligence",
+    "nameKo": "지능",
+    "nameEn": "Intelligence",
+    "maxLevel": 5,
+    "summary": "공격력을 증가시키는 일반 패시브.",
+    "combinationRelevant": true
+  },
+  {
+    "id": "arcane_effuse",
+    "nameKo": "마력 발산",
+    "nameEn": "Arcane Effuse",
+    "maxLevel": 3,
+    "summary": "모든 마법의 크기를 증가시키는 일반 패시브.",
+    "combinationRelevant": true
+  },
+  {
+    "id": "concentration",
+    "nameKo": "집중",
+    "nameEn": "Concentration",
+    "maxLevel": 3,
+    "summary": "모든 마법의 지속시간을 증가시키는 일반 패시브.",
+    "combinationRelevant": true
+  }
+]
