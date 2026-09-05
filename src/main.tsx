@@ -1,19 +1,6 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
-import {
-  Zap,
-  Undo2,
-  Plus,
-  Search,
-  Pin,
-  Check,
-  X,
-  BookOpen,
-  ArrowUpRight,
-  Layers,
-  RotateCcw,
-  Settings2,
-} from "lucide-react";
+import { Undo2, Search, Pin, Check, X } from "lucide-react";
 import {
   data,
   magicById,
@@ -28,9 +15,6 @@ import {
   locks,
   evaluateCombination,
   completeCombination,
-  getCombinationConflicts,
-  getMagicPaths,
-  getRelevantCombinations,
   requirementMet,
   validateGameData,
   type Run,
@@ -43,6 +27,9 @@ import {
   type Saved,
 } from "./storage";
 import "./style.css";
+import { MagicGrid } from "./features/game-mode/MagicGrid";
+import { TargetPanel } from "./features/game-mode/TargetPanel";
+import { getFocusedMagicPaths } from "./features/game-mode/selectors";
 validateGameData();
 const statusNames = {
   READY: "지금 가능",
@@ -104,9 +91,9 @@ function App() {
     }
   });
   const [selected, setSelected] = useState("");
-  const [query, setQuery] = useState("");
+  const [menu, setMenu] = useState(false);
   const [catalog, setCatalog] = useState(false);
-  const [blocked, setBlocked] = useState(false);
+
   const [mobile, setMobile] = useState(false);
   const [buildOpen, setBuildOpen] = useState(false);
   const [buildName, setBuildName] = useState("");
@@ -268,152 +255,22 @@ function App() {
       </article>
     );
   }
-  const relevant = getRelevantCombinations(run, selected);
-  const ready = relevant.filter(
-    (c) =>
-      evaluateCombination(c, run).status === "READY" &&
-      !run.pinned.includes(c.id),
-  );
-  const near = relevant.filter((c) => {
-    const e = evaluateCombination(c, run);
-    return (
-      e.status === "IN_PROGRESS" &&
-      e.missing.length === 1 &&
-      !run.pinned.includes(c.id)
-    );
-  });
-  const paths = selected && magicById[selected] ? getMagicPaths(selected) : [];
   const panel = (
-    <>
-      <div className="section-title">
-        <div>
-          <span className="eyebrow">YOUR PLAN</span>
-          <h2>
-            목표 조합 <small>{run.pinned.length}</small>
-          </h2>
-        </div>
-        <button className="quiet" onClick={() => setCatalog(true)}>
-          <Plus size={16} />
-          조합 찾기
-        </button>
-      </div>
-      {!run.pinned.length && (
-        <div className="empty">
-          <Pin size={23} />
-          <strong>이번 Run의 목표를 정해보세요</strong>
-          <p>
-            조합을 목표로 지정하면 필요한 마법이
-            <br />
-            같은 문자로 연결됩니다.
-          </p>
-          <button onClick={() => setCatalog(true)}>
-            목표 조합 선택 <ArrowUpRight size={15} />
-          </button>
-        </div>
-      )}
-      {run.pinned.map((id) => comboCard(comboById[id]))}
-      {getCombinationConflicts(run).map((c) => (
-        <div className="conflict" key={c.a + c.b}>
-          <strong>
-            ⚠ 목표 {badge(c.a)} · {badge(c.b)} 충돌
-          </strong>
-          <p>{c.message}</p>
-        </div>
-      ))}
-      {ready.length > 0 && (
-        <>
-          <h2 className="subheading">
-            지금 가능한 조합 <span>{ready.length}</span>
-          </h2>
-          {ready.map(comboCard)}
-        </>
-      )}
-      {near.length > 0 && (
-        <>
-          <h2 className="subheading">한 조건 남은 조합</h2>
-          {near.slice(0, 4).map(comboCard)}
-        </>
-      )}
-      <div className="path-heading">
-        <span className="eyebrow">MAGIC PATHS</span>
-        <h2>
-          {selected
-            ? (magicById[selected]?.nameKo ?? "패시브")
-            : "마법의 다음 경로"}
-        </h2>
-      </div>
-      {!selected && (
-        <p className="muted">
-          마법 카드를 탭하면 특성별 조합과
-          <br />
-          필요한 상대 마법이 여기에 표시됩니다.
-        </p>
-      )}
-      {paths.map((p) => (
-        <div className="path" key={p.stage + p.trait.id}>
-          <h3>
-            <span className="dot" />
-            {p.trait.nameKo}
-            <small>Lv.{p.stage}</small>
-          </h3>
-          {p.combinations
-            .filter(
-              (c) =>
-                blocked || evaluateCombination(c, run).status !== "BLOCKED",
-            )
-            .map((c) => (
-              <button
-                className="path-row"
-                key={c.id}
-                onClick={() => {
-                  pin(c.id);
-                }}
-              >
-                <span>
-                  <strong>
-                    {c.nameKo}{" "}
-                    {run.pinned.includes(c.id) ? `[${badge(c.id)}]` : ""}
-                  </strong>
-                  <small>
-                    +{" "}
-                    {c.requirements
-                      .filter((r) => r.magicId !== selected)
-                      .map(requirementLabel)
-                      .join(" + ")}
-                  </small>
-                </span>
-                <Pin size={15} />
-              </button>
-            ))}
-        </div>
-      ))}
-      <label className="check-line">
-        <input
-          type="checkbox"
-          checked={blocked}
-          onChange={(e) => setBlocked(e.target.checked)}
-        />
-        불가능한 경로도 보기
-      </label>
-      {run.completed.length > 0 && (
-        <>
-          <h2 className="subheading">완료한 조합</h2>
-          {run.completed.map((id) => comboCard(comboById[id]))}
-        </>
-      )}
-      {effects.disabled && (
-        <p className="notice">특수 효과: 일반 액티브 마법 시전 중단</p>
-      )}
-      {effects.extraLevels > 0 && (
-        <p className="notice">
-          특수 효과: 최대 플레이어 레벨 +{effects.extraLevels}
-        </p>
-      )}
-    </>
+    <TargetPanel
+      run={run}
+      selected={selected}
+      onPin={pin}
+      onComplete={(id) => change(completeCombination(run, id))}
+      onEdit={(id, level) => setTrait({ id, level })}
+    />
   );
+  function focus(id: string) {
+    setSelected(id);
+    if (matchMedia("(max-width: 650px)").matches) setMobile(true);
+  }
   return (
     <>
-      <header>
+      <header className="game-header">
         <a
           className="brand"
           href="/"
@@ -423,18 +280,11 @@ function App() {
             setAudit(false);
           }}
         >
-          <span className="logo">
-            <Zap size={23} />
-          </span>
-          <span>
-            MAGIC SURVIVAL<small>RUN COMPANION</small>
-          </span>
+          MS <span>Companion</span>
         </a>
         <div className="header-actions">
           <span className="slots">
-            <Layers size={16} />
-            조합 <b>{effects.used}</b>
-            <span>/ {effects.slots}</span>
+            완료 <b>{effects.used}</b> / {effects.slots}
           </span>
           <button
             aria-label="되돌리기"
@@ -448,12 +298,14 @@ function App() {
               setTrait(null);
             }}
           >
-            <Undo2 size={18} />
+            <Undo2 size={17} />
             <span>Undo</span>
           </button>
-          <button onClick={() => setNewRun(true)}>
-            <RotateCcw size={16} />
-            <span>새 Run</span>
+          <button aria-label="새 Run" onClick={() => setNewRun(true)}>
+            새 Run
+          </button>
+          <button aria-label="더보기" onClick={() => setMenu(true)}>
+            •••
           </button>
         </div>
       </header>
@@ -580,207 +432,13 @@ function App() {
           </div>
         </main>
       ) : (
-        <main className="layout">
-          <section className="workspace">
-            <div className="section-title">
-              <div>
-                <span className="eyebrow">
-                  <span className="live-dot" /> LIVE RUN
-                </span>
-                <h1>
-                  현재 Run
-                  <span className="version">
-                    v{data.metadata.targetGameVersion}
-                  </span>
-                </h1>
-              </div>
-              <button className="quiet" onClick={() => setBuildOpen(true)}>
-                <BookOpen size={17} />
-                저장한 빌드
-              </button>
-            </div>
-            <p className="intro">
-              한 번 탭으로 레벨 업. 다음 조합은 여기서 확인하세요.
-            </p>
-            <div className="toolbar">
-              <div className="filters">
-                {[
-                  ["all", "전체"],
-                  ["owned", "보유"],
-                  ["target", "목표"],
-                  ["new", "미보유"],
-                ].map(([id, name]) => (
-                  <button
-                    key={id}
-                    className={saved.filter === id ? "active" : ""}
-                    onClick={() => setSaved((s) => ({ ...s, filter: id }))}
-                  >
-                    {name}
-                  </button>
-                ))}
-              </div>
-              <label className="search">
-                <Search size={16} />
-                <input
-                  aria-label="마법 검색"
-                  placeholder="마법 검색"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-              </label>
-            </div>
-            <div className="grid-label">
-              <span>액티브 마법</span>
-              <small>TAP TO LEVEL UP</small>
-            </div>
-            <div className="magic-grid">
-              {data.magics
-                .filter(
-                  (m) =>
-                    (!query || m.nameKo.includes(query)) &&
-                    (saved.filter === "owned"
-                      ? (run.levels[m.id] ?? 0) > 0
-                      : saved.filter === "target"
-                        ? run.pinned.some((id) =>
-                            comboById[id].activeMagicLocks.includes(m.id),
-                          )
-                        : saved.filter === "new"
-                          ? !(run.levels[m.id] ?? 0)
-                          : true),
-                )
-                .map((m, i) => (
-                  <div
-                    className={
-                      "magic-card " +
-                      (selected === m.id ? "selected " : "") +
-                      (used[m.id] ? "locked" : "")
-                    }
-                    key={m.id}
-                  >
-                    <button
-                      aria-label={`${m.nameKo} 레벨 올리기`}
-                      className="magic-main"
-                      onClick={() => tap(m.id)}
-                    >
-                      <div className="magic-top">
-                        <span className={"sigil sigil-" + (i % 5)}>
-                          {["✧", "ϟ", "◈", "☄", "◎", "❋", "◇"][i % 7]}
-                        </span>
-                        <span className="badges">
-                          {run.pinned
-                            .filter((id) =>
-                              comboById[id].activeMagicLocks.includes(m.id),
-                            )
-                            .map((id) => (
-                              <b className="badge" key={id}>
-                                {badge(id)}
-                              </b>
-                            ))}
-                        </span>
-                      </div>
-                      <strong>{m.nameKo}</strong>
-                      <span className="level">
-                        Lv. <b>{run.levels[m.id] ?? 0}</b>
-                        <small> / {m.maxLevel}</small>
-                        {!used[m.id] &&
-                          (run.levels[m.id] ?? 0) < m.maxLevel && (
-                            <Plus size={15} />
-                          )}
-                      </span>
-                      <span className="level-track">
-                        <span
-                          style={{
-                            width: `${((run.levels[m.id] ?? 0) / m.maxLevel) * 100}%`,
-                          }}
-                        />
-                      </span>
-                      <span className="trait-preview">
-                        {used[m.id]
-                          ? "조합에 사용됨"
-                          : Object.entries(run.selectedTraits[m.id] ?? {})
-                              .map(
-                                ([stage, id]) =>
-                                  m.traitStages
-                                    .find((s) => s.level === Number(stage))
-                                    ?.traits.find((t) => t.id === id)?.nameKo,
-                              )
-                              .join(" · ") || "아직 특성 없음"}
-                      </span>
-                    </button>
-                    {m.traitStages.some(
-                      (s) => s.level <= (run.levels[m.id] ?? 0),
-                    ) &&
-                      !used[m.id] && (
-                        <button
-                          className="edit-trait"
-                          aria-label={`${m.nameKo} 특성 수정`}
-                          onClick={() =>
-                            setTrait({
-                              id: m.id,
-                              level: m.traitStages
-                                .filter(
-                                  (s) => s.level <= (run.levels[m.id] ?? 0),
-                                )
-                                .at(-1)!.level,
-                            })
-                          }
-                        >
-                          <Settings2 size={14} />
-                          특성
-                        </button>
-                      )}
-                  </div>
-                ))}
-            </div>
-            <div className="grid-label">
-              <span>조합 관련 패시브</span>
-              <small>{data.passives.length} MAGIC</small>
-            </div>
-            <div className="passive-grid">
-              {data.passives.map((p) => (
-                <button key={p.id} onClick={() => tap(p.id)}>
-                  <span>
-                    <strong>{p.nameKo}</strong>
-                    <small>
-                      Lv. {run.levels[p.id] ?? 0} / {p.maxLevel}
-                    </small>
-                  </span>
-                  <Plus size={17} />
-                </button>
-              ))}
-            </div>
-            <label className="check-line bonus">
-              <input
-                type="checkbox"
-                disabled={!data.rules.combinationSlots.manualBonusSupported}
-                checked={run.bonus}
-                onChange={(e) => change({ ...run, bonus: e.target.checked })}
-              />
-              {data.rules.combinationSlots.knownBonusArtifact.nameKo} · 조합
-              슬롯 +{data.rules.combinationSlots.knownBonusArtifact.addSlots}
-            </label>
-            <footer>
-              <span>
-                <span className="live-dot" />
-                {error || storageBlocked
-                  ? "저장 확인 필요"
-                  : "이 기기에 자동 저장"}
-              </span>
-              <a
-                href="/audit"
-                onClick={(e) => {
-                  e.preventDefault();
-                  history.pushState({}, "", "/audit");
-                  setAudit(true);
-                }}
-              >
-                데이터 검수 <ArrowUpRight size={13} />
-              </a>
-              <small>
-                비공식 도우미 · v{data.metadata.targetGameVersion} seed
-              </small>
-            </footer>
-          </section>
+        <main className="game-layout">
+          <MagicGrid
+            run={run}
+            selected={selected}
+            onFocus={focus}
+            onRecord={tap}
+          />
           <aside className="side-panel">{panel}</aside>
         </main>
       )}
@@ -789,13 +447,63 @@ function App() {
           className="mobile-toggle primary"
           onClick={() => setMobile(true)}
         >
-          <Layers size={18} />
-          조합 후보 · {ready.length}개 가능
+          목표 / 조합 보기
         </button>
       )}
       {mobile && (
         <Dialog title="목표와 조합 경로" onClose={() => setMobile(false)}>
           {panel}
+        </Dialog>
+      )}
+      {menu && (
+        <Dialog title="더보기" onClose={() => setMenu(false)}>
+          <nav className="secondary-menu">
+            <button
+              onClick={() => {
+                setMenu(false);
+                setBuildOpen(true);
+              }}
+            >
+              저장한 빌드
+            </button>
+            <button
+              onClick={() => {
+                setMenu(false);
+                setCatalog(true);
+              }}
+            >
+              전체 조합 도감
+            </button>
+            <button
+              onClick={() => {
+                setMenu(false);
+                history.pushState({}, "", "/audit");
+                setAudit(true);
+              }}
+            >
+              데이터 검수
+            </button>
+          </nav>
+          <label className="check-line">
+            <input
+              type="checkbox"
+              checked={run.bonus}
+              disabled={!data.rules.combinationSlots.manualBonusSupported}
+              onChange={(e) => change({ ...run, bonus: e.target.checked })}
+            />
+            {data.rules.combinationSlots.knownBonusArtifact.nameKo} · 슬롯 +
+            {data.rules.combinationSlots.knownBonusArtifact.addSlots}
+          </label>
+          <p className="muted">
+            {error || storageBlocked ? "저장 확인 필요" : "이 기기에 자동 저장"}{" "}
+            · v{data.metadata.targetGameVersion}
+          </p>
+          {effects.disabled && (
+            <p className="muted">일반 액티브 마법 시전 중단</p>
+          )}
+          {effects.extraLevels > 0 && (
+            <p className="muted">최대 플레이어 레벨 +{effects.extraLevels}</p>
+          )}
         </Dialog>
       )}
       {newRun && (
@@ -835,8 +543,26 @@ function App() {
           </div>
           {warning ? (
             <div className="conflict">
-              <h3>이 선택으로 목표가 막힙니다</h3>
-              <p>{warning.names.join(", ")}</p>
+              <h3>{warning.names.join(", ")}이 막힙니다.</h3>
+              <p>
+                필요:{" "}
+                {run.pinned
+                  .flatMap((id) =>
+                    comboById[id].requirements
+                      .filter(
+                        (r) =>
+                          r.magicId === warning.id &&
+                          stageFor(r)?.level === warning.level &&
+                          r.traitId !== warning.value,
+                      )
+                      .map(
+                        (r) =>
+                          stageFor(r)?.traits.find((t) => t.id === r.traitId)
+                            ?.nameKo,
+                      ),
+                  )
+                  .join(" / ")}
+              </p>
               <p>
                 선택:{" "}
                 {
@@ -860,27 +586,39 @@ function App() {
             magicById[trait.id].traitStages
               .find((s) => s.level === trait.level)!
               .traits.map((t) => (
-                <button
-                  className="trait-option"
-                  key={t.id}
-                  onClick={() => choose(trait.id, trait.level, t.id)}
-                >
-                  <strong>
-                    {t.nameKo}
-                    {run.selectedTraits[trait.id]?.[trait.level] === t.id
-                      ? " ✓"
-                      : ""}
-                  </strong>
-                  <span>{t.effectSummary.join(" · ")}</span>
-                  <small>
-                    {getMagicPaths(trait.id)
+                <div className="trait-choice" key={t.id}>
+                  <button
+                    className="trait-option"
+                    aria-label={`${t.nameKo} 선택`}
+                    onClick={() => choose(trait.id, trait.level, t.id)}
+                  >
+                    <strong>
+                      {t.nameKo}
+                      {run.selectedTraits[trait.id]?.[trait.level] === t.id
+                        ? " ✓"
+                        : ""}
+                    </strong>
+                    {getFocusedMagicPaths(run, trait.id)
                       .find(
                         (p) => p.stage === trait.level && p.trait.id === t.id,
                       )
-                      ?.combinations.map((c) => c.nameKo)
-                      .join(" / ") || "연결된 조합 없음"}
-                  </small>
-                </button>
+                      ?.combinations.map((c) => (
+                        <span className="picker-path" key={c.id}>
+                          <b>
+                            {c.badge && `${c.badge} `}
+                            {c.name}
+                          </b>
+                          <small>
+                            + {c.partners.map((r) => r.label).join(" + ")}
+                          </small>
+                        </span>
+                      ))}
+                  </button>
+                  <details>
+                    <summary>ⓘ 상세 효과</summary>
+                    <p>{t.effectSummary.join(" · ")}</p>
+                  </details>
+                </div>
               ))
           )}
         </Dialog>
