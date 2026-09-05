@@ -604,13 +604,17 @@ function App() {
                         (p) => p.stage === trait.level && p.trait.id === t.id,
                       )
                       ?.combinations.map((c) => (
-                        <span className="picker-path" key={c.id}>
+                        <span
+                          className={`picker-path ${c.partners.some(r => r.consumedBy) ? "consumed-path" : ""}`}
+                          key={c.id}
+                        >
                           <b>
                             {c.badge && `${c.badge} `}
                             {c.name}
+                            {c.partners.some(r => r.consumedBy) && " · 조합 불가"}
                           </b>
                           <small>
-                            + {c.partners.map((r) => r.label).join(" + ")}
+                            + {c.partners.map((r) => r.consumedLabel ?? r.label).join(" + ")}
                           </small>
                         </span>
                       ))}

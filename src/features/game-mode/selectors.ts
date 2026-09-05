@@ -91,6 +91,7 @@ export function describeRequirement(r: Requirement, run: Run) {
       : data.passives.find((p) => p.id === r.magicId);
   const stage = r.type === "activeMagic" ? stageFor(r) : undefined;
   const trait = stage?.traits.find((t) => t.id === r.traitId);
+  const consumedBy = r.type === "activeMagic" ? locks(run)[r.magicId!] : undefined;
   return {
     name: m?.nameKo ?? comboById[r.combinationId!]?.nameKo,
     currentLevel: run.levels[r.magicId!] ?? 0,
@@ -98,6 +99,10 @@ export function describeRequirement(r: Requirement, run: Run) {
     requiredLevel: Math.max(r.minLevel ?? 1, stage?.level ?? 1),
     traitName: trait?.nameKo,
     stage: stage?.level,
+    consumedBy,
+    consumedLabel: consumedBy
+      ? `${m?.nameKo} · ${comboById[consumedBy].nameKo}에 사용됨 · 재사용 불가`
+      : undefined,
     met: requirementMet(r, run),
     label:
       r.type === "completedCombination"

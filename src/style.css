@@ -654,6 +654,10 @@ dialog p {
   color: #94a7bd;
   margin-top: 4px;
 }
+.picker-path.consumed-path b,
+.picker-path.consumed-path small {
+  color: #a2a9b4;
+}
 .trait-choice details {
   font-size: 11px;
   color: #899bae;
