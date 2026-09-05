@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 import { data } from "../../data";
 import { locks, type Run } from "../../engine";
-import { getMagicTargetBadges } from "./selectors";
+import { getMagicTargetBadges, getSortedMagics } from "./selectors";
 type Props = {
   run: Run;
   selected: string;
@@ -19,7 +19,7 @@ export function MagicGrid({ run, selected, onFocus, onRecord }: Props) {
         <span>살펴보기 · + 기록</span>
       </div>
       <div className="magic-grid">
-        {data.magics.map((m) => {
+        {getSortedMagics(run).map((m) => {
           const level = run.levels[m.id] ?? 0;
           const traits = m.traitStages.flatMap((s) =>
             s.traits

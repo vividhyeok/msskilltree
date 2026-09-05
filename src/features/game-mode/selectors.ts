@@ -31,6 +31,59 @@ export const targetBadge = (run: Run, id: string) =>
   run.pinned.includes(id)
     ? String.fromCharCode(65 + run.pinned.indexOf(id))
     : "";
+export function getSortedMagics(run: Run) {
+  const used = locks(run);
+  const group = (id: string) => used[id] ? 2 : (run.levels[id] ?? 0) > 0 ? 0 : 1;
+  return [...data.magics].sort((a, b) =>
+    group(a.id) - group(b.id) || a.nameKo.localeCompare(b.nameKo, "ko"),
+  );
+}
+
+type PlanStep = { id: string; levels: number };
+type Plan = { run: Run; steps: PlanStep[]; levels: number; invested: number };
+// Bounded search retains alternative ingredient sets, including special combinations
+// that unlock slots or require an earlier combination. Every step uses engine rules.
+export function getRecommendedPlan(run: Run) {
+  const compare = (a: Plan, b: Plan) => b.steps.length - a.steps.length ||
+    a.levels - b.levels || b.invested - a.invested ||
+    a.steps.reduce((n, s, i) => n + s.levels * (a.steps.length - i), 0) -
+    b.steps.reduce((n, s, i) => n + s.levels * (b.steps.length - i), 0) ||
+    a.steps.map(s => s.id).join().localeCompare(b.steps.map(s => s.id).join());
+  let frontier: Plan[] = [{ run, steps: [], levels: 0, invested: 0 }];
+  let best = frontier[0];
+  for (let depth = 0; depth < data.combinations.length && frontier.length; depth++) {
+    const next = new Map<string, Plan>();
+    for (const plan of frontier) for (const c of data.combinations) {
+      const status = evaluateCombination(c, plan.run).status;
+      if (status === "BLOCKED" || status === "COMPLETED") continue;
+      const simulated: Run = { ...plan.run, levels: { ...plan.run.levels },
+        selectedTraits: { ...plan.run.selectedTraits }, completed: [...plan.run.completed, c.id] };
+      let cost = 0;
+      let invested = 0;
+      for (const r of c.requirements) {
+        if (!r.magicId) continue;
+        const stage = r.traitId ? stageFor(r) : undefined;
+        const required = Math.max(r.minLevel ?? 1, stage?.level ?? 1);
+        const current = simulated.levels[r.magicId] ?? 0;
+        cost += Math.max(0, required - current);
+        invested += Math.min(run.levels[r.magicId] ?? 0, required);
+        simulated.levels[r.magicId] = Math.max(current, required);
+        if (stage && r.traitId) simulated.selectedTraits[r.magicId] = {
+          ...simulated.selectedTraits[r.magicId], [stage.level]: r.traitId,
+        };
+      }
+      const candidate = { run: simulated, steps: [...plan.steps, { id: c.id, levels: cost }],
+        levels: plan.levels + cost, invested: plan.invested + invested };
+      const key = [...simulated.completed].sort().join();
+      const previous = next.get(key);
+      if (!previous || compare(candidate, previous) < 0 ||
+        (compare(candidate, previous) === 0 && candidate.steps[0].levels < previous.steps[0].levels)) next.set(key, candidate);
+      if (compare(candidate, best) < 0) best = candidate;
+    }
+    frontier = [...next.values()].sort(compare).slice(0, 160);
+  }
+  return { steps: best.steps, levels: best.levels };
+}
 export function describeRequirement(r: Requirement, run: Run) {
   const m =
     r.type === "activeMagic"

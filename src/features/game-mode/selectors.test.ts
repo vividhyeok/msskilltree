@@ -1,7 +1,49 @@
 import { describe, it, expect } from "vitest";
-import { data } from "../../data";
+import { data, comboById, stageFor } from "../../data";
 import { emptyRun, completeCombination } from "../../engine";
-import { getNeededMagicForTargets, getFocusedMagicPaths } from "./selectors";
+import { getNeededMagicForTargets, getFocusedMagicPaths, getSortedMagics, getRecommendedPlan } from "./selectors";
+
+describe("overview recommendations", () => {
+  it("sorts invested magic first, unused next and consumed last, alphabetically within each group", () => {
+    const run = emptyRun();
+    run.levels = { spirit: 3, thunderstorm: 1, fireball: 7 };
+    run.completed = ["demon_equation"];
+    const sorted = getSortedMagics(run);
+    expect(sorted.slice(0, 2).map(m => m.id)).toEqual(["thunderstorm", "spirit"]);
+    expect(new Set(sorted.slice(-2).map(m => m.id))).toEqual(new Set(["fireball", "energy_bolt"]));
+    const names = sorted.slice(2, -2).map(m => m.nameKo);
+    expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b, "ko")));
+  });
+  it("produces an executable sequence with exact shared level costs without mutating the run", () => {
+    const run = target();
+    run.levels = { fireball: 7, energy_bolt: 6 };
+    run.selectedTraits = { fireball: { 7: "big_explosion" } };
+    const before = structuredClone(run);
+    const plan = getRecommendedPlan(run);
+    expect(plan.steps.length).toBeGreaterThanOrEqual(3);
+    let simulated = structuredClone(run);
+    let cost = 0;
+    for (const step of plan.steps) {
+      for (const r of comboById[step.id].requirements) {
+        if (!r.magicId) continue;
+        const stage = r.traitId ? stageFor(r) : undefined;
+        const level = Math.max(r.minLevel ?? 1, stage?.level ?? 1);
+        cost += Math.max(0, level - (simulated.levels[r.magicId] ?? 0));
+        simulated.levels[r.magicId] = Math.max(level, simulated.levels[r.magicId] ?? 0);
+        if (stage && r.traitId) simulated.selectedTraits[r.magicId] = { ...simulated.selectedTraits[r.magicId], [stage.level]: r.traitId };
+      }
+      simulated = completeCombination(simulated, step.id);
+    }
+    expect(cost).toBe(plan.levels);
+    expect(run).toEqual(before);
+  });
+  it("returns no extra combinations after a blocking special combination", () => {
+    const run = emptyRun();
+    const blocking = data.combinations.find(c => c.effects.some(e => e.type === "blockFurtherCombinations" && e.value))!;
+    run.completed = [blocking.id];
+    expect(getRecommendedPlan(run).steps).toEqual([]);
+  });
+});
 const target = () => ({ ...emptyRun(), pinned: ["demon_equation"] });
 describe("target shopping list", () => {
   it("shows canonical ingredients immediately after loading goals", () => {

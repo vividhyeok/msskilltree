@@ -11,6 +11,7 @@ import {
   getNeededMagicForTargets,
   getFocusedMagicPaths,
   targetBadge,
+  getRecommendedPlan,
 } from "./selectors";
 type Props = {
   run: Run;
@@ -18,6 +19,7 @@ type Props = {
   onPin: (id: string) => void;
   onComplete: (id: string) => void;
   onEdit: (id: string, level: number) => void;
+  onClearFocus: () => void;
 };
 export function TargetPanel({
   run,
@@ -25,8 +27,10 @@ export function TargetPanel({
   onPin,
   onComplete,
   onEdit,
+  onClearFocus,
 }: Props) {
   const [showBlocked, setShowBlocked] = useState(false);
+  const recommendation = useMemo(() => selected ? null : getRecommendedPlan(run), [run, selected]);
   const needed = useMemo(() => getNeededMagicForTargets(run), [run]);
   const paths = useMemo(
     () => getFocusedMagicPaths(run, selected),
@@ -174,6 +178,7 @@ export function TargetPanel({
               "마법 경로"}
           </h2>
           <span>PATHS</span>
+          {selected && <button className="edit-path-trait" onClick={onClearFocus}>전체 추천</button>}
           {m &&
             !used[selected] &&
             m.traitStages
@@ -190,8 +195,27 @@ export function TargetPanel({
               ))}
         </div>
         <div className="path-scroll">
-          {!selected && (
-            <p className="hud-empty">마법 본체는 살펴보기, +는 레벨 기록.</p>
+          {!selected && recommendation && (
+            <div className="recommended-plan">
+              <h3>현재 레벨 기반 조합 추천</h3>
+              <p className="hud-empty">조합 수 → 추가 레벨 → 기존 투자 순으로 후보를 비교합니다. 특성 선택은 별도로 필요하며, 모든 경로의 최적해를 보장하지는 않습니다.</p>
+              {recommendation.steps.length ? <>
+                <p>추가 {recommendation.levels}레벨로 {recommendation.steps.length}개 조합 완성</p>
+                {recommendation.steps.map((step, index) => {
+                  const c = comboById[step.id];
+                  const ready = evaluateCombination(c, run).status === "READY";
+                  return <div className="path-entry" key={step.id}>
+                    <button className="path-pin" aria-label={`${c.nameKo} ${run.pinned.includes(c.id) ? "목표 해제" : "목표 지정"}`} onClick={() => onPin(c.id)}>
+                      <span className={run.pinned.includes(c.id) ? "badge" : "star"}>{targetBadge(run, c.id) || "☆"}</span>
+                      {index + 1}. {c.nameKo}
+                    </button>
+                    <p>{step.levels ? `이 단계 추가 ${step.levels}레벨` : "추가 레벨 없이 가능"}</p>
+                    {c.requirements.map((r, i) => <p key={i}>{describeRequirement(r, run).label}{r.magicId ? ` · 필요 Lv.${describeRequirement(r, run).requiredLevel}` : ""}</p>)}
+                    {ready && <button className="complete-target" onClick={() => onComplete(c.id)}>{c.nameKo} 조합 완료</button>}
+                  </div>;
+                })}
+              </> : <p className="hud-empty">현재 특성과 남은 슬롯으로 가능한 추가 조합이 없습니다.</p>}
+            </div>
           )}
           {used[selected] && (
             <p className="hud-empty">

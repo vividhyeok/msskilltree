@@ -109,7 +109,12 @@ test("saved build glance, inspect versus record, traits, completion, locks, undo
         y: el.getBoundingClientRect().y,
       })),
     ),
-  ).toEqual(before);
+  ).not.toEqual(before);
+  await expect(page.locator(".magic-tile").first()).toHaveAttribute("data-magic-id", "energy_bolt");
+  await expect(page.getByText("현재 레벨 기반 조합 추천")).toBeVisible();
+  await page.getByRole("button", { name: "화염구 경로 보기" }).click();
+  await page.getByRole("button", { name: "전체 추천", exact: true }).click();
+  await expect(page.getByText("현재 레벨 기반 조합 추천")).toBeVisible();
   await menu(page, "저장한 빌드");
   await page.getByPlaceholder("예: 번개 빌드").fill("검증 빌드");
   await page.getByRole("button", { name: "현재 목표를 빌드로 저장" }).click();

@@ -256,7 +256,8 @@ function App() {
     );
   }
   const panel = (
-    <TargetPanel
+      <TargetPanel
+        onClearFocus={() => setSelected("")}
       run={run}
       selected={selected}
       onPin={pin}
@@ -265,7 +266,7 @@ function App() {
     />
   );
   function focus(id: string) {
-    setSelected(id);
+    setSelected(current => current === id ? "" : id);
     if (matchMedia("(max-width: 650px)").matches) setMobile(true);
   }
   return (
