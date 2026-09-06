@@ -200,7 +200,7 @@ export function TargetPanel({
               <h3>현재 레벨 기반 조합 추천</h3>
               <p className="hud-empty">조합 수 → 추가 레벨 → 기존 투자 순으로 후보를 비교합니다. 특성 선택은 별도로 필요하며, 모든 경로의 최적해를 보장하지는 않습니다.</p>
               {recommendation.steps.length ? <>
-                <p>추가 {recommendation.levels}레벨로 {recommendation.steps.length}개 조합 완성</p>
+                <p className="recommendation-summary">추가 <strong>{recommendation.levels}레벨</strong>로 <strong>{recommendation.steps.length}개 조합</strong> 완성</p>
                 {recommendation.steps.map((step, index) => {
                   const c = comboById[step.id];
                   const ready = evaluateCombination(c, run).status === "READY";

@@ -31,7 +31,7 @@ export function MagicGrid({ run, selected, onFocus, onRecord }: Props) {
           );
           return (
             <div
-              className={`magic-tile ${selected === m.id ? "selected" : ""} ${used[m.id] ? "consumed" : ""}`}
+              className={`magic-tile ${level > 0 ? "invested" : ""} ${selected === m.id ? "selected" : ""} ${used[m.id] ? "consumed" : ""}`}
               key={m.id}
               data-magic-id={m.id}
             >
@@ -45,7 +45,7 @@ export function MagicGrid({ run, selected, onFocus, onRecord }: Props) {
                 <span className="tile-value">
                   {used[m.id]
                     ? "✓ 조합됨"
-                    : level === m.maxLevel
+                    : level === m.maxLevel && !pending
                       ? traits.join(" · ") || "특성 선택"
                       : `${level}/${m.maxLevel}`}
                 </span>
