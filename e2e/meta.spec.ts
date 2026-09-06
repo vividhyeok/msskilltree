@@ -51,7 +51,7 @@ test("tablet live flow: setup, contextual goal, fixed tiles, level budget and Un
   await expect(page.locator('[data-magic-id="magic_circle"]')).toContainText(
     "0/5",
   );
-  await page.getByRole("button", { name: "전체 추천", exact: true }).click();
+  await expect(page.locator(".meta-overview")).toBeVisible();
   await page.locator(".growth-plan > summary").click();
   await expect(
     page.locator(".growth-plan .recommendation-summary"),
@@ -137,20 +137,38 @@ test("manual synergy proximity changes comparison and patch mismatch is cautious
   );
 });
 
-test("four artifact choices remain comparable on a landscape tablet", async ({ page }) => {
+test("four artifact choices remain comparable on a landscape tablet", async ({
+  page,
+}) => {
   await configure(page);
   await page.getByRole("button", { name: "유물 선택", exact: true }).click();
-  const dialog = page.getByRole("dialog", { name: "유물 선택 비교", exact: true });
+  const dialog = page.getByRole("dialog", {
+    name: "유물 선택 비교",
+    exact: true,
+  });
   await dialog.getByRole("button", { name: "네 번째 후보 추가" }).click();
-  for (const [index, id] of ["ouroboros", "nexus", "gear", "accelerator"].entries())
+  for (const [index, id] of [
+    "ouroboros",
+    "nexus",
+    "gear",
+    "accelerator",
+  ].entries())
     await dialog.getByLabel(`유물 후보 ${index + 1}`).selectOption(id);
   await expect(dialog.locator("[data-artifact-result]")).toHaveCount(4);
-  for (const button of await dialog.getByRole("button", { name: /선택 기록$/ }).all())
+  for (const button of await dialog
+    .getByRole("button", { name: /선택 기록$/ })
+    .all())
     await expect(button).toBeInViewport({ ratio: 1 });
   await page.screenshot({ path: "test-results/meta-artifact-four.png" });
   await page.setViewportSize({ width: 768, height: 1024 });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: "test-results/meta-artifact-four-portrait.png" });
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+  ).toBe(true);
+  await page.screenshot({
+    path: "test-results/meta-artifact-four-portrait.png",
+  });
 });
 
 test("support trait picker labels meta as advice and never offers consumed support", async ({
@@ -170,7 +188,7 @@ test("support trait picker labels meta as advice and never offers consumed suppo
   await dialog
     .getByRole("button", { name: "재구축 선택", exact: true })
     .click();
-  await page.getByRole("button", { name: "전체 추천", exact: true }).click();
+  await expect(page.locator(".meta-overview")).toBeVisible();
   await expect(
     page.locator('[data-meta-ref="active:shield_reconstruction"]'),
   ).toHaveCount(0);

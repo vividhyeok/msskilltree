@@ -62,9 +62,16 @@ for (const [width, height] of [
       .getByRole("button", { name: "전기충격 Lv.7 특성 수정", exact: true })
       .click();
     const dialog = page.getByRole("dialog");
+    for (const button of await dialog.locator(".trait-option").all())
+      await expect(button).toBeInViewport({ ratio: 1 });
+    await page.screenshot({ path: `test-results/roles-trait-${width}.png` });
+    await dialog.getByText("연쇄 번개 조합·효과 보기", { exact: true }).click();
     await expect(dialog).toContainText("에너지탄 × 데몬 방정식에 병합");
     await expect(dialog).not.toContainText("에너지탄 7/7");
-    await page.screenshot({ path: `test-results/roles-trait-${width}.png` });
+    await expect(dialog.locator(".consumed-path")).toBeVisible();
+    await page.screenshot({
+      path: `test-results/roles-trait-expanded-${width}.png`,
+    });
     await page.getByRole("button", { name: "닫기", exact: true }).click();
     await page.getByRole("button", { name: "되돌리기", exact: true }).click();
     await expect(carrier).not.toHaveAttribute(

@@ -98,6 +98,11 @@ test("saved build glance, inspect versus record, traits, completion, locks, undo
   await expect(tile(page, "energy_bolt")).toContainText("× 병합·소멸");
   await expect(tile(page, "energy_bolt").locator(".tile-add")).toHaveCount(0);
   await expect(page.locator(".slots")).toContainText("1");
+  // Recording no longer moves the path being inspected.
+  await expect(page.locator(".focus-title h2")).toHaveText("낙뢰");
+  await page
+    .getByRole("button", { name: "에너지탄 경로 보기", exact: true })
+    .click();
   await expect(page.locator(".path-pin")).toHaveCount(0);
   await page.getByRole("button", { name: "되돌리기" }).click();
   await expect(page.locator(".slots")).toContainText("0");

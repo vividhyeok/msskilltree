@@ -1,15 +1,13 @@
 import { useMemo, useState } from "react";
-import {
-  CombinationMetaNote,
-  LiveMetaNeeds,
-  MetaOverview,
-} from "../../meta/MetaUI";
+import { CombinationMetaNote, MetaOverview } from "../../meta/MetaUI";
 import { contextFor } from "../../meta/engine";
 import { RoleMark } from "../../components/GameState";
-import { data, comboById, magicById, participantRole } from "../../data";
+import { data, comboById, magicById } from "../../data";
+import { TargetSummary } from "./TargetSummary";
+import { PickList } from "./PickList";
+import { Recipe } from "../../components/Recipe";
 import {
   evaluateCombination,
-  getCombinationConflicts,
   locks,
   completedMagicStates,
   type Run,
@@ -30,6 +28,8 @@ type Props = {
   onClearFocus: () => void;
   onSetup: () => void;
   onFocus: (id: string) => void;
+  onRecord: (id: string) => void;
+  onBrowse: () => void;
 };
 export function TargetPanel({
   run,
@@ -40,6 +40,8 @@ export function TargetPanel({
   onClearFocus,
   onSetup,
   onFocus,
+  onRecord,
+  onBrowse,
 }: Props) {
   const [showBlocked, setShowBlocked] = useState(false);
   const [growthOpen, setGrowthOpen] = useState(false);
@@ -56,13 +58,9 @@ export function TargetPanel({
     (n, p) => n + p.combinations.filter((c) => c.status === "BLOCKED").length,
     0,
   );
-  const conflicts = getCombinationConflicts(run);
   const m = magicById[selected];
   const used = locks(run);
   const completed = completedMagicStates(run);
-  const activeNeeds = needed.filter(
-    (n) => !["ready", "consumed"].includes(n.state),
-  );
   const passivePaths =
     !m && selected
       ? data.combinations.filter(
@@ -73,170 +71,27 @@ export function TargetPanel({
       : [];
   return (
     <div className="hud-panel">
-      <section className="target-section" aria-label="목표 조합">
-        <h2 className="hud-label">
-          TARGET <span>{run.pinned.length || "목표 없음"}</span>
-        </h2>
-        {!run.pinned.length && (
-          <p className="hud-empty">마법을 눌러 조합 경로를 확인하세요.</p>
-        )}
-        {run.pinned.map((id) => {
-          const c = comboById[id];
-          const e = evaluateCombination(c, run);
-          return (
-            <article
-              className={`target-row ${e.status.toLowerCase()}`}
-              key={id}
-              data-target={targetBadge(run, id)}
-            >
-              <div className="target-heading">
-                <button
-                  className="target-name"
-                  aria-label={`${c.nameKo} 목표 해제`}
-                  onClick={() => onPin(id)}
-                >
-                  <b className="badge" data-target={targetBadge(run, id)}>
-                    {targetBadge(run, id)}
-                  </b>
-                  <strong>{c.nameKo}</strong>
-                </button>
-                {e.status === "COMPLETED" ? (
-                  <span className="met">✓ 완료</span>
-                ) : e.status === "READY" ? (
-                  <button
-                    className="complete-target"
-                    aria-label={`${c.nameKo} 조합 완료`}
-                    onClick={() => onComplete(id)}
-                  >
-                    ✓ 준비 · 완료
-                  </button>
-                ) : e.status === "BLOCKED" ? (
-                  <span className="blocked-label">! 불가</span>
-                ) : null}
-              </div>
-              {e.status !== "COMPLETED" &&
-                c.requirements.map((r, i) => {
-                  const info = describeRequirement(r, run);
-                  return (
-                    <div
-                      className={`target-requirement ${info.met ? "met" : ""}`}
-                      key={i}
-                    >
-                      <span
-                        className="requirement-met"
-                        aria-label={info.met ? "준비됨" : "미완성"}
-                      >
-                        {info.met ? "✓" : "○"}
-                      </span>{" "}
-                      <RoleMark role={info.role} /> {info.label}
-                    </div>
-                  );
-                })}
-              {e.status === "BLOCKED" && (
-                <details className="blocked-detail">
-                  <summary>막힌 이유</summary>
-                  {e.reasons.map((reason) => (
-                    <p key={reason}>{reason}</p>
-                  ))}
-                </details>
-              )}
-              {e.status === "COMPLETED" && (
-                <p className="completed-participants">
-                  {c.requirements
-                    .filter((r) => r.type === "activeMagic")
-                    .map((r, i) => (
-                      <span key={i}>
-                        <RoleMark role={participantRole(r)} />{" "}
-                        {magicById[r.magicId!].nameKo}
-                      </span>
-                    ))}
-                </p>
-              )}
-            </article>
-          );
-        })}
-        {conflicts.map((c) => (
-          <div className="conflict" role="alert" key={c.a + c.b}>
-            <strong>
-              !{" "}
-              <b className="badge" data-target={targetBadge(run, c.a)}>
-                {targetBadge(run, c.a)}
-              </b>{" "}
-              ·{" "}
-              <b className="badge" data-target={targetBadge(run, c.b)}>
-                {targetBadge(run, c.b)}
-              </b>{" "}
-              충돌
-            </strong>
-            <p>{c.message}</p>
-          </div>
-        ))}
-      </section>
-      <section className="need-section" aria-label="지금 필요한 마법">
-        <h2 className="hud-label">
-          NEED NOW <span>지금 뜨면 집을 것</span>
-        </h2>
-        {!activeNeeds.length && (
-          <p className="hud-empty">
-            {run.pinned.length
-              ? run.pinned.every((id) =>
-                  ["READY", "COMPLETED"].includes(
-                    evaluateCombination(comboById[id], run).status,
-                  ),
-                )
-                ? "✓ 목표 재료 준비 완료"
-                : "목표의 선행 조합 / 막힌 이유 확인"
-              : "목표를 지정하면 필요한 재료가 표시됩니다."}
-          </p>
-        )}
-        {activeNeeds.map((n) => (
-          <div
-            className={`need-row ${n.state}`}
-            key={n.key}
-            data-need-magic={n.magicId}
-            data-target={targetBadge(run, n.targetCombinationIds[0])}
-          >
-            <span className="need-badges">
-              {n.targetCombinationIds.map((id) => (
-                <b
-                  className="badge"
-                  key={id}
-                  data-target={targetBadge(run, id)}
-                >
-                  {targetBadge(run, id)}
-                </b>
-              ))}
-            </span>
-            <RoleMark role={n.role} />
-            <strong>{n.name}</strong>
-            <span className="need-level">
-              {n.currentLevel}/{n.maxLevel}
-            </span>
-            <span className="need-trait">
-              {n.state === "blocked"
-                ? "! 경로 막힘"
-                : n.requiredTraitName
-                  ? `→ ${n.requiredTraitName}${magicById[n.magicId]?.traitStages.length > 1 ? ` · Lv.${n.traitStage}` : ""}`
-                  : `→ Lv.${n.requiredLevel}`}
-            </span>
-          </div>
-        ))}
-        {!activeNeeds.length && (
-          <LiveMetaNeeds
-            run={run}
-            onFocus={onFocus}
-            onOverview={onClearFocus}
-          />
-        )}
-      </section>
+      <TargetSummary
+        run={run}
+        onPin={onPin}
+        onComplete={onComplete}
+        onBrowse={onBrowse}
+      />
+      <PickList
+        run={run}
+        needed={needed}
+        onRecord={onRecord}
+        onEdit={onEdit}
+        onFocus={onFocus}
+      />
       <section className="focus-section" aria-label="선택한 마법 경로">
         <div className="focus-title">
           <h2>
             {m?.nameKo ??
               data.passives.find((p) => p.id === selected)?.nameKo ??
-              "마법 경로"}
+              "추천 조합"}
           </h2>
-          <span>PATHS</span>
+          {selected && <span>조합 찾기</span>}
           {selected && (
             <button className="edit-path-trait" onClick={onClearFocus}>
               전체 추천
@@ -273,7 +128,7 @@ export function TargetPanel({
               onToggle={(event) => setGrowthOpen(event.currentTarget.open)}
             >
               <summary>
-                성장 효율 경로
+                찍은 마법으로 조합 계획하기
                 {recommendation ? ` · 추가 ${recommendation.levels}레벨` : ""}
               </summary>
               {recommendation && (
@@ -420,13 +275,12 @@ export function TargetPanel({
                         </span>
                         {c.name}
                         <RoleMark role={c.focusedRole} />
+                        <span className="pin-action">
+                          {c.badge ? "해제" : "목표로"}
+                        </span>
                         {c.status === "READY" && <span className="met">✓</span>}
                       </button>
-                      {c.partners.map((r, i) => (
-                        <p key={i} className={r.met ? "met" : ""}>
-                          <RoleMark role={r.role} /> {r.label}
-                        </p>
-                      ))}
+                      <Recipe combination={comboById[c.id]} run={run} />
                       <CombinationMetaNote run={run} id={c.id} />
                       {c.status === "BLOCKED" &&
                         c.reasons.map((r) => (

@@ -6,7 +6,6 @@ import {
   magicById,
   comboById,
   requirementLabel,
-  participantRole,
   stageFor,
   type Combination,
 } from "./data";
@@ -16,7 +15,6 @@ import {
   locks,
   evaluateCombination,
   completeCombination,
-  requirementMet,
   validateGameData,
   type Run,
 } from "./engine";
@@ -30,17 +28,14 @@ import {
 import "./style.css";
 import "./meta/style.css";
 import "./features/game-mode/state.css";
-import { RoleMark, TargetBadge } from "./components/GameState";
+import "./features/game-mode/play.css";
+import { TargetBadge } from "./components/GameState";
+import { Recipe } from "./components/Recipe";
+import { TraitChoices } from "./components/TraitChoices";
 import { MagicGrid } from "./features/game-mode/MagicGrid";
 import { TargetPanel } from "./features/game-mode/TargetPanel";
-import { getFocusedMagicPaths } from "./features/game-mode/selectors";
 import { Dialog } from "./components/Dialog";
-import {
-  ArtifactChoice,
-  RunSetup,
-  RunContextBar,
-  TraitMetaHint,
-} from "./meta/MetaUI";
+import { ArtifactChoice, RunSetup, RunContextBar } from "./meta/MetaUI";
 import { contextFor } from "./meta/engine";
 import { defaultMetaContext } from "./meta/data";
 validateGameData();
@@ -71,6 +66,12 @@ function App() {
     }
   });
   const [selected, setSelected] = useState("");
+  const [recordNote, setRecordNote] = useState("");
+  useEffect(() => {
+    if (!recordNote) return;
+    const timer = setTimeout(() => setRecordNote(""), 2200);
+    return () => clearTimeout(timer);
+  }, [recordNote]);
   const [menu, setMenu] = useState(false);
   const [catalog, setCatalog] = useState(false);
   const [setup, setSetup] = useState(false);
@@ -115,7 +116,6 @@ function App() {
     }));
   }
   function tap(id: string) {
-    setSelected(id);
     const m = magicById[id] ?? data.passives.find((p) => p.id === id)!;
     if (used[id]) return;
     const pending = magicById[id]?.traitStages.find(
@@ -127,6 +127,8 @@ function App() {
       return;
     }
     const level = Math.min(m.maxLevel, (run.levels[id] ?? 0) + 1);
+    if (level !== (run.levels[id] ?? 0))
+      setRecordNote(`${m.nameKo} Lv.${level} 기록`);
     if (level !== (run.levels[id] ?? 0))
       change({
         ...run,
@@ -171,6 +173,7 @@ function App() {
     });
     setWarning(null);
     setTrait(null);
+    setRecordNote(`${magicById[id].nameKo} 특성 기록`);
   }
   function badge(id: string) {
     return String.fromCharCode(65 + run.pinned.indexOf(id));
@@ -184,6 +187,7 @@ function App() {
     });
   }
   function reset(pinned: string[] = []) {
+    setRecordNote("");
     setSaved((s) => ({
       ...s,
       run: {
@@ -213,22 +217,7 @@ function App() {
             {statusNames[e.status]}
           </span>
         </div>
-        {c.requirements.map((r, i) => (
-          <div
-            className={"requirement " + (requirementMet(r, run) ? "met" : "")}
-            key={i}
-          >
-            <span>
-              {requirementMet(r, run) ? "✓" : "○"}{" "}
-              <RoleMark role={participantRole(r)} /> {requirementLabel(r)}
-            </span>
-            <small>
-              {r.magicId && !requirementMet(r, run)
-                ? `현재 Lv.${run.levels[r.magicId] ?? 0}`
-                : ""}
-            </small>
-          </div>
-        ))}
+        <Recipe combination={c} run={run} />
         {e.reasons.map((reason) => (
           <p className="reason" key={reason}>
             {reason}
@@ -263,6 +252,8 @@ function App() {
   }
   const panel = (
     <TargetPanel
+      onRecord={tap}
+      onBrowse={() => setCatalog(true)}
       onClearFocus={() => setSelected("")}
       onSetup={() => setSetup(true)}
       onFocus={(id) => setSelected(id)}
@@ -279,6 +270,13 @@ function App() {
   }
   return (
     <>
+      <div
+        className={`record-feedback ${recordNote ? "is-visible" : ""}`}
+        role="status"
+        aria-live="polite"
+      >
+        {recordNote}
+      </div>
       <header className="game-header">
         <a
           className="brand"
@@ -305,13 +303,14 @@ function App() {
                 history: s.history.slice(0, -1),
               }));
               setTrait(null);
+              setRecordNote("");
             }}
           >
             <Undo2 size={17} />
-            <span>Undo</span>
+            <span>되돌리기</span>
           </button>
           <button aria-label="새 Run" onClick={() => setNewRun(true)}>
-            새 Run
+            새 게임
           </button>
           <button aria-label="더보기" onClick={() => setMenu(true)}>
             •••
@@ -615,62 +614,21 @@ function App() {
               </div>
             </div>
           ) : (
-            magicById[trait.id].traitStages
-              .find((s) => s.level === trait.level)!
-              .traits.map((t) => (
-                <div className="trait-choice" key={t.id}>
-                  <button
-                    className="trait-option"
-                    aria-label={`${t.nameKo} 선택`}
-                    onClick={() => choose(trait.id, trait.level, t.id)}
-                  >
-                    <strong>
-                      {t.nameKo}
-                      {run.selectedTraits[trait.id]?.[trait.level] === t.id
-                        ? " ✓"
-                        : ""}
-                    </strong>
-                    <TraitMetaHint
-                      run={run}
-                      magicId={trait.id}
-                      traitId={t.id}
-                    />
-                    {getFocusedMagicPaths(run, trait.id)
-                      .find(
-                        (p) => p.stage === trait.level && p.trait.id === t.id,
-                      )
-                      ?.combinations.map((c) => (
-                        <span
-                          className={`picker-path ${c.partners.some((r) => r.consumedBy) ? "consumed-path" : ""}`}
-                          key={c.id}
-                          data-target={c.badge}
-                        >
-                          <b>
-                            {c.badge && <TargetBadge badge={c.badge} />}
-                            <RoleMark role={c.focusedRole} /> {c.name}
-                            {c.partners.some((r) => r.consumedBy) &&
-                              " · 조합 불가"}
-                          </b>
-                          {c.partners.map((r, i) => (
-                            <small key={i}>
-                              <RoleMark role={r.role} />{" "}
-                              {r.consumedLabel ?? r.label}
-                            </small>
-                          ))}
-                        </span>
-                      ))}
-                  </button>
-                  <details>
-                    <summary>ⓘ 상세 효과</summary>
-                    <p>{t.effectSummary.join(" · ")}</p>
-                  </details>
-                </div>
-              ))
+            <TraitChoices
+              run={run}
+              magicId={trait.id}
+              level={trait.level}
+              onChoose={(id) => choose(trait.id, trait.level, id)}
+            />
           )}
         </Dialog>
       )}
       {catalog && (
-        <Catalog onClose={() => setCatalog(false)} render={comboCard} />
+        <Catalog
+          run={run}
+          onClose={() => setCatalog(false)}
+          render={comboCard}
+        />
       )}
       {setup && (
         <RunSetup
@@ -759,15 +717,37 @@ function App() {
   );
 }
 function Catalog({
+  run,
   onClose,
   render,
 }: {
+  run: Run;
   onClose: () => void;
   render: (c: Combination) => React.ReactNode;
 }) {
   const [q, setQ] = useState("");
+  const [filter, setFilter] = useState<"all" | "possible" | "pinned">(
+    "possible",
+  );
+  const list = data.combinations.filter(
+    (c) =>
+      [c.nameKo, ...c.requirements.map(requirementLabel)]
+        .join("")
+        .replace(/\s/g, "")
+        .includes(q.replace(/\s/g, "")) &&
+      (filter === "all" ||
+        (filter === "pinned"
+          ? run.pinned.includes(c.id)
+          : !["BLOCKED", "COMPLETED"].includes(
+              evaluateCombination(c, run).status,
+            ))),
+  );
   return (
-    <Dialog title="조합 도감 · 목표 지정" onClose={onClose}>
+    <Dialog
+      title="조합 도감 · 목표 지정"
+      className="catalog-dialog"
+      onClose={onClose}
+    >
       <label className="search catalog-search">
         <Search size={18} />
         <input
@@ -777,13 +757,36 @@ function Catalog({
           onChange={(e) => setQ(e.target.value)}
         />
       </label>
-      {data.combinations
-        .filter((c) =>
-          [c.nameKo, ...c.requirements.map(requirementLabel)]
-            .join(" ")
-            .includes(q),
-        )
-        .map(render)}
+      <div
+        className="magic-filters catalog-filters"
+        role="group"
+        aria-label="조합 필터"
+      >
+        {(
+          [
+            ["possible", "가능한 조합"],
+            ["all", "전체 조합"],
+            ["pinned", "내 목표"],
+          ] as const
+        ).map(([value, label]) => (
+          <button
+            key={value}
+            aria-pressed={filter === value}
+            onClick={() => setFilter(value)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <p className="catalog-count">
+        {list.length}개 조합 · 만들고 싶은 조합을 목표로 지정하세요.
+      </p>
+      <div className="catalog-list">{list.map(render)}</div>
+      {!list.length && (
+        <p className="hud-empty">
+          검색 결과가 없습니다. 마법 이름으로 찾거나 전체 조합을 확인하세요.
+        </p>
+      )}
     </Dialog>
   );
 }

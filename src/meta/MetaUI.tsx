@@ -144,14 +144,15 @@ export function MetaOverview({
   return (
     <section className="meta-overview" aria-label="상황별 추천">
       <div className="meta-section-title">
-        <h3>상황별 추천</h3>
-        <button onClick={onSetup}>Run 설정</button>
+        <h3>빌드에 맞는 추천</h3>
+        <button onClick={onSetup}>상황 설정</button>
       </div>
-      <p className="meta-stamp">{metaFreshness(context).label}</p>
+      {configured && (
+        <p className="meta-stamp">{metaFreshness(context).label}</p>
+      )}
       {!configured ? (
         <p className="hud-empty">
-          목표와 빌드·시간대를 설정하면 지금 필요한 지원마법과 조합을 이유와
-          함께 보여줍니다.
+          빌드 방향을 정하면 어울리는 조합과 지원 마법도 찾아드려요.
         </p>
       ) : (
         <>
@@ -181,7 +182,6 @@ export function MetaOverview({
                   {r.disputed ? "의견 갈림" : priorityLabels[r.priority]}
                 </span>
               </div>
-              <p>{r.evidence[0]?.rule.rationaleKo}</p>
               <div className="meta-card-actions">
                 <span>추가 {r.additionalLevels}레벨</span>
                 {r.magicId ? (
@@ -646,7 +646,7 @@ export function RunContextBar({
   return (
     <div className="run-context-bar">
       <button onClick={onSetup} aria-label="Run 상황 설정">
-        {goal || "Run 설정"}
+        {goal || "플레이 상황 설정"}
         {phase ? ` · ${phase}` : ""}
       </button>
       <span className="context-budget">
