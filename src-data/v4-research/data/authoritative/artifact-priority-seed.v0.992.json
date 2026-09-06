@@ -1,0 +1,173 @@
+{
+  "source": "atwiki_artifact",
+  "scope": "결정 영향도가 큰 Legend subset. 전체 AF DB를 대신하지 않음.",
+  "tierNature": "editorial_record_run",
+  "items": [
+    {
+      "id": "magic_sword",
+      "nameKo": "마검",
+      "tier": "A",
+      "effects": {
+        "executeBelowHpPercent": 20
+      },
+      "synergy": "ego_sword"
+    },
+    {
+      "id": "opulence",
+      "nameKo": "금은보화",
+      "tier": "A",
+      "effects": {
+        "spawnNormalChests": 3,
+        "spawnRelicChests": 1
+      },
+      "synergy": "gilgamesh"
+    },
+    {
+      "id": "accelerator",
+      "nameKo": "엑셀러레이터",
+      "tier": "S",
+      "effects": {
+        "cooldownPercentPerMoveSpeedGain3": -1
+      },
+      "synergy": "zero_back"
+    },
+    {
+      "id": "transcendent",
+      "nameKo": "초월체",
+      "tier": "B",
+      "effects": {
+        "allMagicDamagePercentPerMaxActive": 15
+      },
+      "synergy": "arbiter"
+    },
+    {
+      "id": "genome_map",
+      "nameKo": "게놈지도",
+      "tier": "A",
+      "effects": {
+        "enemyMaxHpPercent": -20
+      },
+      "synergy": "venom"
+    },
+    {
+      "id": "reapers_scythe",
+      "nameKo": "사신의 낫",
+      "tier": "S",
+      "effects": {
+        "firstHitInstantKillChancePercent": 8,
+        "enemyMaxHpPercent": -13
+      },
+      "synergy": "necromancer"
+    },
+    {
+      "id": "akashic_records",
+      "nameKo": "아카식 레코드",
+      "tier": "S",
+      "effects": {
+        "currentAndMaxPlayerLevel": 5,
+        "attackAmpPercentPerCurrentLevel2": 1
+      },
+      "synergy": "oracle"
+    },
+    {
+      "id": "cube",
+      "nameKo": "큐브",
+      "tier": "S",
+      "effects": {
+        "allNormalPassiveCurrentAndMaxLevel": 1,
+        "manaGainPercent": 25
+      },
+      "synergy": "oracle"
+    },
+    {
+      "id": "sacrosanct",
+      "nameKo": "신성불가침",
+      "tier": "A",
+      "effects": {
+        "atFullHpAttackAmpPercent": 50,
+        "atFullHpDamageTakenPercent": -20
+      },
+      "synergy": "archangel"
+    },
+    {
+      "id": "titan",
+      "nameKo": "타이탄의 권능",
+      "tier": "B",
+      "effects": {
+        "attackIncreaseMultiplier": 1.5
+      },
+      "synergy": "architect"
+    },
+    {
+      "id": "gaia",
+      "nameKo": "가이아",
+      "tier": "A",
+      "effects": {
+        "maxHpPercent": 50,
+        "attackPercentPerMaxHp20": 3
+      },
+      "synergy": "architect"
+    },
+    {
+      "id": "contract_box",
+      "nameKo": "계약의 상자",
+      "tier": "S",
+      "effects": {
+        "randomRuneCooldownSeconds": 45,
+        "enemyMaxHpPercent": -10
+      },
+      "synergy": "gilgamesh"
+    },
+    {
+      "id": "crown",
+      "nameKo": "왕관",
+      "tier": "B",
+      "effects": {
+        "attackAmpPerEpicArtifactPercent": 1,
+        "attackAmpPerSpecialArtifactPercent": 5
+      },
+      "synergies": [
+        "monarch",
+        "gilgamesh"
+      ]
+    },
+    {
+      "id": "ouroboros",
+      "nameKo": "우로보로스",
+      "tier": "S",
+      "effects": {
+        "cooldownPercent": -15
+      },
+      "synergy": "chronos"
+    },
+    {
+      "id": "eclipse",
+      "nameKo": "이클립스",
+      "tier": "S",
+      "effects": {
+        "maxBonusDamageByMissingEnemyHpPercent": 50
+      },
+      "synergy": "blood_moon"
+    },
+    {
+      "id": "nexus",
+      "nameKo": "넥서스",
+      "tier": "B",
+      "effects": {
+        "chosenAttackMagicDamagePercent": 240
+      },
+      "synergy": "conflux"
+    },
+    {
+      "id": "uranium",
+      "nameKo": "우라늄",
+      "tier": "B",
+      "effects": {
+        "attackPercent": 100,
+        "magicSizePercent": 25,
+        "hpRegenPerSecondPercent": -0.25
+      },
+      "synergy": "nuclear"
+    }
+  ]
+}

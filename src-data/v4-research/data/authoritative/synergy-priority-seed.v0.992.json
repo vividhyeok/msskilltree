@@ -1,0 +1,151 @@
+{
+  "source": "atwiki_artifact",
+  "scope": "고가치/구조적으로 중요한 subset; 전체 synergy catalog 아님",
+  "items": [
+    {
+      "id": "oracle",
+      "nameKo": "오라클",
+      "tier": "S",
+      "requirements": [
+        "akashic_records",
+        "cube",
+        "pyramid",
+        "owl"
+      ],
+      "effects": {
+        "normalPassiveEffectMultiplier": 1.25
+      }
+    },
+    {
+      "id": "wonderland",
+      "nameKo": "원더랜드",
+      "tier": "S",
+      "requirements": [
+        "toy_castle",
+        "fairy",
+        "unicorn",
+        "fairy_tale_book"
+      ],
+      "effects": {
+        "enemyMaxHpPercent": -9,
+        "sizeModifier": "character_and_enemies"
+      }
+    },
+    {
+      "id": "gravity",
+      "nameKo": "그래비티",
+      "tier": "S",
+      "requirements": [
+        "amplifier",
+        "gravity_orb",
+        "spider_web"
+      ],
+      "effects": {
+        "enemyMoveSpeedPercent": -5,
+        "gravityOrbRange": "expanded"
+      }
+    },
+    {
+      "id": "chronos",
+      "nameKo": "크로노스",
+      "tier": "A",
+      "requirements": [
+        "ouroboros",
+        "wizard_hat",
+        "black_cat",
+        "hourglass"
+      ],
+      "effects": {
+        "cooldownPercent": -5,
+        "attackAmpFromCooldown": "3% CDR => 1% amp"
+      }
+    },
+    {
+      "id": "magnum_opus",
+      "nameKo": "마그눔 오푸스",
+      "tier": "D",
+      "requirements": [
+        "philosophers_stone",
+        "ether",
+        "abyss",
+        "singularity",
+        "pyramid"
+      ],
+      "effects": {
+        "allSynergyRequirementCredit": 1
+      },
+      "note": "tier보다 전략적 고점/기회비용이 중요"
+    },
+    {
+      "id": "homunculus",
+      "nameKo": "호문쿨루스",
+      "tier": "A",
+      "requirements": [
+        "dna",
+        "philosophers_stone",
+        "second_heart",
+        "bio_shield"
+      ],
+      "effects": {
+        "reviveChancePercent": 30
+      }
+    },
+    {
+      "id": "broker",
+      "nameKo": "브로커",
+      "tier": "A",
+      "requirements": [
+        "bouquet",
+        "philosophers_stone",
+        "black_cat",
+        "rose"
+      ],
+      "effects": {
+        "merchant25DiscountBecomesFree": true
+      }
+    },
+    {
+      "id": "healing_factor",
+      "nameKo": "힐링 팩터",
+      "tier": "S",
+      "requirements": [
+        "second_heart",
+        "bio_shield",
+        "blood_pack"
+      ],
+      "effects": {
+        "hpRegenAppliesToBioShield": true,
+        "hpRegenPerSecondPercent": 0.5
+      }
+    },
+    {
+      "id": "steampunk",
+      "nameKo": "스팀펑크",
+      "tier": "S",
+      "requirements": [
+        "mainspring",
+        "pocket_watch",
+        "gear"
+      ],
+      "effects": {
+        "artifactCooldownPercent": -12,
+        "durationPercent": 12
+      }
+    },
+    {
+      "id": "jinn",
+      "nameKo": "진",
+      "tier": "A",
+      "requirements": [
+        "mana_fountain",
+        "mercury",
+        "aurora",
+        "sapphire"
+      ],
+      "effects": {
+        "rareLargeManaOrbFromNormalEnemies": true,
+        "manaGainPercent": 10
+      }
+    }
+  ]
+}

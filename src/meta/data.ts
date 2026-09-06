@@ -1,5 +1,27 @@
 import rawRules from "../../src-data/community-meta/current/rules.json";
-import entities from "../../src-data/community-meta/current/entities.json";
+import originalEntities from "../../src-data/community-meta/current/entities.json";
+import { companion } from "../companion/data";
+const merge = <T extends { id: string; nameKo: string }>(
+  old: T[],
+  next: { id: string; nameKo: string }[],
+): T[] => [
+  ...old,
+  ...next.filter((n) => !old.some((o) => o.id === n.id)).map((n) => n as T),
+];
+const artifacts = merge(originalEntities.artifacts, companion.artifacts);
+const entities = {
+  ...originalEntities,
+  classes: merge(originalEntities.classes, companion.classes),
+  subjects: merge(originalEntities.subjects, companion.subjects),
+  ultimates: merge(originalEntities.ultimates, companion.ultimates),
+  artifacts: merge(
+    artifacts,
+    [...new Set(companion.synergies.flatMap((s) => s.requirements))].map(
+      (id) => ({ id, nameKo: `${id.replaceAll("_", " ")} · 명칭 확인 대기` }),
+    ),
+  ),
+  synergies: merge(originalEntities.synergies, companion.synergies),
+};
 import archetypes from "../../src-data/community-meta/current/archetypes.json";
 import phases from "../../src-data/community-meta/current/phases.json";
 import sources from "../../src-data/community-meta/current/sources.json";

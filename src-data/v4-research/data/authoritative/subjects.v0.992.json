@@ -1,0 +1,273 @@
+{
+  "source": "atwiki_subject",
+  "unlockCostGems": 800,
+  "items": [
+    {
+      "id": "wizard",
+      "nameKo": "마법사",
+      "nameJa": "魔法使い",
+      "startingArtifactIdCandidate": "magic_bullet_shooter",
+      "globalUnlockEffect": {
+        "magicId": "magic_bolt",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "astronomer",
+      "nameKo": "천문학자",
+      "nameJa": "天文学者",
+      "startingArtifactIdCandidate": "core_energy",
+      "globalUnlockEffect": {
+        "magicId": "satellite",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "cryomancer",
+      "nameKo": "빙결사",
+      "nameJa": "氷結師",
+      "startingArtifactIdCandidate": "moon_crystal",
+      "globalUnlockEffect": {
+        "magicId": "frost_nova",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "shaman",
+      "nameKo": "주술사",
+      "nameJa": "呪術師",
+      "startingArtifactIdCandidate": "mjolnir",
+      "globalUnlockEffect": {
+        "magicId": "thunderstorm",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "warlock",
+      "nameKo": "워록",
+      "nameJa": "ウォーロック",
+      "startingArtifactIdCandidate": "dimensional_door",
+      "globalUnlockEffect": {
+        "magicId": "meteor",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "arcanist",
+      "nameKo": "마도학자",
+      "nameJa": "魔道学者",
+      "startingArtifactIdCandidate": "magic_crystal",
+      "globalUnlockEffect": {
+        "attackPercent": 2
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "summoner",
+      "nameKo": "소환사",
+      "nameJa": "召喚師",
+      "startingArtifactIdCandidate": "wand",
+      "globalUnlockEffect": {
+        "magicId": "spirit",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "bishop",
+      "nameKo": "비숍",
+      "nameJa": "ビショップ",
+      "startingArtifactIdCandidate": "aegis",
+      "globalUnlockEffect": {
+        "damageTakenPercent": -2
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "occultist",
+      "nameKo": "신비술사",
+      "nameJa": "神秘術師",
+      "startingArtifactIdCandidate": "otherworld_tentacle",
+      "globalUnlockEffect": {
+        "magicId": "arcane_ray",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "druid",
+      "nameKo": "드루이드",
+      "nameJa": "ドルイド",
+      "startingArtifactIdCandidate": "palm_leaf_fan",
+      "globalUnlockEffect": {
+        "magicId": "cyclone",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "pyromancer",
+      "nameKo": "화염술사",
+      "nameJa": "火炎術師",
+      "startingArtifactIdCandidate": "phoenix_bow",
+      "globalUnlockEffect": {
+        "magicId": "fireball",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "sorcerer",
+      "nameKo": "소서러",
+      "nameJa": "ソーサラー",
+      "startingArtifactIdCandidate": "power_cable",
+      "globalUnlockEffect": {
+        "magicId": "electric_shock",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "alchemist",
+      "nameKo": "연금술사",
+      "nameJa": "錬金術師",
+      "startingArtifactIdCandidate": "machine_arm",
+      "globalUnlockEffect": {
+        "magicId": "energy_bolt",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "scholar",
+      "nameKo": "학자",
+      "nameJa": "学者",
+      "startingArtifactIdCandidate": "starlight",
+      "globalUnlockEffect": {
+        "manaGainPercent": 2
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "witch",
+      "nameKo": "마녀",
+      "nameJa": "魔女",
+      "startingArtifactIdCandidate": "sulfur",
+      "globalUnlockEffect": {
+        "magicId": "lava_zone",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "electromancer",
+      "nameKo": "전하술사",
+      "nameJa": "電荷術師",
+      "startingArtifactIdCandidate": "robot",
+      "globalUnlockEffect": {
+        "magicId": "electric_zone",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "tuner",
+      "nameKo": "조율자",
+      "nameJa": "調律者",
+      "startingArtifactIdCandidate": "wanpa_flute",
+      "globalUnlockEffect": {
+        "magicId": "tsunami",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "grand_mage",
+      "nameKo": "대마법사",
+      "nameJa": "大魔法使い",
+      "startingArtifactIdCandidate": "black_cat",
+      "globalUnlockEffect": {
+        "cooldownPercent": -1
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "archaeologist",
+      "nameKo": "고고학자",
+      "nameJa": "考古学者",
+      "startingArtifactIdCandidate": "pyramid",
+      "globalUnlockEffect": {
+        "pickupRangePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "magician",
+      "nameKo": "마술사",
+      "nameJa": "魔術師",
+      "startingArtifactIdCandidate": "ether_arrow",
+      "globalUnlockEffect": {
+        "critChancePercent": 1
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "mage",
+      "nameKo": "메이지",
+      "nameJa": "メイジ",
+      "startingArtifactIdCandidate": "snow_crown",
+      "globalUnlockEffect": {
+        "magicId": "blizzard",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "battlemage",
+      "nameKo": "전투마법사",
+      "nameJa": "戦闘魔法使い",
+      "startingArtifactIdCandidate": "gae_bolg",
+      "globalUnlockEffect": {
+        "magicId": "flash_shock",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "warlord",
+      "nameKo": "워로드",
+      "nameJa": "ウォーロード",
+      "startingArtifactIdCandidate": "dragon_breath",
+      "globalUnlockEffect": {
+        "magicId": "incineration",
+        "damagePercent": 5
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "black_mage",
+      "nameKo": "흑마법사",
+      "nameJa": "黒魔法使い",
+      "startingArtifactIdCandidate": "exorcism",
+      "globalUnlockEffect": {
+        "magicSizePercent": 2
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    },
+    {
+      "id": "jack_o_lantern",
+      "nameKo": "잭 오 랜턴",
+      "nameJa": "ジャック・オー・ランタン",
+      "startingArtifactIdCandidate": "lantern",
+      "globalUnlockEffect": {
+        "evadePercent": 1
+      },
+      "artifactNameStatus": "id_candidate_needs_korean_mapping"
+    }
+  ]
+}

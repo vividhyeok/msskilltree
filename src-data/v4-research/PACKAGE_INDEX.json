@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-09-06",
+  "officialGameVersion": "0.992",
+  "counts": {
+    "sources": 12,
+    "normalPassives": 10,
+    "specialPassives": 25,
+    "growthEnhancements": 9,
+    "classes": 24,
+    "subjects": 25,
+    "ultimates": 24,
+    "researchRows": 20,
+    "fusionEditorTiers": 63,
+    "artifactPrioritySeed": 17,
+    "synergyPrioritySeed": 10
+  },
+  "jsonValidation": "passed",
+  "crossReferenceValidation": "passed"
+}

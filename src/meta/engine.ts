@@ -83,13 +83,31 @@ export type Recommendation = {
   completion?: CompletedMagicState;
   disputed: boolean;
 };
+import { synergyProgress } from "../companion/data";
+import { phaseOpinion } from "../companion/editorial";
+import {
+  normalizeProgress,
+  elapsedSeconds,
+  timerPhase,
+} from "../companion/engine";
 export type Proximity = {
   synergyId: string;
   missing: number;
   coreOwned: boolean;
 };
 export function contextFor(run: Run) {
-  return normalizeMetaContext(run.meta);
+  const c = normalizeMetaContext(run.meta);
+  const automatic = synergyProgress(c.artifacts)
+    .filter((s) => s.remaining === 0)
+    .map((s) => s.id);
+  const p = normalizeProgress(run.progress);
+  return {
+    ...c,
+    synergies: [...new Set([...c.synergies, ...automatic])],
+    ...(p.startedAt !== null || p.elapsed > 0
+      ? { phase: timerPhase(elapsedSeconds(p)) }
+      : {}),
+  };
 }
 export function metaFreshness(
   context: MetaContext,
@@ -473,6 +491,24 @@ export function rankArtifacts(
     )
     .map((id) => {
       const r = evaluateMeta(`artifact:${id}`, run, dataset, now);
+      const clock = normalizeProgress(run.progress);
+      const opinion = phaseOpinion(
+        id,
+        clock.startedAt !== null || clock.elapsed > 0
+          ? elapsedSeconds(clock, now.getTime())
+          : null,
+      );
+      if (opinion)
+        r.notes.push(`${opinion} · v0.992 편집자 의견, 현재 패치 재확인 필요`);
+      const before = synergyProgress(context.artifacts);
+      const completed = synergyProgress([...context.artifacts, id]).filter(
+        (s) =>
+          s.remaining === 0 && before.find((b) => b.id === s.id)!.remaining > 0,
+      );
+      for (const synergy of completed)
+        r.notes.push(
+          `보유 유물 기준: 이 선택으로 ${synergy.nameKo} 완성 · v0.992 AtWiki 레시피`,
+        );
       const progress = proximity[id];
       const policy = dataset.integration.proximity;
       const rule = dataset.rules.find(

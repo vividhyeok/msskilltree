@@ -11,6 +11,7 @@ import {
 } from "../data";
 import type { MetaContext } from "../meta/data";
 export type Run = {
+  progress?: import("../companion/engine").Progress;
   meta?: MetaContext;
   levels: Record<string, number>;
   selectedTraits: Record<string, Record<number, string>>;
@@ -110,6 +111,8 @@ export function requirementMet(r: Requirement, run: Run) {
 }
 export function getBlockedReason(c: Combination, run: Run) {
   const reasons: string[] = [];
+  if (run.progress?.growthPhase)
+    reasons.push("MAX 이후 성장강화 중에는 새 조합을 만들 수 없습니다.");
   const state = applyEffects(run);
   const used = locks(run);
   if (state.blocked)

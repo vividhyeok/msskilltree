@@ -1,0 +1,259 @@
+{
+  "source": "atwiki_magic",
+  "scope": "long-survival editorial tier; not deterministic truth",
+  "warning": "앱에서 flat tier를 최종 추천으로 쓰지 말고 context evidence 중 하나로만 사용.",
+  "items": [
+    {
+      "combinationId": "wrath_of_sky",
+      "tier": "E"
+    },
+    {
+      "combinationId": "flying_sword",
+      "tier": "E"
+    },
+    {
+      "combinationId": "photon_barrage",
+      "tier": "E"
+    },
+    {
+      "combinationId": "terra_current",
+      "tier": "D"
+    },
+    {
+      "combinationId": "war_climate",
+      "tier": "E"
+    },
+    {
+      "combinationId": "demon_equation",
+      "tier": "E"
+    },
+    {
+      "combinationId": "frenzy",
+      "tier": "E"
+    },
+    {
+      "combinationId": "night_parade",
+      "tier": "D"
+    },
+    {
+      "combinationId": "reaction",
+      "tier": "E"
+    },
+    {
+      "combinationId": "vortex",
+      "tier": "E"
+    },
+    {
+      "combinationId": "breath_of_fire",
+      "tier": "D"
+    },
+    {
+      "combinationId": "ether_blaze",
+      "tier": "E"
+    },
+    {
+      "combinationId": "orbital_bombardment",
+      "tier": "E"
+    },
+    {
+      "combinationId": "neutron_generation",
+      "tier": "E"
+    },
+    {
+      "combinationId": "winter_storm",
+      "tier": "D"
+    },
+    {
+      "combinationId": "plasma_ray",
+      "tier": "E"
+    },
+    {
+      "combinationId": "lightning_blast",
+      "tier": "E"
+    },
+    {
+      "combinationId": "quantum_explosion",
+      "tier": "E"
+    },
+    {
+      "combinationId": "inferno",
+      "tier": "D"
+    },
+    {
+      "combinationId": "lightning_tuning",
+      "tier": "X"
+    },
+    {
+      "combinationId": "furnace",
+      "tier": "E"
+    },
+    {
+      "combinationId": "current_overload",
+      "tier": "E"
+    },
+    {
+      "combinationId": "deluge",
+      "tier": "E"
+    },
+    {
+      "combinationId": "blooming_snowflakes",
+      "tier": "E"
+    },
+    {
+      "combinationId": "lord_of_storm",
+      "tier": "E"
+    },
+    {
+      "combinationId": "overmind",
+      "tier": "X"
+    },
+    {
+      "combinationId": "perpetual_engine",
+      "tier": "S"
+    },
+    {
+      "combinationId": "gate_of_creation",
+      "tier": "X"
+    },
+    {
+      "combinationId": "origin_explosion",
+      "tier": "E"
+    },
+    {
+      "combinationId": "prism_barrage",
+      "tier": "E"
+    },
+    {
+      "combinationId": "great_rift",
+      "tier": "E"
+    },
+    {
+      "combinationId": "hyperion",
+      "tier": "C"
+    },
+    {
+      "combinationId": "avatar",
+      "tier": "E"
+    },
+    {
+      "combinationId": "heart_of_lightning",
+      "tier": "E"
+    },
+    {
+      "combinationId": "great_collision",
+      "tier": "B"
+    },
+    {
+      "combinationId": "heart_of_ice",
+      "tier": "E"
+    },
+    {
+      "combinationId": "meissner_effect",
+      "tier": "D"
+    },
+    {
+      "combinationId": "energy_saturation",
+      "tier": "B"
+    },
+    {
+      "combinationId": "super_typhoon",
+      "tier": "D"
+    },
+    {
+      "combinationId": "teleport",
+      "tier": "E"
+    },
+    {
+      "combinationId": "fire_storm",
+      "tier": "B"
+    },
+    {
+      "combinationId": "fireworks_combination",
+      "tier": "A"
+    },
+    {
+      "combinationId": "mana_spear",
+      "tier": "E"
+    },
+    {
+      "combinationId": "gate",
+      "tier": "A"
+    },
+    {
+      "combinationId": "magnetic_field_generation",
+      "tier": "D"
+    },
+    {
+      "combinationId": "black_death",
+      "tier": "D"
+    },
+    {
+      "combinationId": "breath_of_lightning",
+      "tier": "D"
+    },
+    {
+      "combinationId": "phoenix",
+      "tier": "B"
+    },
+    {
+      "combinationId": "brandish",
+      "tier": "B"
+    },
+    {
+      "combinationId": "black_hole",
+      "tier": "C"
+    },
+    {
+      "combinationId": "genesis",
+      "tier": "D"
+    },
+    {
+      "combinationId": "astrape",
+      "tier": "C"
+    },
+    {
+      "combinationId": "supernova",
+      "tier": "E"
+    },
+    {
+      "combinationId": "blaster",
+      "tier": "C"
+    },
+    {
+      "combinationId": "hellfire",
+      "tier": "S"
+    },
+    {
+      "combinationId": "age_of_sun",
+      "tier": "E"
+    },
+    {
+      "combinationId": "destroyer",
+      "tier": "X"
+    },
+    {
+      "combinationId": "genocide",
+      "tier": "E"
+    },
+    {
+      "combinationId": "excidium",
+      "tier": "D"
+    },
+    {
+      "combinationId": "deus_ex_machina",
+      "tier": "B"
+    },
+    {
+      "combinationId": "glacium",
+      "tier": "E"
+    },
+    {
+      "combinationId": "soul_blade",
+      "tier": "D"
+    },
+    {
+      "combinationId": "discharge",
+      "tier": "A"
+    }
+  ]
+}

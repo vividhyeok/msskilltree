@@ -1,4 +1,9 @@
 import { useMemo, useState } from "react";
+import {
+  InventoryProgress,
+  UltimatePlan,
+  SeedSources,
+} from "../companion/CompanionUI";
 import { Dialog } from "../components/Dialog";
 import { TargetBadge } from "../components/GameState";
 import { targetBadge } from "../features/game-mode/selectors";
@@ -281,7 +286,7 @@ export function RunSetup({
   onSave: (context: MetaContext) => void;
   onClose: () => void;
 }) {
-  const [draft, setDraft] = useState(() => contextFor(run));
+  const [draft, setDraft] = useState(() => normalizeMetaContext(run.meta));
   const update = <K extends keyof MetaContext>(key: K, value: MetaContext[K]) =>
     setDraft((s) => ({ ...s, [key]: value }));
   const build = metaData.archetypes.find((a) => a.id === draft.archetype);
@@ -390,6 +395,7 @@ export function RunSetup({
             클래스·궁극기는 추천 조건으로만 사용합니다. seed에 없는 효과나
             실험체 시너지는 추정하지 않습니다.
           </p>
+          <UltimatePlan run={{ ...run, meta: draft }} />
         </details>
         <details className="meta-setup-extra">
           <summary>
@@ -436,6 +442,7 @@ export function RunSetup({
             ))}
           </div>
         </details>
+        <SeedSources />
         <ContextSelect
           label="마법 배치"
           value={draft.tileOrder}
@@ -473,6 +480,7 @@ export function ArtifactChoice({
   onSetup: () => void;
 }) {
   const [candidates, setCandidates] = useState(["", "", ""]);
+  const [quickSearch, setQuickSearch] = useState("");
   const [proximity, setProximity] = useState<Record<string, Proximity>>({});
   const context = contextFor(run);
   const ranked = useMemo(
@@ -502,6 +510,46 @@ export function ArtifactChoice({
           <button onClick={onSetup}>상황 수정</button>
         </div>
         <p className="meta-stamp">{metaFreshness(context).label}</p>
+        <label className="meta-field">
+          유물 빠른 검색
+          <input
+            aria-label="유물 빠른 검색"
+            value={quickSearch}
+            onChange={(e) => setQuickSearch(e.target.value)}
+            placeholder="이름을 찾아 후보에 추가"
+          />
+        </label>
+        {quickSearch && (
+          <div className="artifact-quick">
+            {options
+              .filter((a) =>
+                a.nameKo
+                  .replaceAll(" ", "")
+                  .includes(quickSearch.replaceAll(" ", "")),
+              )
+              .slice(0, 12)
+              .map((a) => (
+                <button
+                  key={a.id}
+                  aria-pressed={candidates.includes(a.id)}
+                  disabled={
+                    !candidates.includes(a.id) && !candidates.includes("")
+                  }
+                  onClick={() =>
+                    setCandidates((old) =>
+                      old.includes(a.id)
+                        ? old.map((id) => (id === a.id ? "" : id))
+                        : old.map((id, i) =>
+                            i === old.indexOf("") ? a.id : id,
+                          ),
+                    )
+                  }
+                >
+                  {a.nameKo}
+                </button>
+              ))}
+          </div>
+        )}
         <div className="artifact-candidates">
           {candidates.map((id, index) => (
             <ContextSelect
@@ -624,6 +672,7 @@ export function ArtifactChoice({
           실제로 선택한 유물만 기록합니다. 목록에 없는 유물은 비교 대상에
           포함되지 않습니다.
         </p>
+        <InventoryProgress run={run} />
       </div>
     </Dialog>
   );

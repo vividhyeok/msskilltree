@@ -1,0 +1,49 @@
+{
+  "source": "atwiki_time_value",
+  "items": [
+    {
+      "artifactId": "spell_backpack",
+      "early": {
+        "minutes": [
+          0,
+          25
+        ],
+        "tier": "B"
+      },
+      "after25": "declines",
+      "after40": {
+        "tier": "E"
+      },
+      "reasonTags": [
+        "leveling",
+        "mana_collection"
+      ]
+    },
+    {
+      "artifactId": "sapphire",
+      "early": {
+        "tier": "C"
+      },
+      "late": {
+        "tier": "D",
+        "reason": "synergy_material_only"
+      },
+      "reasonTags": [
+        "leveling"
+      ]
+    },
+    {
+      "artifactId": "gear",
+      "early": {
+        "tier": "D"
+      },
+      "after57_30": {
+        "tier": "S"
+      },
+      "reasonTags": [
+        "artifact_cooldown",
+        "ultra_late"
+      ]
+    }
+  ]
+}

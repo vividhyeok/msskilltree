@@ -1,0 +1,292 @@
+{
+  "source": "atwiki_research",
+  "totalPoints": 96,
+  "items": [
+    {
+      "id": "intelligence",
+      "nameKoCandidate": "지능",
+      "editorPriorityAtWiki": 16,
+      "levels": 6,
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "stat": "attackPercent"
+    },
+    {
+      "id": "vitality",
+      "nameKoCandidate": "생명력",
+      "editorPriorityAtWiki": 10,
+      "levels": 6,
+      "values": [
+        20,
+        30,
+        40,
+        50,
+        60,
+        70
+      ],
+      "stat": "maxHpPercent",
+      "secondary": [
+        10,
+        15,
+        20,
+        25,
+        30,
+        35
+      ],
+      "secondaryStat": "lifeOrbHealPercent"
+    },
+    {
+      "id": "mana_refinement",
+      "nameKoCandidate": "마나 정제",
+      "editorPriorityAtWiki": 6,
+      "levels": 6,
+      "values": [
+        5,
+        8,
+        11,
+        14,
+        17,
+        20
+      ],
+      "stat": "experienceGainPercent"
+    },
+    {
+      "id": "fast_casting",
+      "nameKoCandidate": "고속시전",
+      "editorPriorityAtWiki": 7,
+      "levels": 6,
+      "values": [
+        -2,
+        -4,
+        -6,
+        -8,
+        -10,
+        -12
+      ],
+      "stat": "cooldownPercent"
+    },
+    {
+      "id": "snipe",
+      "nameKoCandidate": "저격",
+      "editorPriorityAtWiki": 18,
+      "levels": 6,
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "stat": "critChancePercent"
+    },
+    {
+      "id": "resistance",
+      "nameKoCandidate": "저항력",
+      "editorPriorityAtWiki": 13,
+      "levels": 4,
+      "values": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "stat": "damageReductionPercent"
+    },
+    {
+      "id": "agility",
+      "nameKoCandidate": "기민",
+      "editorPriorityAtWiki": 9,
+      "levels": 4,
+      "values": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "stat": "evadePercent"
+    },
+    {
+      "id": "haste",
+      "nameKoCandidate": "가속",
+      "editorPriorityAtWiki": 1,
+      "levels": 4,
+      "values": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "stat": "moveSpeedPercent"
+    },
+    {
+      "id": "regeneration",
+      "nameKoCandidate": "재생",
+      "editorPriorityAtWiki": 20,
+      "levels": 4,
+      "values": [
+        0.05,
+        0.1,
+        0.15,
+        0.2
+      ],
+      "stat": "hpRegenPerSecondPercent"
+    },
+    {
+      "id": "exploration",
+      "nameKoCandidate": "탐색",
+      "editorPriorityAtWiki": 2,
+      "levels": 4,
+      "values": [
+        20,
+        30,
+        40,
+        50
+      ],
+      "stat": "pickupRangePercent"
+    },
+    {
+      "id": "arcane_effuse",
+      "nameKoCandidate": "마력 발산",
+      "editorPriorityAtWiki": 17,
+      "levels": 4,
+      "values": [
+        3,
+        6,
+        9,
+        12
+      ],
+      "stat": "magicSizePercent"
+    },
+    {
+      "id": "concentration",
+      "nameKoCandidate": "집중",
+      "editorPriorityAtWiki": 12,
+      "levels": 4,
+      "values": [
+        5,
+        10,
+        15,
+        20
+      ],
+      "stat": "durationPercent"
+    },
+    {
+      "id": "recycling",
+      "nameKoCandidate": "재활용",
+      "editorPriorityAtWiki": 14,
+      "levels": 4,
+      "values": [
+        10,
+        15,
+        20,
+        25
+      ],
+      "stat": "manaRetrievalReturnPercent"
+    },
+    {
+      "id": "analysis",
+      "nameKoCandidate": "분석",
+      "editorPriorityAtWiki": 19,
+      "levels": 5,
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "stat": "fourChoiceChancePercent"
+    },
+    {
+      "id": "blessing",
+      "nameKoCandidate": "축복",
+      "editorPriorityAtWiki": 11,
+      "levels": 3,
+      "values": [
+        10,
+        20,
+        30
+      ],
+      "stat": "runeDurationPercent"
+    },
+    {
+      "id": "awakening",
+      "nameKoCandidate": "각성",
+      "editorPriorityAtWiki": 3,
+      "levels": 5,
+      "values": [
+        5,
+        10,
+        15,
+        20,
+        25
+      ],
+      "stat": "levelUpExplosionAndHealPercent",
+      "priorityNote": "source shows 3 and 21"
+    },
+    {
+      "id": "growth",
+      "nameKoCandidate": "성장",
+      "editorPriorityAtWiki": 8,
+      "levels": 4,
+      "values": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "stat": "attackAndMaxHpPercentPer20Levels"
+    },
+    {
+      "id": "support",
+      "nameKoCandidate": "지원",
+      "editorPriorityAtWiki": 15,
+      "levels": 6,
+      "values": [
+        10,
+        20,
+        30,
+        40,
+        50,
+        60
+      ],
+      "stat": "startingManaOrbCountPercent"
+    },
+    {
+      "id": "luck",
+      "nameKoCandidate": "행운",
+      "editorPriorityAtWiki": 4,
+      "levels": 5,
+      "values": [
+        10,
+        15,
+        20,
+        25,
+        30
+      ],
+      "stat": "itemDropFrequencyPercent"
+    },
+    {
+      "id": "spoils",
+      "nameKoCandidate": "전리품",
+      "editorPriorityAtWiki": 5,
+      "levels": 6,
+      "values": [
+        5,
+        8,
+        11,
+        14,
+        17,
+        20
+      ],
+      "stat": "chestDropFrequencyPercent"
+    }
+  ]
+}

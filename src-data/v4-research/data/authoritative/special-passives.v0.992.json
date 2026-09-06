@@ -1,0 +1,294 @@
+{
+  "source": "atwiki_magic",
+  "appearance": {
+    "levelsPredeterminedPerRun": true,
+    "roughMaxAppearances": "10+",
+    "canComeFromUnicorn": true,
+    "notDuringManaRetrieval": true
+  },
+  "items": [
+    {
+      "id": "fire_lord",
+      "nameKoCandidate": "불의 지배자",
+      "nameJa": "火の支配者",
+      "editorTier": "E",
+      "effects": {
+        "magicDamagePercent": 25,
+        "magicIds": [
+          "fireball",
+          "meteor",
+          "incineration",
+          "lava_zone"
+        ]
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "thundercloud",
+      "nameKoCandidate": "뇌운",
+      "nameJa": "雷雲",
+      "editorTier": "E",
+      "effects": {
+        "magicDamagePercent": 25,
+        "magicIds": [
+          "thunderstorm",
+          "electric_shock",
+          "electric_zone",
+          "flash_shock"
+        ]
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "natures_wrath",
+      "nameKoCandidate": "자연의 분노",
+      "nameJa": "自然の怒り",
+      "editorTier": "E",
+      "effects": {
+        "magicDamagePercent": 25,
+        "magicIds": [
+          "cyclone",
+          "blizzard",
+          "tsunami",
+          "frost_nova"
+        ]
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "energy_engineering",
+      "nameKoCandidate": "에너지 공학",
+      "nameJa": "エネルギー工学",
+      "editorTier": "E",
+      "effects": {
+        "magicDamagePercent": 25,
+        "magicIds": [
+          "energy_bolt",
+          "arcane_ray",
+          "spirit",
+          "satellite"
+        ]
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "arcana",
+      "nameKoCandidate": "아르카나",
+      "nameJa": "アルカナ",
+      "editorTier": "E",
+      "effects": {
+        "attackPercent": 15
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "guardian_angel",
+      "nameKoCandidate": "수호천사",
+      "nameJa": "守護天使",
+      "editorTier": "S",
+      "effects": {
+        "revives": 1,
+        "maxHpPercent": 30
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "silent_casting",
+      "nameKoCandidate": "무언영창",
+      "nameJa": "無言詠唱",
+      "editorTier": "S",
+      "effects": {
+        "cooldownPercent": -7
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "war_magic",
+      "nameKoCandidate": "전쟁 마법",
+      "nameJa": "戦争魔法",
+      "editorTier": "E",
+      "effects": {
+        "attackPercent": 8,
+        "magicSizePercent": 8
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "timekeeper",
+      "nameKoCandidate": "타임키퍼",
+      "nameJa": "タイムキーパー",
+      "editorTier": "S",
+      "effects": {
+        "runeDurationPercent": 12,
+        "durationPercent": 12
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "pioneer",
+      "nameKoCandidate": "개척자",
+      "nameJa": "開拓者",
+      "editorTier": "S",
+      "effects": {
+        "moveSpeedPercent": 3,
+        "pickupRangePercent": 50
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "strong_hit",
+      "nameKoCandidate": "강타",
+      "nameJa": "強打",
+      "editorTier": "E",
+      "effects": {
+        "critMultiplierPercent": 30
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "seal",
+      "nameKoCandidate": "봉인",
+      "nameJa": "封印",
+      "editorTier": "S",
+      "effects": {
+        "enemyMoveSpeedPercent": -8
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "curse",
+      "nameKoCandidate": "저주",
+      "nameJa": "呪い",
+      "editorTier": "D",
+      "effects": {
+        "enemyMaxHpPercent": -6
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "chakra",
+      "nameKoCandidate": "차크라",
+      "nameJa": "チャクラ",
+      "editorTier": "E",
+      "effects": {
+        "allMagicDamagePercent": 20
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "mana_factory",
+      "nameKoCandidate": "마나공장",
+      "nameJa": "マナ工場",
+      "editorTier": "S",
+      "effects": {
+        "manaBeadDropPercent": 20
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "doctor",
+      "nameKoCandidate": "박사",
+      "nameJa": "博士",
+      "editorTier": "D",
+      "effects": {
+        "maxPlayerLevel": 3
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "blood_magic",
+      "nameKoCandidate": "혈마법",
+      "nameJa": "血魔法",
+      "editorTier": "E",
+      "effects": {
+        "attackAmplificationPercent": 10,
+        "hpRegenPerSecondPercent": -0.25
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "adrenaline",
+      "nameKoCandidate": "아드레날린",
+      "nameJa": "アドレナリン",
+      "editorTier": "S",
+      "effects": {
+        "attackPercent": 5,
+        "critChancePercent": 5,
+        "moveSpeedPercent": 5
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "juggernaut",
+      "nameKoCandidate": "저거넛",
+      "nameJa": "ジャガーノート",
+      "editorTier": "A",
+      "effects": {
+        "attackPercent": 10,
+        "damageTakenPercent": -15
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "priest",
+      "nameKoCandidate": "프리스트",
+      "nameJa": "プリースト",
+      "editorTier": "C",
+      "effects": {
+        "enemyMaxHpPercent": -3,
+        "hpRegenPerSecondPercent": 0.3
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "eldritch",
+      "nameKoCandidate": "엘드리치",
+      "nameJa": "エルドリッチ",
+      "editorTier": "D",
+      "effects": {
+        "eliteMaxHpPercent": -10
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "noblesse",
+      "nameKoCandidate": "노블레스",
+      "nameJa": "ノーブレス",
+      "editorTier": "S",
+      "effects": {
+        "spawnNormalChest": 1
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "taoist",
+      "nameKoCandidate": "도사",
+      "nameJa": "道士",
+      "editorTier": "B",
+      "effects": {
+        "allGrowthEnhancementLevels": 1
+      },
+      "nameStatus": "translation_candidate"
+    },
+    {
+      "id": "florist",
+      "nameKoCandidate": "플로리스트",
+      "nameJa": "フローリスト",
+      "editorTier": "S",
+      "effects": {
+        "merchantDiscountPercent": 7
+      },
+      "nameStatus": "known_current_repo"
+    },
+    {
+      "id": "enchant",
+      "nameKoCandidate": "인챈트",
+      "nameJa": "エンチャント",
+      "editorTier": "C",
+      "effects": {
+        "chooseCombatMagicToEnhance": true
+      },
+      "nameStatus": "translation_candidate"
+    }
+  ]
+}

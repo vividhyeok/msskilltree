@@ -1,5 +1,6 @@
 import { data, magicById, comboById } from "../data";
 import { emptyRun, type Run } from "../engine";
+import { normalizeProgress } from "../companion/engine";
 import { defaultMetaContext, normalizeMetaContext } from "../meta/data";
 export type Build = { id: string; name: string; pinned: string[] };
 export type Saved = {
@@ -68,10 +69,13 @@ export function deserialize(raw: string): Saved {
     typeof s.audit !== "object"
   )
     throw new Error("저장 데이터 형식이나 게임 버전이 맞지 않습니다.");
-  const normalize = (run: Run): Run =>
-    run.meta === undefined
-      ? run
-      : { ...run, meta: normalizeMetaContext(run.meta) };
+  const normalize = (run: Run): Run => ({
+    ...run,
+    ...(run.meta === undefined ? {} : { meta: normalizeMetaContext(run.meta) }),
+    ...(run.progress === undefined
+      ? {}
+      : { progress: normalizeProgress(run.progress) }),
+  });
   return {
     ...s,
     run: normalize(s.run),

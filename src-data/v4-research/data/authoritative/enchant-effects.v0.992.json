@@ -1,0 +1,73 @@
+{
+  "source": "atwiki_magic",
+  "items": {
+    "magic_bolt": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "fireball": {
+      "damagePercent": 50,
+      "sizePercent": 10
+    },
+    "spirit": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "satellite": {
+      "damagePercent": 50,
+      "rotationSpeedPercent": 25
+    },
+    "frost_nova": {
+      "damagePercent": 50,
+      "sizePercent": 10
+    },
+    "thunderstorm": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "tsunami": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "incineration": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "blizzard": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "electric_zone": {
+      "damagePercent": 50,
+      "sizePercent": 10
+    },
+    "meteor": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "cyclone": {
+      "damagePercent": 50,
+      "durationPercent": 15
+    },
+    "electric_shock": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "energy_bolt": {
+      "damagePercent": 50,
+      "sizePercent": 10
+    },
+    "arcane_ray": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "lava_zone": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    },
+    "flash_shock": {
+      "damagePercent": 50,
+      "cooldownPercent": -5
+    }
+  }
+}

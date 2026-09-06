@@ -1,5 +1,14 @@
 import magics from "../src-data/magics.json";
-import passives from "../src-data/passives.json";
+import originalPassives from "../src-data/passives.json";
+import { companion, passiveName } from "./companion/data";
+const passives = companion.normal.map((p) => ({
+  ...p,
+  nameKo: passiveName(p.id),
+  nameEn: p.id,
+  summary: "",
+  combinationRelevant: false,
+  ...originalPassives.find((o) => o.id === p.id),
+}));
 import combinations from "../src-data/combinations.json";
 import rules from "../src-data/rules.json";
 import metadata from "../src-data/metadata.json";

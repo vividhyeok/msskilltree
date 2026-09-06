@@ -1,0 +1,113 @@
+[
+  {
+    "id": "official_google_play",
+    "priority": 0,
+    "type": "official",
+    "title": "Magic Survival — Google Play",
+    "url": "https://play.google.com/store/apps/details?id=com.vkslrzm.Zombie",
+    "observed": "2026-09-06",
+    "facts": [
+      "공식 공개 버전 v0.992",
+      "v0.99에서 조합/궁극기/아티팩트/시너지 추가·조정",
+      "v0.992 초반 일반 몬스터 투사체 비활성"
+    ],
+    "use": "버전과 공식 패치 사실"
+  },
+  {
+    "id": "namu_ultimate",
+    "priority": 1,
+    "type": "current_korean_wiki",
+    "title": "매직서바이벌/궁극기",
+    "url": "https://namu.moe/w/%EB%A7%A4%EC%A7%81%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C/%EA%B6%81%EA%B7%B9%EA%B8%B0",
+    "lastRevision": "2026-08-24",
+    "use": "현재 한국어 궁극기 이름·조합/학파/실험체 요구조건"
+  },
+  {
+    "id": "namu_class",
+    "priority": 1,
+    "type": "current_korean_wiki",
+    "title": "매직서바이벌/학파",
+    "url": "https://namu.moe/w/%EB%A7%A4%EC%A7%81%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C/%ED%95%99%ED%8C%8C",
+    "lastRevision": "2026-07-15",
+    "use": "현재 한국어 학파 이름·최근 변경값 교차검증"
+  },
+  {
+    "id": "namu_combinations",
+    "priority": 1,
+    "type": "current_korean_wiki",
+    "title": "매직서바이벌/마법 조합",
+    "url": "https://namu.moe/w/%EB%A7%A4%EC%A7%81%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C/%EB%A7%88%EB%B2%95%20%EC%A1%B0%ED%95%A9",
+    "use": "한국어 조합명·조건 교차검증"
+  },
+  {
+    "id": "namu_active_magic",
+    "priority": 1,
+    "type": "current_korean_wiki",
+    "title": "매직서바이벌/액티브 마법",
+    "url": "https://namu.moe/w/%EB%A7%A4%EC%A7%81%EC%84%9C%EB%B0%94%EC%9D%B4%EB%B2%8C/%EC%95%A1%ED%8B%B0%EB%B8%8C%20%EB%A7%88%EB%B2%95",
+    "use": "한국어 액티브 마법/특성 교차검증"
+  },
+  {
+    "id": "atwiki_magic",
+    "priority": 1,
+    "type": "structured_strategy_wiki",
+    "title": "魔法(紹介&tier)",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/15.html",
+    "lastUpdated": "2026-07-14",
+    "use": "패시브/성장강화/조합 규칙/현재 편집자 tier/궁극기"
+  },
+  {
+    "id": "atwiki_class",
+    "priority": 1,
+    "type": "structured_strategy_wiki",
+    "title": "クラス",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/8.html",
+    "lastUpdated": "2026-03-14",
+    "use": "24개 클래스 구조와 강화값; 최신 Namu와 충돌 시 최신 Namu 우선"
+  },
+  {
+    "id": "atwiki_subject",
+    "priority": 1,
+    "type": "structured_strategy_wiki",
+    "title": "実験体",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/195.html",
+    "lastUpdated": "2026-03-03",
+    "use": "실험체 25종·시작 아티팩트·상시효과"
+  },
+  {
+    "id": "atwiki_artifact",
+    "priority": 1,
+    "type": "structured_strategy_wiki",
+    "title": "アーティファクト(紹介&tier)",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/34.html",
+    "lastUpdated": "2026-07-14",
+    "use": "아티팩트/시너지 효과 및 기록런 편집자 평가"
+  },
+  {
+    "id": "atwiki_basic",
+    "priority": 1,
+    "type": "structured_strategy_wiki",
+    "title": "基礎情報",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/53.html",
+    "lastUpdated": "2026-03-03",
+    "use": "레벨업 3택/4택, Mana Retrieval, 25·50·75 조합 타이밍"
+  },
+  {
+    "id": "atwiki_research",
+    "priority": 1,
+    "type": "structured_strategy_wiki",
+    "title": "研究",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/47.html",
+    "lastUpdated": "2026-03-07",
+    "use": "연구 효과와 총 96포인트"
+  },
+  {
+    "id": "atwiki_time_value",
+    "priority": 2,
+    "type": "strategy_wiki_editorial",
+    "title": "時間で変わるAF・シナジーの価値について",
+    "url": "https://w.atwiki.jp/magicsurvival/pages/401.html",
+    "lastUpdated": "2026-07-19",
+    "use": "시간대에 따라 바뀌는 아티팩트 가치"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "createdAt": "2026-09-06",
+  "officialGameVersion": "0.992",
+  "coverage": {
+    "coreMechanics": "high",
+    "activeMagicsAnd63Combinations": "already_in_repo; preserve current deterministic dataset and audit",
+    "normalPassives": "10/10 seeded",
+    "specialPassives": "25 seeded; Korean names partly candidate",
+    "growthEnhancements": "9/9 seeded",
+    "classes": "24/24 seeded; source conflict explicitly marked",
+    "subjects": "25/25 seeded",
+    "ultimates": "24/24 current requirements seeded",
+    "research": "20 rows / total96 points seeded",
+    "artifacts": "high-impact subset only; current repo existing entity set should be merged",
+    "synergies": "high-impact subset only; current repo existing entity set should be merged",
+    "communityMeta": "reuse previous-meta-v1 + current repo"
+  },
+  "knownConflicts": [
+    {
+      "field": "Arcanist choice penalty",
+      "olderAtWiki": "-2 choices",
+      "currentNamu": "-1 choice",
+      "adopt": "currentNamu -1"
+    },
+    {
+      "field": "Archaeologist chest interval",
+      "olderAtWiki": "20 levels",
+      "currentNamu": "15 levels",
+      "adopt": "currentNamu 15"
+    },
+    {
+      "field": "generic specialist class scaling",
+      "olderAtWiki": "+5% per 3 levels",
+      "currentNamu examples": "+3% per 5 levels",
+      "adopt": "currentNamu pattern, final per-class verification recommended"
+    }
+  ],
+  "hardRule": "Unverified Korean localized names must not silently be treated as verified. Preserve nameStatus/mappingStatus."
+}

@@ -1,0 +1,320 @@
+{
+  "sources": [
+    "namu_ultimate",
+    "atwiki_magic"
+  ],
+  "items": [
+    {
+      "id": "stormbringer",
+      "nameKo": "스톰브링어",
+      "requiredCombinationId": "wrath_of_sky",
+      "requiredClassId": "shaman",
+      "requiredSubjectId": "shaman",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "aura_blade",
+      "nameKo": "오러 블레이드",
+      "requiredCombinationId": "flying_sword",
+      "requiredClassId": "summoner",
+      "requiredSubjectId": "summoner",
+      "editorTierAtWikiJul": "C",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "ground_zero",
+      "nameKo": "그라운드 제로",
+      "requiredCombinationId": "war_climate",
+      "requiredClassId": "warlock",
+      "requiredSubjectId": "warlock",
+      "editorTierAtWikiJul": "E",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "nemesis",
+      "nameKo": "네메시스",
+      "requiredCombinationId": "demon_equation",
+      "requiredClassId": "pyromancer",
+      "requiredSubjectId": "pyromancer",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "berserk",
+      "nameKo": "베르세르크",
+      "requiredCombinationId": "frenzy",
+      "requiredClassId": "battlemage",
+      "requiredSubjectId": "battlemage",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "darkness",
+      "nameKo": "다크니스",
+      "requiredCombinationId": "vortex",
+      "requiredClassId": "druid",
+      "requiredSubjectId": "druid",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "omega",
+      "nameKo": "오메가",
+      "requiredCombinationId": "neutron_generation",
+      "requiredClassId": "druid",
+      "requiredSubjectId": "druid",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "quantum_laser",
+      "nameKo": "퀀텀 레이저",
+      "requiredCombinationId": "plasma_ray",
+      "requiredClassId": "occultist",
+      "requiredSubjectId": "occultist",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "death_storm",
+      "nameKo": "데스 스톰",
+      "requiredCombinationId": "lightning_blast",
+      "requiredClassId": "shaman",
+      "requiredSubjectId": "shaman",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "inquisitor",
+      "nameKo": "인퀴지터",
+      "requiredCombinationId": "inferno",
+      "requiredClassId": "warlord",
+      "requiredSubjectId": "warlord",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "mega_tsunami",
+      "nameKo": "메가 쓰나미",
+      "requiredCombinationId": "deluge",
+      "requiredClassId": "tuner",
+      "requiredSubjectId": "tuner",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "zero_nova",
+      "nameKo": "제로 노바",
+      "requiredCombinationId": "blooming_snowflakes",
+      "requiredClassId": "cryomancer",
+      "requiredSubjectId": "cryomancer",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "blitz",
+      "nameKo": "블리츠",
+      "requiredCombinationId": "origin_explosion",
+      "requiredClassId": "alchemist",
+      "requiredSubjectId": "alchemist",
+      "editorTierAtWikiJul": "E",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "abaddon",
+      "nameKo": "아바돈",
+      "requiredCombinationId": "hyperion",
+      "requiredClassId": "astronomer",
+      "requiredSubjectId": "astronomer",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "equilibrium",
+      "nameKo": "이퀼리브리엄",
+      "requiredCombinationId": "avatar",
+      "requiredClassId": "wizard",
+      "requiredSubjectId": "wizard",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "arc",
+      "nameKo": "아크",
+      "requiredCombinationId": "heart_of_lightning",
+      "requiredClassId": "sorcerer",
+      "requiredSubjectId": "sorcerer",
+      "editorTierAtWikiJul": "C",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "giant_impact",
+      "nameKo": "자이언트 임팩트",
+      "requiredCombinationId": "great_collision",
+      "requiredClassId": "warlock",
+      "requiredSubjectId": "warlock",
+      "editorTierAtWikiJul": "A",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "lockdown",
+      "nameKo": "락다운",
+      "requiredCombinationId": "meissner_effect",
+      "requiredClassId": "electromancer",
+      "requiredSubjectId": "electromancer",
+      "editorTierAtWikiJul": "D",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "hallucination",
+      "nameKo": "할루시네이션",
+      "requiredCombinationId": "teleport",
+      "requiredClassId": null,
+      "requiredSubjectId": "jack_o_lantern",
+      "editorTierAtWikiJul": "B",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "ascension",
+      "nameKo": "어센션",
+      "requiredCombinationId": "gate",
+      "requiredClassId": "battlemage",
+      "requiredSubjectId": "battlemage",
+      "editorTierAtWikiJul": "S",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "core",
+      "nameKo": "코어",
+      "requiredCombinationId": "magnetic_field_generation",
+      "requiredClassId": "astronomer",
+      "requiredSubjectId": "astronomer",
+      "editorTierAtWikiJul": "E",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "cosmos",
+      "nameKo": "코스모스",
+      "requiredCombinationId": "genesis",
+      "requiredClassId": "mage",
+      "requiredSubjectId": "mage",
+      "editorTierAtWikiJul": "S",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "overload",
+      "nameKo": "오버로드",
+      "requiredCombinationId": "age_of_sun",
+      "requiredClassId": "witch",
+      "requiredSubjectId": "witch",
+      "editorTierAtWikiJul": "E",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    },
+    {
+      "id": "terminator",
+      "nameKo": "터미네이터",
+      "requiredCombinationId": "destroyer",
+      "requiredClassId": "electromancer",
+      "requiredSubjectId": "electromancer",
+      "editorTierAtWikiJul": "E",
+      "unlock": {
+        "area": "city_clear",
+        "playerLevel": 100
+      },
+      "requirementsVerified": "current_namu_2026_08"
+    }
+  ]
+}

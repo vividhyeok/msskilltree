@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 import { Undo2, Search, Pin, Check, X } from "lucide-react";
 import {
@@ -37,7 +37,13 @@ import { TargetPanel } from "./features/game-mode/TargetPanel";
 import { Dialog } from "./components/Dialog";
 import { ArtifactChoice, RunSetup, RunContextBar } from "./meta/MetaUI";
 import { contextFor } from "./meta/engine";
-import { defaultMetaContext } from "./meta/data";
+import { defaultMetaContext, normalizeMetaContext } from "./meta/data";
+import {
+  normalizeProgress,
+  elapsedSeconds,
+  timerPhase,
+} from "./companion/engine";
+import { CompanionDialog, RunClock } from "./companion/CompanionUI";
 validateGameData();
 const statusNames = {
   READY: "지금 가능",
@@ -75,6 +81,7 @@ function App() {
   const [menu, setMenu] = useState(false);
   const [catalog, setCatalog] = useState(false);
   const [setup, setSetup] = useState(false);
+  const [growthOpen, setGrowthOpen] = useState(false);
   const [artifactChoice, setArtifactChoice] = useState(false);
 
   const [mobile, setMobile] = useState(false);
@@ -91,7 +98,21 @@ function App() {
     names: string[];
   } | null>(null);
   const [audit, setAudit] = useState(location.pathname === "/audit");
-  const run = saved.run;
+  const [timePhase, setTimePhase] = useState("");
+  useEffect(() => {
+    const tick = () => {
+      const p = normalizeProgress(saved.run.progress);
+      setTimePhase(
+        p.startedAt === null && p.elapsed === 0
+          ? ""
+          : `${timerPhase(elapsedSeconds(p))}:${elapsedSeconds(p) >= 1500}:${elapsedSeconds(p) >= 3450}`,
+      );
+    };
+    tick();
+    const t = setInterval(tick, 1000);
+    return () => clearInterval(t);
+  }, [saved.run.progress]);
+  const run = useMemo(() => ({ ...saved.run }), [saved.run, timePhase]);
   const effects = applyEffects(run);
   const used = locks(run);
   useEffect(() => {
@@ -116,6 +137,10 @@ function App() {
     }));
   }
   function tap(id: string) {
+    if (run.progress?.growthPhase) {
+      setGrowthOpen(true);
+      return;
+    }
     const m = magicById[id] ?? data.passives.find((p) => p.id === id)!;
     if (used[id]) return;
     const pending = magicById[id]?.traitStages.find(
@@ -447,11 +472,17 @@ function App() {
             onFocus={focus}
             onRecord={tap}
             contextBar={
-              <RunContextBar
-                run={run}
-                onSetup={() => setSetup(true)}
-                onArtifacts={() => setArtifactChoice(true)}
-              />
+              <div className="companion-actions">
+                <RunContextBar
+                  run={run}
+                  onSetup={() => setSetup(true)}
+                  onArtifacts={() => setArtifactChoice(true)}
+                />
+                <button onClick={() => setGrowthOpen(true)}>
+                  패시브 · 성장
+                </button>
+                <RunClock run={run} onChange={change} />
+              </div>
             }
           />
           <aside className="side-panel">{panel}</aside>
@@ -630,6 +661,14 @@ function App() {
           render={comboCard}
         />
       )}
+      {growthOpen && (
+        <CompanionDialog
+          run={run}
+          onChange={change}
+          onRecord={tap}
+          onClose={() => setGrowthOpen(false)}
+        />
+      )}
       {setup && (
         <RunSetup
           run={run}
@@ -641,7 +680,7 @@ function App() {
         <ArtifactChoice
           run={run}
           onRecord={(id) => {
-            const meta = contextFor(run);
+            const meta = normalizeMetaContext(run.meta);
             if (!meta.artifacts.includes(id))
               change({
                 ...run,

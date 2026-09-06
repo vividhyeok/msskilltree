@@ -146,6 +146,7 @@ export function MagicGrid({
                 {!used[m.id] && (level < m.maxLevel || pending) && (
                   <button
                     className="tile-add"
+                    disabled={run.progress?.growthPhase}
                     aria-label={`${m.nameKo} 레벨 올리기`}
                     onClick={() => onRecord(m.id)}
                   >
@@ -169,36 +170,38 @@ export function MagicGrid({
         <h2>보조 능력</h2>
       </div>
       <div className="passive-row">
-        {data.passives.map((p) => (
-          <div
-            className={`passive-tile ${needed.has(p.id) ? "is-needed" : ""}`}
-            key={p.id}
-            data-magic-id={p.id}
-            data-target={getMagicTargetBadges(run, p.id)[0]}
-          >
-            <button
-              className="passive-inspect"
-              aria-label={`${p.nameKo} 경로 보기`}
-              onClick={() => onFocus(p.id)}
+        {data.passives
+          .filter((p) => p.combinationRelevant)
+          .map((p) => (
+            <div
+              className={`passive-tile ${needed.has(p.id) ? "is-needed" : ""}`}
+              key={p.id}
+              data-magic-id={p.id}
+              data-target={getMagicTargetBadges(run, p.id)[0]}
             >
-              <strong>{p.nameKo}</strong>
-              <span>
-                {run.levels[p.id] ?? 0}/{p.maxLevel}
-              </span>
-              {getMagicTargetBadges(run, p.id).map((b) => (
-                <TargetBadge badge={b} key={b} />
-              ))}
-            </button>
-            <button
-              className="passive-add"
-              aria-label={`${p.nameKo} 레벨 올리기`}
-              disabled={(run.levels[p.id] ?? 0) >= p.maxLevel}
-              onClick={() => onRecord(p.id)}
-            >
-              <Plus size={18} />
-            </button>
-          </div>
-        ))}
+              <button
+                className="passive-inspect"
+                aria-label={`${p.nameKo} 경로 보기`}
+                onClick={() => onFocus(p.id)}
+              >
+                <strong>{p.nameKo}</strong>
+                <span>
+                  {run.levels[p.id] ?? 0}/{p.maxLevel}
+                </span>
+                {getMagicTargetBadges(run, p.id).map((b) => (
+                  <TargetBadge badge={b} key={b} />
+                ))}
+              </button>
+              <button
+                className="passive-add"
+                aria-label={`${p.nameKo} 레벨 올리기`}
+                disabled={run.progress?.growthPhase || (run.levels[p.id] ?? 0) >= p.maxLevel}
+                onClick={() => onRecord(p.id)}
+              >
+                <Plus size={18} />
+              </button>
+            </div>
+          ))}
       </div>
     </section>
   );

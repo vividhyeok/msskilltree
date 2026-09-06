@@ -1,0 +1,59 @@
+{
+  "targetVersion": "0.992",
+  "officialVersionStatus": "verified_official_google_play",
+  "levelUp": {
+    "baseChoiceCount": 3,
+    "canBecomeFourChoices": true,
+    "ownedMagicMoreLikelyToReappear": true,
+    "manaRetrieval": {
+      "available": true,
+      "function": "skip_and_reroll",
+      "normalReturnSequencePercent": [
+        20,
+        10,
+        4
+      ],
+      "forcedPickOnAttempt": 4,
+      "note": "특수 효과/클래스에 따라 달라질 수 있으므로 UI가 횟수를 강제 가정하지 않게 설계"
+    }
+  },
+  "playerLevel": {
+    "baseMax": 100,
+    "ultimateUsesLevel100Choice": true
+  },
+  "fusion": {
+    "slotUnlockLevels": [
+      25,
+      50,
+      75
+    ],
+    "baseSlots": 3,
+    "performedFromLevelUpScreen": true,
+    "cannotFuseAfterCurrentMaxLevel": true,
+    "participantRoles": [
+      "carrier",
+      "material",
+      "condition"
+    ],
+    "carrierArtifactEffectsContinue": true,
+    "materialArtifactEffectsDoNotApplyToFusion": true,
+    "correctTraitRequired": true,
+    "magicBoltHasMultipleTraitStageRequirements": true
+  },
+  "growthEnhancement": {
+    "availableAfterCurrentMaxLevel": true,
+    "baseTotalPickLimit": 50,
+    "geniusSynergyCanIncreaseLimit": true
+  },
+  "artifactAcquisition": {
+    "normalChestChoiceCount": 3,
+    "synergyAutoActivatesWhenRequirementsOwned": true,
+    "synergyDoesNotConsumeArtifacts": true
+  },
+  "sources": [
+    "official_google_play",
+    "atwiki_basic",
+    "atwiki_magic",
+    "atwiki_artifact"
+  ]
+}

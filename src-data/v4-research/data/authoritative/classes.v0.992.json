@@ -1,0 +1,784 @@
+{
+  "sources": [
+    "namu_class",
+    "atwiki_class"
+  ],
+  "conflictPolicy": "최근 Namu가 명시적으로 다른 수치를 제공하면 Namu 우선; editor tier는 AtWiki 메타로 별도 취급",
+  "items": [
+    {
+      "id": "wizard",
+      "nameKo": "마법사",
+      "nameEn": "Wizard",
+      "editorTierAtWikiMar": "A",
+      "focusMagicId": "magic_bolt",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countFlat": 1
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "astronomer",
+      "nameKo": "천문학자",
+      "nameEn": "Astronomer",
+      "editorTierAtWikiMar": "A",
+      "focusMagicId": "satellite",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "rotationSpeedPercent": 50
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "cryomancer",
+      "nameKo": "빙결사",
+      "nameEn": "Cryomancer",
+      "editorTierAtWikiMar": "A",
+      "focusMagicId": "frost_nova",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "sizePercent": 25
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "shaman",
+      "nameKo": "주술사",
+      "nameEn": "Shaman",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": "thunderstorm",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "warlock",
+      "nameKo": "워록",
+      "nameEn": "Warlock",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": "meteor",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countFlat": 1
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "arcanist",
+      "nameKo": "마도학자",
+      "nameEn": "Arcanist",
+      "editorTierAtWikiMar": "B",
+      "focusMagicId": "magic_bolt",
+      "start": {
+        "magicLevel": 1
+      },
+      "unique": {
+        "allMagicAdditionalDamagePercentPerCharacterLevel": 1,
+        "magicChoiceCountDelta": -1,
+        "manaRetrievalDisabled": true
+      },
+      "upgrades": {
+        "u1": {
+          "passive": "intelligence",
+          "level": 1
+        },
+        "u2": {
+          "manaGainPercent": 10
+        },
+        "u3": {
+          "attackAmplificationPercent": 10
+        },
+        "u4Permanent": {
+          "attackPercent": 5
+        }
+      },
+      "verification": "current_namu"
+    },
+    {
+      "id": "summoner",
+      "nameKo": "소환사",
+      "nameEn": "Summoner",
+      "editorTierAtWikiMar": "A",
+      "focusMagicId": "spirit",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "bishop",
+      "nameKo": "비숍",
+      "nameEn": "Bishop",
+      "editorTierAtWikiMar": "S",
+      "focusMagicId": null,
+      "start": {
+        "magicLevels": {
+          "magic_bolt": 1,
+          "shield": 1
+        }
+      },
+      "unique": {
+        "attackAmplificationPercentPerActiveShield": 10,
+        "shieldRemainsActiveWhenUsedInFusion": true
+      },
+      "upgrades": {
+        "u1": {
+          "specialPassive": "guardian_angel",
+          "level": 1
+        },
+        "u2": {
+          "shieldCooldownPercent": -20
+        },
+        "u3": {
+          "maxShieldFlat": 1
+        },
+        "u4Permanent": {
+          "damageTakenPercent": -5
+        }
+      },
+      "verification": "current_namu"
+    },
+    {
+      "id": "occultist",
+      "nameKo": "신비술사",
+      "nameEn": "Occultist",
+      "editorTierAtWikiMar": "A",
+      "focusMagicId": "arcane_ray",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "druid",
+      "nameKo": "드루이드",
+      "nameEn": "Druid",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": "cyclone",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countFlat": 1
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "pyromancer",
+      "nameKo": "화염술사",
+      "nameEn": "Pyromancer",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": "fireball",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countFlat": 1
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "sorcerer",
+      "nameKo": "소서러",
+      "nameEn": "Sorcerer",
+      "editorTierAtWikiMar": "B",
+      "focusMagicId": "electric_shock",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "alchemist",
+      "nameKo": "연금술사",
+      "nameEn": "Alchemist",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": "energy_bolt",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "scholar",
+      "nameKo": "학자",
+      "nameEn": "Scholar",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": null,
+      "start": {
+        "playerLevelFlat": 3
+      },
+      "unique": {
+        "allMagicAdditionalDamagePercentPerCharacterLevel": 1
+      },
+      "upgrades": {
+        "u1": {
+          "specialPassive": "doctor",
+          "level": 1
+        },
+        "u2": {
+          "manaRetrievalEffectPercent": 30
+        },
+        "u3": {
+          "fourChoiceChancePercent": 50
+        },
+        "u4Permanent": {
+          "manaGainPercent": 5
+        }
+      },
+      "verification": "atwiki_2026_03"
+    },
+    {
+      "id": "witch",
+      "nameKo": "마녀",
+      "nameEn": "Witch",
+      "editorTierAtWikiMar": "D",
+      "focusMagicId": "lava_zone",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countFlat": 1
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "electromancer",
+      "nameKo": "전하술사",
+      "nameEn": "Electromancer",
+      "editorTierAtWikiMar": "D",
+      "focusMagicId": "electric_zone",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "damageIntervalPercent": -20
+        },
+        "upgrade3": {
+          "sizePercent": 25
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "tuner",
+      "nameKo": "조율자",
+      "nameEn": "Tuner",
+      "editorTierAtWikiMar": "B",
+      "focusMagicId": "tsunami",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "grand_mage",
+      "nameKo": "대마법사",
+      "nameEn": "Grand Mage",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": null,
+      "start": {
+        "playerLevelFlat": 3
+      },
+      "unique": {
+        "fusionDamagePercent": 50
+      },
+      "upgrades": {
+        "u1": {
+          "magicLevel": {
+            "magic_circle": 1
+          }
+        },
+        "u2": {
+          "specialPassive": "silent_casting",
+          "level": 1
+        },
+        "u3": {
+          "fusionDamagePercent": 50
+        },
+        "u4Permanent": {
+          "cooldownPercent": -3
+        }
+      },
+      "verification": "atwiki_2026_03"
+    },
+    {
+      "id": "archaeologist",
+      "nameKo": "고고학자",
+      "nameEn": "Archaeologist",
+      "editorTierAtWikiMar": "S",
+      "focusMagicId": "magic_bolt",
+      "start": {
+        "magicLevel": 1
+      },
+      "unique": {
+        "spawnChestEveryCharacterLevels": 15
+      },
+      "upgrades": {
+        "u1": {
+          "passive": "exploration",
+          "level": 1
+        },
+        "u2": {
+          "manaGainPercent": 10
+        },
+        "u3": {
+          "chestDropFrequencyPercent": 10
+        },
+        "u4Permanent": {
+          "pickupRangePercent": 20
+        }
+      },
+      "verification": "current_namu",
+      "sourceConflict": "AtWiki 2026-03 says 20 levels; Namu 2026-07 says 15. Dataset adopts newer Namu."
+    },
+    {
+      "id": "magician",
+      "nameKo": "마술사",
+      "nameEn": "Magician",
+      "editorTierAtWikiMar": "D",
+      "focusMagicId": "magic_bolt",
+      "start": {
+        "magicLevel": 1
+      },
+      "unique": {
+        "magicBoltRandomProjectileChancePercent": 20
+      },
+      "upgrades": {
+        "u1": {
+          "magicLevel": {
+            "magic_bolt": 1
+          }
+        },
+        "u2": {
+          "transformChancePercent": 5
+        },
+        "u3": {
+          "transformChancePercent": 5
+        },
+        "u4Permanent": {
+          "critChancePercent": 3
+        }
+      },
+      "verification": "atwiki+namu"
+    },
+    {
+      "id": "mage",
+      "nameKo": "메이지",
+      "nameEn": "Mage",
+      "editorTierAtWikiMar": "B",
+      "focusMagicId": "blizzard",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "countPercent": 35
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "battlemage",
+      "nameKo": "전투마법사",
+      "nameEn": "Battlemage",
+      "editorTierAtWikiMar": "B",
+      "focusMagicId": "flash_shock",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "sizePercent": 25
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "warlord",
+      "nameKo": "워로드",
+      "nameEn": "Warlord",
+      "editorTierAtWikiMar": "A",
+      "focusMagicId": "incineration",
+      "start": {
+        "magicLevel": 1
+      },
+      "currentNamuScaling": {
+        "everyCharacterLevels": 5,
+        "focusedMagicAdditionalDamagePercent": 3,
+        "status": "pattern_from_current_namu; per-class final verify recommended"
+      },
+      "upgrades": {
+        "u1": {
+          "focusMagicLevel": 1
+        },
+        "upgrade2": {
+          "cooldownPercent": -20
+        },
+        "upgrade3": {
+          "sizePercent": 25
+        },
+        "u4Permanent": {
+          "focusMagicDamagePercent": 20
+        }
+      },
+      "sourceFreshness": {
+        "mechanics": "mixed",
+        "note": "AtWiki 2026-03 still says +5%/3Lv; current Namu examples use +3%/5Lv. Prefer current Namu scaling."
+      }
+    },
+    {
+      "id": "black_mage",
+      "nameKo": "흑마법사",
+      "nameEn": "Black Mage",
+      "editorTierAtWikiMar": "C",
+      "focusMagicId": "magic_bolt",
+      "start": {
+        "magicLevel": 1
+      },
+      "unique": {
+        "killedEnemyExplosionChancePercent": 10,
+        "explosionEnemyMaxHpPercent": 75
+      },
+      "upgrades": {
+        "u1": {
+          "passive": "arcane_effuse",
+          "level": 1
+        },
+        "u2": {
+          "explosionChancePercent": 5
+        },
+        "u3": {
+          "explosionChancePercent": 5
+        },
+        "u4Permanent": {
+          "magicSizePercent": 3
+        }
+      },
+      "verification": "atwiki_2026_03"
+    }
+  ]
+}

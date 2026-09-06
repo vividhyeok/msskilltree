@@ -1,0 +1,107 @@
+{
+  "source": "atwiki_magic",
+  "note": "효과값은 현재 AtWiki 구조화 표. 한국어 candidate는 게임 도감으로 최종 검수.",
+  "items": [
+    {
+      "id": "advanced_magic",
+      "nameKoCandidate": "상급마법",
+      "nameJa": "上級魔法",
+      "maxLevel": 3,
+      "perLevel": {
+        "allMagicDamagePercent": 15
+      },
+      "nameStatus": "needs_game_verify"
+    },
+    {
+      "id": "intelligence",
+      "nameKo": "지능",
+      "nameJa": "知能",
+      "maxLevel": 5,
+      "perLevel": {
+        "attackPercent": 10
+      },
+      "nameStatus": "high"
+    },
+    {
+      "id": "fast_casting",
+      "nameKoCandidate": "고속시전",
+      "nameJa": "高速発動",
+      "maxLevel": 3,
+      "perLevel": {
+        "cooldownPercent": -5
+      },
+      "nameStatus": "needs_game_verify"
+    },
+    {
+      "id": "vitality",
+      "nameKo": "생명력",
+      "nameJa": "生命力",
+      "maxLevel": 5,
+      "perLevel": {
+        "maxHpPercent": 20,
+        "lifeOrbHealPercent": 10
+      },
+      "nameStatus": "high"
+    },
+    {
+      "id": "haste",
+      "nameKo": "가속",
+      "nameJa": "加速",
+      "maxLevel": 2,
+      "perLevel": {
+        "moveSpeedPercent": 10
+      },
+      "nameStatus": "high"
+    },
+    {
+      "id": "arcane_effuse",
+      "nameKo": "마력 발산",
+      "nameJa": "魔力発散",
+      "maxLevel": 3,
+      "perLevel": {
+        "magicSizePercent": 5
+      },
+      "nameStatus": "high"
+    },
+    {
+      "id": "concentration",
+      "nameKo": "집중",
+      "nameJa": "集中",
+      "maxLevel": 3,
+      "perLevel": {
+        "durationPercent": 10
+      },
+      "nameStatus": "high"
+    },
+    {
+      "id": "snipe",
+      "nameKoCandidate": "저격",
+      "nameJa": "狙撃",
+      "maxLevel": 3,
+      "perLevel": {
+        "critChancePercent": 5
+      },
+      "nameStatus": "likely"
+    },
+    {
+      "id": "exploration",
+      "nameKoCandidate": "탐색",
+      "nameJa": "探索",
+      "maxLevel": 3,
+      "perLevel": {
+        "pickupRangePercent": 33
+      },
+      "nameStatus": "likely"
+    },
+    {
+      "id": "rupture",
+      "nameKoCandidate": "파열",
+      "nameJa": "破裂",
+      "maxLevel": 3,
+      "perLevel": {
+        "critMultiplierPercent": 15
+      },
+      "nameStatus": "likely"
+    }
+  ]
+}

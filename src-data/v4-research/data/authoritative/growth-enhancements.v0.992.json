@@ -1,0 +1,69 @@
+{
+  "source": "atwiki_magic",
+  "baseTotalPickLimit": 50,
+  "items": [
+    {
+      "id": "intelligence",
+      "maxLevel": 8,
+      "perLevel": {
+        "attackPercent": 3
+      }
+    },
+    {
+      "id": "fast_casting",
+      "maxLevel": 8,
+      "perLevel": {
+        "cooldownPercent": -1
+      }
+    },
+    {
+      "id": "vitality",
+      "maxLevel": 8,
+      "perLevel": {
+        "maxHpPercent": 10
+      }
+    },
+    {
+      "id": "haste",
+      "maxLevel": 8,
+      "perLevel": {
+        "moveSpeedPercent": 2
+      }
+    },
+    {
+      "id": "arcane_effuse",
+      "maxLevel": 8,
+      "perLevel": {
+        "magicSizePercent": 2
+      }
+    },
+    {
+      "id": "concentration",
+      "maxLevel": 8,
+      "perLevel": {
+        "durationPercent": 3
+      }
+    },
+    {
+      "id": "snipe",
+      "maxLevel": 8,
+      "perLevel": {
+        "critChancePercent": 1
+      }
+    },
+    {
+      "id": "exploration",
+      "maxLevel": 8,
+      "perLevel": {
+        "pickupRangePercent": 10
+      }
+    },
+    {
+      "id": "rupture",
+      "maxLevel": 8,
+      "perLevel": {
+        "critMultiplierPercent": 5
+      }
+    }
+  ]
+}
