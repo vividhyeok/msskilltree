@@ -1,5 +1,6 @@
 import { data, magicById, comboById } from "../data";
 import { emptyRun, type Run } from "../engine";
+import { defaultMetaContext, normalizeMetaContext } from "../meta/data";
 export type Build = { id: string; name: string; pinned: string[] };
 export type Saved = {
   version: 1;
@@ -11,7 +12,7 @@ export type Saved = {
 };
 export const fresh = (): Saved => ({
   version: 1,
-  run: emptyRun(),
+  run: { ...emptyRun(), meta: defaultMetaContext() },
   history: [],
   builds: [],
   filter: "all",
@@ -67,7 +68,15 @@ export function deserialize(raw: string): Saved {
     typeof s.audit !== "object"
   )
     throw new Error("저장 데이터 형식이나 게임 버전이 맞지 않습니다.");
-  return { ...s, history: s.history.slice(-30) };
+  const normalize = (run: Run): Run =>
+    run.meta === undefined
+      ? run
+      : { ...run, meta: normalizeMetaContext(run.meta) };
+  return {
+    ...s,
+    run: normalize(s.run),
+    history: s.history.slice(-30).map(normalize),
+  };
 }
 export const serialize = (s: Saved) => JSON.stringify(s);
 export const STORAGE_KEY = "ms-companion-v1";

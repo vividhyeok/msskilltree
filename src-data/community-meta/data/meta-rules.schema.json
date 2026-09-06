@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Magic Survival community meta rule",
+  "type": "object",
+  "required": [
+    "id",
+    "patch",
+    "kind",
+    "subject",
+    "relation",
+    "context",
+    "strength",
+    "confidence",
+    "rationaleKo",
+    "sourceIds"
+  ]
+}

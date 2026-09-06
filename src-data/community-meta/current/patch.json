@@ -1,0 +1,20 @@
+{
+  "datasetVersion": "meta-v1.0",
+  "createdAt": "2026-09-06",
+  "targetGameVersion": "0.992",
+  "status": "snapshot_at_risk_of_immediate_staleness",
+  "nextPatchWatch": {
+    "version": "0.993",
+    "reportedReleaseDate": "2026-09-07",
+    "sourceIds": [
+      "reddit_patch_0993",
+      "reddit_patchnotes_0993"
+    ],
+    "action": "release 확인 즉시 모든 meta rule을 still_valid/changed/unknown/obsolete로 재검증"
+  },
+  "coverage": {
+    "naverCafe": "direct crawl unavailable",
+    "discord": "direct crawl unavailable; indirect through public community sources"
+  },
+  "important": "deterministic game facts와 community meta를 분리해서 사용."
+}

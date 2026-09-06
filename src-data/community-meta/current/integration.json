@@ -1,0 +1,90 @@
+{
+  "goalOptions": [
+    {
+      "id": "farm",
+      "nameKo": "빠른 파밍",
+      "tags": ["farm", "gems", "currency", "low_attention", "simple_build"]
+    },
+    {
+      "id": "first_60m",
+      "nameKo": "첫 60분",
+      "tags": ["first_60m", "beginner", "long_survival"]
+    },
+    {
+      "id": "stable_pb",
+      "nameKo": "개인 기록 갱신",
+      "tags": ["stable_pb", "personal_best", "long_survival"]
+    },
+    {
+      "id": "80m_plus",
+      "nameKo": "80분 이상",
+      "tags": ["80m_plus", "record_run", "ultra_long_survival", "long_survival"]
+    }
+  ],
+  "activeMappings": {
+    "shield_reconstruction": {
+      "magicId": "shield",
+      "traitId": "reconstruction",
+      "traitStage": 5
+    },
+    "cloaking_mirage": {
+      "magicId": "cloaking",
+      "traitId": "mirage",
+      "traitStage": 5
+    },
+    "frost_nova_absolute_zero": {
+      "magicId": "frost_nova",
+      "traitId": "absolute_zero",
+      "traitStage": 7
+    },
+    "blizzard_sub_zero": {
+      "magicId": "blizzard",
+      "traitId": "sub_zero",
+      "traitStage": 7
+    },
+    "tsunami_pole": {
+      "magicId": "tsunami",
+      "traitId": "pole",
+      "traitStage": 7
+    },
+    "magic_circle_mana_release": {
+      "magicId": "magic_circle",
+      "traitId": "mana_release",
+      "traitStage": 5
+    }
+  },
+  "relations": {
+    "core_for_archetype": "core",
+    "direct_synergy": "core",
+    "core_support": "core",
+    "near_core": "core",
+    "recommended_with": "high",
+    "strong_alternatives": "high",
+    "high_value": "high",
+    "prefer_in_context": "high",
+    "late_game_value": "high",
+    "prioritize": "high",
+    "prefer": "high",
+    "prefer_over": "high",
+    "support_option": "consider",
+    "damage_slot_candidates": "consider",
+    "support": "consider",
+    "phase_dependent": "consider",
+    "powerful_but_do_not_force": "consider",
+    "difficulty_warning": "caution",
+    "lower_priority": "caution",
+    "use_when_needed": "consider",
+    "decision_rule": "consider"
+  },
+  "disputedRuleIds": [
+    "meissner_context",
+    "glacium_context",
+    "mirage_over_hallucination_record"
+  ],
+  "proximity": {
+    "ruleId": "synergy_proximity",
+    "maxMissing": 1,
+    "requireCoreOwned": true
+  },
+  "staleAfterDays": 30
+}

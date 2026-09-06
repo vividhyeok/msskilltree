@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import { Undo2, Search, Pin, Check, X } from "lucide-react";
 import {
@@ -6,6 +6,7 @@ import {
   magicById,
   comboById,
   requirementLabel,
+  participantRole,
   stageFor,
   type Combination,
 } from "./data";
@@ -27,9 +28,21 @@ import {
   type Saved,
 } from "./storage";
 import "./style.css";
+import "./meta/style.css";
+import "./features/game-mode/state.css";
+import { RoleMark, TargetBadge } from "./components/GameState";
 import { MagicGrid } from "./features/game-mode/MagicGrid";
 import { TargetPanel } from "./features/game-mode/TargetPanel";
 import { getFocusedMagicPaths } from "./features/game-mode/selectors";
+import { Dialog } from "./components/Dialog";
+import {
+  ArtifactChoice,
+  RunSetup,
+  RunContextBar,
+  TraitMetaHint,
+} from "./meta/MetaUI";
+import { contextFor } from "./meta/engine";
+import { defaultMetaContext } from "./meta/data";
 validateGameData();
 const statusNames = {
   READY: "지금 가능",
@@ -38,39 +51,6 @@ const statusNames = {
   BLOCKED: "사용 불가",
   COMPLETED: "완료",
 };
-function Dialog({
-  title,
-  children,
-  onClose,
-}: {
-  title: string;
-  children: React.ReactNode;
-  onClose: () => void;
-}) {
-  const ref = useRef<HTMLDialogElement>(null);
-  useEffect(() => {
-    const el = ref.current!;
-    el.showModal();
-    return () => el.close();
-  }, []);
-  return (
-    <dialog
-      ref={ref}
-      onCancel={onClose}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose();
-      }}
-    >
-      <div className="dialog-head">
-        <h2>{title}</h2>
-        <button aria-label="닫기" onClick={onClose}>
-          <X size={20} />
-        </button>
-      </div>
-      {children}
-    </dialog>
-  );
-}
 function App() {
   const [error, setError] = useState("");
   const [saved, setSaved] = useState<Saved>(() => {
@@ -93,6 +73,8 @@ function App() {
   const [selected, setSelected] = useState("");
   const [menu, setMenu] = useState(false);
   const [catalog, setCatalog] = useState(false);
+  const [setup, setSetup] = useState(false);
+  const [artifactChoice, setArtifactChoice] = useState(false);
 
   const [mobile, setMobile] = useState(false);
   const [buildOpen, setBuildOpen] = useState(false);
@@ -146,7 +128,21 @@ function App() {
     }
     const level = Math.min(m.maxLevel, (run.levels[id] ?? 0) + 1);
     if (level !== (run.levels[id] ?? 0))
-      change({ ...run, levels: { ...run.levels, [id]: level } });
+      change({
+        ...run,
+        levels: { ...run.levels, [id]: level },
+        ...(run.meta
+          ? {
+              meta: {
+                ...run.meta,
+                remainingPicks:
+                  run.meta.remainingPicks === null
+                    ? null
+                    : Math.max(0, run.meta.remainingPicks - 1),
+              },
+            }
+          : {}),
+      });
     const stage = magicById[id]?.traitStages.find((s) => s.level === level);
     if (stage && !run.selectedTraits[id]?.[level]) setTrait({ id, level });
   }
@@ -188,7 +184,18 @@ function App() {
     });
   }
   function reset(pinned: string[] = []) {
-    setSaved((s) => ({ ...s, run: { ...emptyRun(), pinned }, history: [] }));
+    setSaved((s) => ({
+      ...s,
+      run: {
+        ...emptyRun(),
+        pinned,
+        meta: {
+          ...defaultMetaContext(),
+          tileOrder: contextFor(s.run).tileOrder,
+        },
+      },
+      history: [],
+    }));
     setSelected("");
     setNewRun(false);
     setBuildOpen(false);
@@ -199,9 +206,7 @@ function App() {
       <article className={"combo " + e.status.toLowerCase()} key={c.id}>
         <div className="combo-title">
           <h3>
-            {run.pinned.includes(c.id) && (
-              <b className="badge">{badge(c.id)}</b>
-            )}
+            {run.pinned.includes(c.id) && <TargetBadge badge={badge(c.id)} />}
             {c.nameKo}
           </h3>
           <span className={"status " + e.status.toLowerCase()}>
@@ -214,7 +219,8 @@ function App() {
             key={i}
           >
             <span>
-              {requirementMet(r, run) ? "✓" : "○"} {requirementLabel(r)}
+              {requirementMet(r, run) ? "✓" : "○"}{" "}
+              <RoleMark role={participantRole(r)} /> {requirementLabel(r)}
             </span>
             <small>
               {r.magicId && !requirementMet(r, run)
@@ -256,8 +262,10 @@ function App() {
     );
   }
   const panel = (
-      <TargetPanel
-        onClearFocus={() => setSelected("")}
+    <TargetPanel
+      onClearFocus={() => setSelected("")}
+      onSetup={() => setSetup(true)}
+      onFocus={(id) => setSelected(id)}
       run={run}
       selected={selected}
       onPin={pin}
@@ -266,7 +274,7 @@ function App() {
     />
   );
   function focus(id: string) {
-    setSelected(current => current === id ? "" : id);
+    setSelected((current) => (current === id ? "" : id));
     if (matchMedia("(max-width: 650px)").matches) setMobile(true);
   }
   return (
@@ -439,6 +447,13 @@ function App() {
             selected={selected}
             onFocus={focus}
             onRecord={tap}
+            contextBar={
+              <RunContextBar
+                run={run}
+                onSetup={() => setSetup(true)}
+                onArtifacts={() => setArtifactChoice(true)}
+              />
+            }
           />
           <aside className="side-panel">{panel}</aside>
         </main>
@@ -459,6 +474,22 @@ function App() {
       {menu && (
         <Dialog title="더보기" onClose={() => setMenu(false)}>
           <nav className="secondary-menu">
+            <button
+              onClick={() => {
+                setMenu(false);
+                setSetup(true);
+              }}
+            >
+              Run 설정
+            </button>
+            <button
+              onClick={() => {
+                setMenu(false);
+                setArtifactChoice(true);
+              }}
+            >
+              유물 선택 비교
+            </button>
             <button
               onClick={() => {
                 setMenu(false);
@@ -599,23 +630,33 @@ function App() {
                         ? " ✓"
                         : ""}
                     </strong>
+                    <TraitMetaHint
+                      run={run}
+                      magicId={trait.id}
+                      traitId={t.id}
+                    />
                     {getFocusedMagicPaths(run, trait.id)
                       .find(
                         (p) => p.stage === trait.level && p.trait.id === t.id,
                       )
                       ?.combinations.map((c) => (
                         <span
-                          className={`picker-path ${c.partners.some(r => r.consumedBy) ? "consumed-path" : ""}`}
+                          className={`picker-path ${c.partners.some((r) => r.consumedBy) ? "consumed-path" : ""}`}
                           key={c.id}
+                          data-target={c.badge}
                         >
                           <b>
-                            {c.badge && `${c.badge} `}
-                            {c.name}
-                            {c.partners.some(r => r.consumedBy) && " · 조합 불가"}
+                            {c.badge && <TargetBadge badge={c.badge} />}
+                            <RoleMark role={c.focusedRole} /> {c.name}
+                            {c.partners.some((r) => r.consumedBy) &&
+                              " · 조합 불가"}
                           </b>
-                          <small>
-                            + {c.partners.map((r) => r.consumedLabel ?? r.label).join(" + ")}
-                          </small>
+                          {c.partners.map((r, i) => (
+                            <small key={i}>
+                              <RoleMark role={r.role} />{" "}
+                              {r.consumedLabel ?? r.label}
+                            </small>
+                          ))}
                         </span>
                       ))}
                   </button>
@@ -630,6 +671,28 @@ function App() {
       )}
       {catalog && (
         <Catalog onClose={() => setCatalog(false)} render={comboCard} />
+      )}
+      {setup && (
+        <RunSetup
+          run={run}
+          onSave={(meta) => change({ ...run, meta })}
+          onClose={() => setSetup(false)}
+        />
+      )}
+      {artifactChoice && (
+        <ArtifactChoice
+          run={run}
+          onRecord={(id) => {
+            const meta = contextFor(run);
+            if (!meta.artifacts.includes(id))
+              change({
+                ...run,
+                meta: { ...meta, artifacts: [...meta.artifacts, id] },
+              });
+          }}
+          onClose={() => setArtifactChoice(false)}
+          onSetup={() => setSetup(true)}
+        />
       )}
       {buildOpen && (
         <Dialog title="즐겨찾는 빌드" onClose={() => setBuildOpen(false)}>

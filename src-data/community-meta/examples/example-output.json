@@ -1,0 +1,23 @@
+{
+  "ranked": [
+    {
+      "id": "ouroboros",
+      "priority": "high",
+      "whyKo": "현재 PE 생존형에서 쿨감은 Shield/Cloaking 가동률에 직접 기여.",
+      "confidence": "high"
+    },
+    {
+      "id": "gear",
+      "priority": "low_now_high_late",
+      "whyKo": "mid에는 낮지만 ultra-late에서 주요 AF 쿨다운 감소 가치가 상승.",
+      "confidence": "medium_high"
+    },
+    {
+      "id": "nexus",
+      "priority": "lower_in_context",
+      "whyKo": "Nexus는 DEM 집중형에서 상대적으로 가치가 높음.",
+      "confidence": "medium_high"
+    }
+  ],
+  "noteKo": "예시일 뿐이며 실제 점수식/UX는 Codex가 설계."
+}

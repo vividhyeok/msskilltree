@@ -6,8 +6,12 @@ import {
   requirementLabel,
   type Combination,
   type Requirement,
+  participantRole,
+  type ParticipantRole,
 } from "../data";
+import type { MetaContext } from "../meta/data";
 export type Run = {
+  meta?: MetaContext;
   levels: Record<string, number>;
   selectedTraits: Record<string, Record<number, string>>;
   completed: string[];
@@ -52,6 +56,47 @@ export function locks(run: Run) {
       comboById[id].activeMagicLocks.map((m) => [m, id]),
     ),
   );
+}
+export type CompletedMagicState = {
+  magicId: string;
+  combinationId: string;
+  role: Exclude<ParticipantRole, "condition">;
+  carrierIds: string[];
+  materialIds: string[];
+};
+// Completion provenance is separate from reusability: both active roles stay locked.
+// Meta rules can use these roles later without guessing which artifact effects survive.
+export function completedMagicStates(
+  run: Run,
+): Record<string, CompletedMagicState> {
+  const states: Record<string, CompletedMagicState> = {};
+  for (const combinationId of run.completed) {
+    const c = comboById[combinationId];
+    const active = c.requirements.filter((r) => r.type === "activeMagic");
+    const carrierIds = [
+      ...new Set(
+        active
+          .filter((r) => participantRole(r) === "carrier")
+          .map((r) => r.magicId!),
+      ),
+    ];
+    const materialIds = [
+      ...new Set(
+        active
+          .filter((r) => participantRole(r) === "material")
+          .map((r) => r.magicId!),
+      ),
+    ];
+    for (const r of active)
+      states[r.magicId!] = {
+        magicId: r.magicId!,
+        combinationId,
+        role: participantRole(r) as "carrier" | "material",
+        carrierIds,
+        materialIds,
+      };
+  }
+  return states;
 }
 export function requirementMet(r: Requirement, run: Run) {
   if (r.type === "completedCombination")
@@ -201,6 +246,12 @@ export function validateGameData(d = data) {
       `${c.id} 슬롯 비용`,
     );
     for (const r of c.requirements) {
+      assert(
+        r.type === "activeMagic"
+          ? ["primary", "carrier", "material"].includes(r.role)
+          : r.role === "condition",
+        `${c.id} 참여 역할`,
+      );
       assert(
         ["activeMagic", "passiveMagic", "completedCombination"].includes(
           r.type,

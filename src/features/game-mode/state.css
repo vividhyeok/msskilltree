@@ -1,0 +1,177 @@
+[data-target="A"] {
+  --target-color: #8dceff;
+  --target-surface: #1b3041;
+}
+[data-target="B"] {
+  --target-color: #d5b5ff;
+  --target-surface: #30253f;
+}
+[data-target="C"] {
+  --target-color: #ffd18b;
+  --target-surface: #3b3020;
+}
+.badge[data-target] {
+  background: var(--target-color, #bfdcc3);
+  color: #111820;
+}
+.target-row[data-target],
+.path-entry[data-target],
+.picker-path[data-target] {
+  border-left: 3px solid var(--target-color, transparent);
+  padding-left: 9px;
+}
+.magic-tile[data-target],
+.passive-tile[data-target] {
+  border-top-color: var(--target-color);
+  border-top-width: 3px;
+}
+.need-section {
+  background: #202a30;
+  border-left: 3px solid #f3d58e;
+  padding-left: 10px;
+  padding-right: 8px;
+}
+.need-section > .hud-label {
+  color: #f3d58e;
+}
+.need-row {
+  grid-template-columns: auto auto minmax(52px, 1fr) 3ch minmax(0, 1.2fr);
+  gap: 5px;
+  min-height: 32px;
+}
+.role-mark {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 19px;
+  white-space: nowrap;
+  font-weight: 600;
+  padding: 0 4px;
+  border-radius: 3px;
+  vertical-align: baseline;
+}
+.role-mark.carrier {
+  color: #a4e9d2;
+  background: #203c36;
+}
+.role-mark.material {
+  color: #c1c8d2;
+  background: #303642;
+}
+.role-mark.condition {
+  color: #e3d6a9;
+  background: #3b3528;
+}
+.magic-tile.is-needed .tile-add {
+  background: #f3d58e19;
+  color: #ffe1a0;
+}
+.magic-tile.carrier {
+  background: #203b35;
+  border-color: #609f8c;
+  border-top-color: var(--target-color, #87d7bc);
+}
+.magic-tile.material {
+  background: repeating-linear-gradient(
+    135deg,
+    #1b2129,
+    #1b2129 6px,
+    #202630 6px,
+    #202630 7px
+  );
+  border-color: #505967;
+  border-top-color: var(--target-color, #505967);
+}
+.magic-tile.material .tile-inspect strong {
+  text-decoration: line-through;
+  color: #aab4c1;
+}
+.magic-tile .completed-value {
+  display: flex;
+  flex-direction: column;
+  line-height: 17px;
+  bottom: 5px;
+  right: 6px;
+}
+.completion-kind {
+  font-size: 11px;
+}
+.completion-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 600;
+}
+.magic-tile.carrier .completed-value {
+  color: #b9f3dc;
+}
+.magic-tile.material .completed-value {
+  color: #b7c1cf;
+}
+.magic-tile.consumed .tile-badges {
+  top: 7px;
+  right: 5px;
+}
+.magic-tile.consumed .tile-inspect strong {
+  max-width: calc(100% - 28px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.magic-tile.selected {
+  outline: 2px solid #f4f7ff;
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.magic-tile.selected:not(.consumed) {
+  background: #293543;
+  border-color: var(--target-color, #788a9e);
+}
+.complete-target {
+  background: #244a39;
+  color: #c6f9d6;
+  border-color: #8ace9e;
+}
+.blocked-label,
+.need-row.blocked .need-trait {
+  color: #ffb6ac !important;
+}
+.conflict {
+  border-left: 3px solid #f09a91;
+  padding-left: 8px;
+}
+.completed-participants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 3px 0 0;
+  font-size: 12px;
+  color: #bbc8d6;
+}
+.completed-focus {
+  border-left: 3px solid var(--target-color, #86d7ba);
+  padding: 10px;
+  background: #203830;
+  color: #c1eddb;
+  line-height: 1.7;
+}
+.completed-focus.material {
+  background: #272d36;
+  color: #c1c8d2;
+}
+.picker-path .badge {
+  margin-right: 5px;
+}
+.picker-path small {
+  display: block;
+  line-height: 1.7;
+}
+.target-requirement {
+  line-height: 22px;
+  padding-left: 10px;
+}
+.path-pin .role-mark {
+  margin-left: auto;
+}
+.game-state-legend {
+  font-size: 11px;
+  color: #b0bdce;
+}

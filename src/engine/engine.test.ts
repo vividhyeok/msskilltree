@@ -7,6 +7,8 @@ import {
   applyEffects,
   getCombinationConflicts,
   validateGameData,
+  completedMagicStates,
+  locks,
   type Run,
 } from "./index";
 import { fresh, serialize, deserialize } from "../storage";
@@ -26,6 +28,36 @@ function prepared(c: Combination, base = emptyRun()) {
   return r;
 }
 const find = (id: string) => comboById[id];
+
+describe("completion participant provenance", () => {
+  it("distinguishes transformation from merging while locking both original magics", () => {
+    const before = prepared(find("demon_equation"));
+    const after = completeCombination(before, "demon_equation");
+    const states = completedMagicStates(after);
+    expect(states.fireball.role).toBe("carrier");
+    expect(states.energy_bolt.role).toBe("material");
+    expect(states.fireball.materialIds).toEqual(["energy_bolt"]);
+    expect(states.energy_bolt.carrierIds).toEqual(["fireball"]);
+    expect(locks(after)).toMatchObject({
+      fireball: "demon_equation",
+      energy_bolt: "demon_equation",
+    });
+    expect(completedMagicStates(before)).toEqual({});
+  });
+  it("does not turn passive or completed-combination conditions into consumed magic", () => {
+    const run = {
+      ...emptyRun(),
+      completed: ["quantum_explosion", "overmind", "deus_ex_machina"],
+    };
+    const states = completedMagicStates(run);
+    expect(states.shield.role).toBe("carrier");
+    expect(states.magic_circle.role).toBe("material");
+    expect(states.magic_circle.carrierIds).toEqual([]);
+    expect(states.arcane_effuse).toBeUndefined();
+    expect(states.intelligence).toBeUndefined();
+    expect(Object.keys(states)).toHaveLength(2);
+  });
+});
 describe("data validation", () => {
   it("validates all 21 magics and 63 combinations", () => {
     expect(data.magics).toHaveLength(21);

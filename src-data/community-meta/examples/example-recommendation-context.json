@@ -1,0 +1,24 @@
+{
+  "gameVersion": "0.992",
+  "goal": "first_60m",
+  "map": "terra_hard",
+  "phase": "mid",
+  "playerLevel": 62,
+  "archetype": "ultimate_survival_pe",
+  "ultimate": "ascension",
+  "completedCombinations": [
+    "perpetual_engine"
+  ],
+  "artifacts": [
+    "accelerator",
+    "cube"
+  ],
+  "candidateEvent": {
+    "type": "artifact_choice",
+    "candidates": [
+      "ouroboros",
+      "nexus",
+      "gear"
+    ]
+  }
+}

@@ -4,6 +4,7 @@ import combinations from "../src-data/combinations.json";
 import rules from "../src-data/rules.json";
 import metadata from "../src-data/metadata.json";
 export type Magic = (typeof magics)[number];
+export type ParticipantRole = "carrier" | "material" | "condition";
 export type Requirement = {
   type: "activeMagic" | "passiveMagic" | "completedCombination";
   magicId?: string;
@@ -12,6 +13,17 @@ export type Requirement = {
   minLevel?: number;
   combinationId?: string;
   role: string;
+};
+export function participantRole(requirement: Requirement): ParticipantRole {
+  if (requirement.type !== "activeMagic") return "condition";
+  return requirement.role === "primary" || requirement.role === "carrier"
+    ? "carrier"
+    : "material";
+}
+export const participantLabels: Record<ParticipantRole, string> = {
+  carrier: "→ 승계",
+  material: "× 병합",
+  condition: "◇ 조건",
 };
 export type Combination = {
   id: string;

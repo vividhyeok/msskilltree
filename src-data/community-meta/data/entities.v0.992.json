@@ -1,0 +1,550 @@
+{
+  "combinations": [
+    {
+      "id": "perpetual_engine",
+      "nameKo": "무한동력",
+      "aliases": [
+        "Perpetual Engine",
+        "PE"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "quantum_explosion",
+      "nameKo": "양자폭발",
+      "aliases": [
+        "Photon Explosion"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "meissner_effect",
+      "nameKo": "마이스너 효과",
+      "aliases": [
+        "Meissner Effect"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "glacium",
+      "nameKo": "글레이시움",
+      "aliases": [
+        "Glacium"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "discharge",
+      "nameKo": "디스차지",
+      "aliases": [
+        "Discharge"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "fireworks_combination",
+      "nameKo": "불꽃놀이",
+      "aliases": [
+        "Pyrotechnics",
+        "Fireworks"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "blaster",
+      "nameKo": "블래스터",
+      "aliases": [
+        "Blaster"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "phoenix",
+      "nameKo": "불사조",
+      "aliases": [
+        "Phoenix"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "deus_ex_machina",
+      "nameKo": "데우스 엑스 마키나",
+      "aliases": [
+        "Deus Ex Machina",
+        "DEM"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "overmind",
+      "nameKo": "오버마인드",
+      "aliases": [
+        "Overmind"
+      ],
+      "mapping": "existing_repo"
+    },
+    {
+      "id": "teleport",
+      "nameKo": "텔레포트",
+      "aliases": [
+        "Teleport"
+      ],
+      "mapping": "existing_repo"
+    }
+  ],
+  "ultimates": [
+    {
+      "id": "ascension",
+      "nameKo": "어센션",
+      "aliases": [
+        "Ascension"
+      ],
+      "mapping": "manual_check"
+    },
+    {
+      "id": "berserk",
+      "nameKo": "베르세르크",
+      "aliases": [
+        "Berserk"
+      ],
+      "mapping": "manual_check"
+    },
+    {
+      "id": "cosmos",
+      "nameKo": "코스모스",
+      "aliases": [
+        "Cosmos"
+      ],
+      "mapping": "manual_check"
+    },
+    {
+      "id": "hallucination",
+      "nameKo": "할루시네이션",
+      "aliases": [
+        "Hallucination"
+      ],
+      "mapping": "manual_check"
+    }
+  ],
+  "classes": [
+    {
+      "id": "bishop",
+      "nameKo": "비숍",
+      "aliases": [
+        "Bishop"
+      ],
+      "mapping": "manual_check"
+    },
+    {
+      "id": "battlemage",
+      "nameKo": "전투마법사",
+      "aliases": [
+        "Battlemage"
+      ],
+      "mapping": "manual_check"
+    }
+  ],
+  "subjects": [
+    {
+      "id": "archaeologist_subject",
+      "nameKo": "고고학자 실험체",
+      "aliases": [
+        "Archaeologist subject"
+      ],
+      "mapping": "manual_check"
+    },
+    {
+      "id": "jack_o_lantern",
+      "nameKo": "잭 오 랜턴",
+      "aliases": [
+        "Jack O' Lantern"
+      ],
+      "mapping": "manual_check"
+    }
+  ],
+  "activeSupport": [
+    {
+      "id": "shield_reconstruction",
+      "nameKo": "보호막 / 재구축"
+    },
+    {
+      "id": "cloaking_mirage",
+      "nameKo": "유체화 / 신기루"
+    },
+    {
+      "id": "frost_nova_absolute_zero",
+      "nameKo": "서릿발 / 절대영도"
+    },
+    {
+      "id": "blizzard_sub_zero",
+      "nameKo": "눈보라 / 혹한기"
+    },
+    {
+      "id": "tsunami_pole",
+      "nameKo": "해일 / 극점"
+    },
+    {
+      "id": "magic_circle_mana_release",
+      "nameKo": "마법진 / 마력 해방"
+    }
+  ],
+  "specialPassives": [
+    {
+      "id": "seal",
+      "nameKo": "봉인"
+    },
+    {
+      "id": "silent_casting",
+      "nameKo": "무언영창"
+    },
+    {
+      "id": "mana_factory",
+      "nameKo": "마나공장"
+    },
+    {
+      "id": "florist",
+      "nameKo": "플로리스트"
+    },
+    {
+      "id": "adrenaline",
+      "nameKo": "아드레날린"
+    },
+    {
+      "id": "pioneer",
+      "nameKo": "개척자"
+    },
+    {
+      "id": "noblesse",
+      "nameKo": "노블레스"
+    },
+    {
+      "id": "guardian_angel",
+      "nameKo": "수호천사"
+    },
+    {
+      "id": "timekeeper",
+      "nameKo": "타임키퍼"
+    },
+    {
+      "id": "juggernaut",
+      "nameKo": "저거넛"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "wraith",
+      "nameKo": "혼령",
+      "aliases": [
+        "Wraith",
+        "Spirit"
+      ],
+      "rarity": "epic"
+    },
+    {
+      "id": "barrier",
+      "nameKo": "결계",
+      "aliases": [
+        "Barrier"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "accelerator",
+      "nameKo": "엑셀러레이터",
+      "aliases": [
+        "Accelerator"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "ouroboros",
+      "nameKo": "우로보로스",
+      "aliases": [
+        "Ouroboros"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "cube",
+      "nameKo": "큐브",
+      "aliases": [
+        "Cube"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "akashic_records",
+      "nameKo": "아카식 레코드",
+      "aliases": [
+        "Akashic Records"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "reapers_scythe",
+      "nameKo": "사신의 낫",
+      "aliases": [
+        "Reaper's Scythe"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "eclipse",
+      "nameKo": "이클립스",
+      "aliases": [
+        "Eclipse"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "holy_chest",
+      "nameKo": "성궤",
+      "aliases": [
+        "Holy Chest"
+      ],
+      "rarity": "legendary",
+      "mapping": "community_name"
+    },
+    {
+      "id": "contract_box",
+      "nameKo": "계약의 상자",
+      "aliases": [
+        "Contract Box"
+      ],
+      "rarity": "legendary",
+      "mapping": "manual_check"
+    },
+    {
+      "id": "gaia",
+      "nameKo": "가이아",
+      "aliases": [
+        "Gaia"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "uranium",
+      "nameKo": "우라늄",
+      "aliases": [
+        "Uranium"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "titan",
+      "nameKo": "타이탄의 힘",
+      "aliases": [
+        "Titan"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "nexus",
+      "nameKo": "넥서스",
+      "aliases": [
+        "Nexus"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "transcendent",
+      "nameKo": "초월체",
+      "aliases": [
+        "Transcendent"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "dna",
+      "nameKo": "DNA",
+      "aliases": [
+        "DNA"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "crown",
+      "nameKo": "왕관",
+      "aliases": [
+        "Crown"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "magic_sword",
+      "nameKo": "마검",
+      "aliases": [
+        "Magic Sword"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "genome_map",
+      "nameKo": "게놈지도",
+      "aliases": [
+        "Genome Map"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "opulence",
+      "nameKo": "금은보화",
+      "aliases": [
+        "Opulence"
+      ],
+      "rarity": "legendary",
+      "mapping": "community_name_likely"
+    },
+    {
+      "id": "sacrosanct",
+      "nameKo": "신성불가침",
+      "aliases": [
+        "Sacrosanct"
+      ],
+      "rarity": "legendary"
+    },
+    {
+      "id": "roster",
+      "nameKo": "명부",
+      "aliases": [
+        "Roster"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "death_bell",
+      "nameKo": "죽음의 종",
+      "aliases": [
+        "Death Bell"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "toy_castle",
+      "nameKo": "장난감 성",
+      "aliases": [
+        "Toy Castle"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "fairy",
+      "nameKo": "페어리",
+      "aliases": [
+        "Fairy"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "werewolf",
+      "nameKo": "웨어울프",
+      "aliases": [
+        "Werewolf"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "hunter",
+      "nameKo": "사냥꾼",
+      "aliases": [
+        "Hunter"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "jet_engine",
+      "nameKo": "제트 엔진",
+      "aliases": [
+        "Jet Engine"
+      ],
+      "rarity": "special"
+    },
+    {
+      "id": "spell_backpack",
+      "nameKo": "주문 배낭",
+      "aliases": [
+        "Spell Backpack"
+      ],
+      "rarity": "normal",
+      "mapping": "manual_check"
+    },
+    {
+      "id": "sapphire",
+      "nameKo": "사파이어",
+      "aliases": [
+        "Sapphire"
+      ],
+      "rarity": "normal",
+      "mapping": "manual_check"
+    },
+    {
+      "id": "gear",
+      "nameKo": "톱니바퀴",
+      "aliases": [
+        "Gear"
+      ],
+      "rarity": "rare"
+    }
+  ],
+  "synergies": [
+    {
+      "id": "oracle",
+      "nameKo": "오라클"
+    },
+    {
+      "id": "wonderland",
+      "nameKo": "원더랜드"
+    },
+    {
+      "id": "magnum_opus",
+      "nameKo": "마그눔 오푸스",
+      "aliases": [
+        "MO"
+      ]
+    },
+    {
+      "id": "gravity",
+      "nameKo": "그래비티"
+    },
+    {
+      "id": "elixir",
+      "nameKo": "엘릭서"
+    },
+    {
+      "id": "steampunk",
+      "nameKo": "스팀펑크"
+    },
+    {
+      "id": "healing_factor",
+      "nameKo": "힐링 팩터"
+    },
+    {
+      "id": "blood_moon",
+      "nameKo": "블러드문"
+    },
+    {
+      "id": "requiem",
+      "nameKo": "레퀴엠"
+    },
+    {
+      "id": "chronos",
+      "nameKo": "크로노스"
+    },
+    {
+      "id": "paladin",
+      "nameKo": "팔라딘"
+    },
+    {
+      "id": "necromancer",
+      "nameKo": "네크로맨서"
+    },
+    {
+      "id": "zero_back",
+      "nameKo": "제로백"
+    },
+    {
+      "id": "red_dragon",
+      "nameKo": "레드드래곤"
+    }
+  ]
+}

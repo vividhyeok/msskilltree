@@ -1,7 +1,12 @@
 import { describe, it, expect } from "vitest";
 import { data, comboById, stageFor } from "../../data";
 import { emptyRun, completeCombination } from "../../engine";
-import { getNeededMagicForTargets, getFocusedMagicPaths, getSortedMagics, getRecommendedPlan } from "./selectors";
+import {
+  getNeededMagicForTargets,
+  getFocusedMagicPaths,
+  getSortedMagics,
+  getRecommendedPlan,
+} from "./selectors";
 
 describe("overview recommendations", () => {
   it("sorts invested magic first, unused next and consumed last, alphabetically within each group", () => {
@@ -9,9 +14,14 @@ describe("overview recommendations", () => {
     run.levels = { spirit: 3, thunderstorm: 1, fireball: 7 };
     run.completed = ["demon_equation"];
     const sorted = getSortedMagics(run);
-    expect(sorted.slice(0, 2).map(m => m.id)).toEqual(["thunderstorm", "spirit"]);
-    expect(new Set(sorted.slice(-2).map(m => m.id))).toEqual(new Set(["fireball", "energy_bolt"]));
-    const names = sorted.slice(2, -2).map(m => m.nameKo);
+    expect(sorted.slice(0, 2).map((m) => m.id)).toEqual([
+      "thunderstorm",
+      "spirit",
+    ]);
+    expect(new Set(sorted.slice(-2).map((m) => m.id))).toEqual(
+      new Set(["fireball", "energy_bolt"]),
+    );
+    const names = sorted.slice(2, -2).map((m) => m.nameKo);
     expect(names).toEqual([...names].sort((a, b) => a.localeCompare(b, "ko")));
   });
   it("produces an executable sequence with exact shared level costs without mutating the run", () => {
@@ -29,8 +39,15 @@ describe("overview recommendations", () => {
         const stage = r.traitId ? stageFor(r) : undefined;
         const level = Math.max(r.minLevel ?? 1, stage?.level ?? 1);
         cost += Math.max(0, level - (simulated.levels[r.magicId] ?? 0));
-        simulated.levels[r.magicId] = Math.max(level, simulated.levels[r.magicId] ?? 0);
-        if (stage && r.traitId) simulated.selectedTraits[r.magicId] = { ...simulated.selectedTraits[r.magicId], [stage.level]: r.traitId };
+        simulated.levels[r.magicId] = Math.max(
+          level,
+          simulated.levels[r.magicId] ?? 0,
+        );
+        if (stage && r.traitId)
+          simulated.selectedTraits[r.magicId] = {
+            ...simulated.selectedTraits[r.magicId],
+            [stage.level]: r.traitId,
+          };
       }
       simulated = completeCombination(simulated, step.id);
     }
@@ -39,7 +56,9 @@ describe("overview recommendations", () => {
   });
   it("returns no extra combinations after a blocking special combination", () => {
     const run = emptyRun();
-    const blocking = data.combinations.find(c => c.effects.some(e => e.type === "blockFurtherCombinations" && e.value))!;
+    const blocking = data.combinations.find((c) =>
+      c.effects.some((e) => e.type === "blockFurtherCombinations" && e.value),
+    )!;
     run.completed = [blocking.id];
     expect(getRecommendedPlan(run).steps).toEqual([]);
   });
@@ -69,7 +88,7 @@ describe("target shopping list", () => {
       getNeededMagicForTargets(run).every((n) => n.state === "blocked"),
     ).toBe(true);
   });
-  it("merges shared requirements with both target badges", () => {
+  it("separates shared requirements when their target roles differ", () => {
     const other = data.combinations.find(
       (c) =>
         c.id !== "demon_equation" &&
@@ -81,8 +100,11 @@ describe("target shopping list", () => {
     const needs = getNeededMagicForTargets(run).filter(
       (n) => n.magicId === "energy_bolt",
     );
-    expect(needs).toHaveLength(1);
-    expect(needs[0].targetCombinationIds).toEqual(run.pinned);
+    expect(needs).toHaveLength(2);
+    expect(new Set(needs.map((n) => n.role))).toEqual(
+      new Set(["carrier", "material"]),
+    );
+    expect(needs.flatMap((n) => n.targetCombinationIds)).toEqual(run.pinned);
   });
   it("marks completed materials consumed", () => {
     const run = target();

@@ -1,0 +1,123 @@
+[
+  {
+    "id": "ultimate_survival_pe",
+    "nameKo": "궁극기 + 생존 보조 + 무한동력",
+    "patch": "0.992",
+    "goals": [
+      "stable_pb",
+      "first_60m",
+      "60_to_80m",
+      "long_survival"
+    ],
+    "core": [
+      "ultimate:ascension_or_berserk_or_cosmos",
+      "combination:perpetual_engine"
+    ],
+    "commonSupport": [
+      "active:shield_reconstruction",
+      "active:cloaking_mirage",
+      "active:frost_nova_absolute_zero",
+      "active:blizzard_sub_zero",
+      "active:tsunami_pole"
+    ],
+    "confidence": "high",
+    "notesKo": "현재 가장 반복되는 안정형 생존 골격. 보조 조합은 Meissner/Glacium/Discharge/Pyrotechnics/Phoenix 등 목적에 따라 갈림.",
+    "sourceIds": [
+      "dc_80min_three_combo",
+      "dc_kiting_guide",
+      "reddit_jack_without_hallucination",
+      "reddit_special_artifact_meta"
+    ]
+  },
+  {
+    "id": "bishop_photon_survival",
+    "nameKo": "비숍 + 양자폭발 생존",
+    "patch": "0.992",
+    "goals": [
+      "personal_best",
+      "ultra_long_survival",
+      "record_run"
+    ],
+    "core": [
+      "class:bishop",
+      "combination:quantum_explosion"
+    ],
+    "recommended": [
+      "combination:perpetual_engine",
+      "stat:cooldown_reduction"
+    ],
+    "confidence": "high",
+    "notesKo": "Bishop이 Photon Explosion 이후에도 Shield를 유지하는 상호작용을 활용. 고점은 높지만 RNG/초반/카이팅 숙련 요구가 큼.",
+    "sourceIds": [
+      "reddit_bishop_jack",
+      "reddit_photon_pe",
+      "reddit_bishop_photon_question",
+      "reddit_build_optimize_sep5"
+    ]
+  },
+  {
+    "id": "three_combo_kiting",
+    "nameKo": "3조합 카이팅 기록런",
+    "patch": "0.992",
+    "goals": [
+      "80m_plus",
+      "record_run"
+    ],
+    "core": [
+      "survivability",
+      "cooldown",
+      "movement",
+      "crowd_control",
+      "execution_effects"
+    ],
+    "confidence": "high",
+    "notesKo": "후반 적을 순수 딜로 녹이기보다 무적·회피·이속·빙결/감속·처형 효과로 넘기는 철학.",
+    "sourceIds": [
+      "dc_80min_three_combo",
+      "dc_kiting_guide",
+      "reddit_special_artifact_meta"
+    ]
+  },
+  {
+    "id": "dem_single_damage",
+    "nameKo": "데우스 엑스 마키나 집중형",
+    "patch": "0.992",
+    "goals": [
+      "farm",
+      "simple_build",
+      "damage_focus"
+    ],
+    "core": [
+      "combination:deus_ex_machina"
+    ],
+    "confidence": "medium_high",
+    "notesKo": "간단/파밍/화력 집중에는 실용적이나 최근 최고기록 커뮤니티에서는 지원마법 상실 때문에 생존형보다 낮게 보는 경향.",
+    "sourceIds": [
+      "dc_kiting_guide",
+      "dc_legendary_priority",
+      "reddit_meta_50plus",
+      "atwiki_artifact_tier"
+    ]
+  },
+  {
+    "id": "fast_farm",
+    "nameKo": "빠른 파밍 / 반복런",
+    "patch": "0.992",
+    "goals": [
+      "gems",
+      "currency",
+      "low_attention"
+    ],
+    "core": [
+      "fast_first_combination",
+      "pickup_range",
+      "economy"
+    ],
+    "confidence": "medium",
+    "notesKo": "PB와 다른 평가축. 빠른 완성/획득범위/경제/저관여가 중요.",
+    "sourceIds": [
+      "atwiki_build_records",
+      "reddit_patch_0993"
+    ]
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "early",
+    "nameKo": "초반",
+    "timeRangeMin": [
+      0,
+      15
+    ],
+    "notesKo": "첫 조합/레벨링/상점 경제와 생존 기반. 맵/패치에 따라 경계 변동."
+  },
+  {
+    "id": "mid",
+    "nameKo": "중반",
+    "timeRangeMin": [
+      15,
+      40
+    ],
+    "notesKo": "조합/지원 완성과 핵심 AF·시너지 수집."
+  },
+  {
+    "id": "late",
+    "nameKo": "후반",
+    "timeRangeMin": [
+      40,
+      60
+    ],
+    "notesKo": "생존/CC/AF 가동률 가치가 더 커지는 구간."
+  },
+  {
+    "id": "ultra_late",
+    "nameKo": "고기록 후반",
+    "timeRangeMin": [
+      60,
+      null
+    ],
+    "notesKo": "카이팅·무적·처형/정화·AF 쿨다운 관리 비중이 매우 높음."
+  }
+]

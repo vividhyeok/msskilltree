@@ -94,7 +94,9 @@ test("saved build glance, inspect versus record, traits, completion, locks, undo
   ).toBeVisible();
   await expect(need.locator('[data-need-magic="energy_bolt"]')).toHaveCount(0);
   await page.getByRole("button", { name: "데몬 방정식 조합 완료" }).click();
-  await expect(tile(page, "fireball")).toContainText("✓ 조합됨");
+  await expect(tile(page, "fireball")).toContainText("→ 승계");
+  await expect(tile(page, "energy_bolt")).toContainText("× 병합·소멸");
+  await expect(tile(page, "energy_bolt").locator(".tile-add")).toHaveCount(0);
   await expect(page.locator(".slots")).toContainText("1");
   await expect(page.locator(".path-pin")).toHaveCount(0);
   await page.getByRole("button", { name: "되돌리기" }).click();
@@ -110,11 +112,14 @@ test("saved build glance, inspect versus record, traits, completion, locks, undo
       })),
     ),
   ).not.toEqual(before);
-  await expect(page.locator(".magic-tile").first()).toHaveAttribute("data-magic-id", "energy_bolt");
-  await expect(page.getByText("현재 레벨 기반 조합 추천")).toBeVisible();
+  await expect(page.locator(".magic-tile").first()).toHaveAttribute(
+    "data-magic-id",
+    "energy_bolt",
+  );
+  await expect(page.locator(".growth-plan > summary")).toBeVisible();
   await page.getByRole("button", { name: "화염구 경로 보기" }).click();
   await page.getByRole("button", { name: "전체 추천", exact: true }).click();
-  await expect(page.getByText("현재 레벨 기반 조합 추천")).toBeVisible();
+  await expect(page.locator(".growth-plan > summary")).toBeVisible();
   await menu(page, "저장한 빌드");
   await page.getByPlaceholder("예: 번개 빌드").fill("검증 빌드");
   await page.getByRole("button", { name: "현재 목표를 빌드로 저장" }).click();

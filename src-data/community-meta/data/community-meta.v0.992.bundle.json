@@ -1,0 +1,2097 @@
+{
+  "patchMetadata": {
+    "datasetVersion": "meta-v1.0",
+    "createdAt": "2026-09-06",
+    "targetGameVersion": "0.992",
+    "status": "snapshot_at_risk_of_immediate_staleness",
+    "nextPatchWatch": {
+      "version": "0.993",
+      "reportedReleaseDate": "2026-09-07",
+      "sourceIds": [
+        "reddit_patch_0993",
+        "reddit_patchnotes_0993"
+      ],
+      "action": "release 확인 즉시 모든 meta rule을 still_valid/changed/unknown/obsolete로 재검증"
+    },
+    "coverage": {
+      "naverCafe": "direct crawl unavailable",
+      "discord": "direct crawl unavailable; indirect through public community sources"
+    },
+    "important": "deterministic game facts와 community meta를 분리해서 사용."
+  },
+  "taxonomy": {
+    "goals": [
+      "farm",
+      "first_60m",
+      "stable_pb",
+      "long_survival",
+      "80m_plus",
+      "record_run",
+      "experimental"
+    ],
+    "decisionTypes": [
+      "magic_choice",
+      "trait_choice",
+      "combination_goal",
+      "artifact_choice",
+      "synergy_chase",
+      "special_passive_choice",
+      "research_priority",
+      "build_setup"
+    ],
+    "confidence": [
+      "high",
+      "medium_high",
+      "medium",
+      "medium_low",
+      "low"
+    ],
+    "principles": [
+      "deterministic 가능성 판정과 meta 추천 분리",
+      "patch/context 없는 flat tier 금지",
+      "반대 의견을 caveat로 보존",
+      "추천 이유와 provenance 유지"
+    ]
+  },
+  "entities": {
+    "combinations": [
+      {
+        "id": "perpetual_engine",
+        "nameKo": "무한동력",
+        "aliases": [
+          "Perpetual Engine",
+          "PE"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "quantum_explosion",
+        "nameKo": "양자폭발",
+        "aliases": [
+          "Photon Explosion"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "meissner_effect",
+        "nameKo": "마이스너 효과",
+        "aliases": [
+          "Meissner Effect"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "glacium",
+        "nameKo": "글레이시움",
+        "aliases": [
+          "Glacium"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "discharge",
+        "nameKo": "디스차지",
+        "aliases": [
+          "Discharge"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "fireworks_combination",
+        "nameKo": "불꽃놀이",
+        "aliases": [
+          "Pyrotechnics",
+          "Fireworks"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "blaster",
+        "nameKo": "블래스터",
+        "aliases": [
+          "Blaster"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "phoenix",
+        "nameKo": "불사조",
+        "aliases": [
+          "Phoenix"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "deus_ex_machina",
+        "nameKo": "데우스 엑스 마키나",
+        "aliases": [
+          "Deus Ex Machina",
+          "DEM"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "overmind",
+        "nameKo": "오버마인드",
+        "aliases": [
+          "Overmind"
+        ],
+        "mapping": "existing_repo"
+      },
+      {
+        "id": "teleport",
+        "nameKo": "텔레포트",
+        "aliases": [
+          "Teleport"
+        ],
+        "mapping": "existing_repo"
+      }
+    ],
+    "ultimates": [
+      {
+        "id": "ascension",
+        "nameKo": "어센션",
+        "aliases": [
+          "Ascension"
+        ],
+        "mapping": "manual_check"
+      },
+      {
+        "id": "berserk",
+        "nameKo": "베르세르크",
+        "aliases": [
+          "Berserk"
+        ],
+        "mapping": "manual_check"
+      },
+      {
+        "id": "cosmos",
+        "nameKo": "코스모스",
+        "aliases": [
+          "Cosmos"
+        ],
+        "mapping": "manual_check"
+      },
+      {
+        "id": "hallucination",
+        "nameKo": "할루시네이션",
+        "aliases": [
+          "Hallucination"
+        ],
+        "mapping": "manual_check"
+      }
+    ],
+    "classes": [
+      {
+        "id": "bishop",
+        "nameKo": "비숍",
+        "aliases": [
+          "Bishop"
+        ],
+        "mapping": "manual_check"
+      },
+      {
+        "id": "battlemage",
+        "nameKo": "전투마법사",
+        "aliases": [
+          "Battlemage"
+        ],
+        "mapping": "manual_check"
+      }
+    ],
+    "subjects": [
+      {
+        "id": "archaeologist_subject",
+        "nameKo": "고고학자 실험체",
+        "aliases": [
+          "Archaeologist subject"
+        ],
+        "mapping": "manual_check"
+      },
+      {
+        "id": "jack_o_lantern",
+        "nameKo": "잭 오 랜턴",
+        "aliases": [
+          "Jack O' Lantern"
+        ],
+        "mapping": "manual_check"
+      }
+    ],
+    "activeSupport": [
+      {
+        "id": "shield_reconstruction",
+        "nameKo": "보호막 / 재구축"
+      },
+      {
+        "id": "cloaking_mirage",
+        "nameKo": "유체화 / 신기루"
+      },
+      {
+        "id": "frost_nova_absolute_zero",
+        "nameKo": "서릿발 / 절대영도"
+      },
+      {
+        "id": "blizzard_sub_zero",
+        "nameKo": "눈보라 / 혹한기"
+      },
+      {
+        "id": "tsunami_pole",
+        "nameKo": "해일 / 극점"
+      },
+      {
+        "id": "magic_circle_mana_release",
+        "nameKo": "마법진 / 마력 해방"
+      }
+    ],
+    "specialPassives": [
+      {
+        "id": "seal",
+        "nameKo": "봉인"
+      },
+      {
+        "id": "silent_casting",
+        "nameKo": "무언영창"
+      },
+      {
+        "id": "mana_factory",
+        "nameKo": "마나공장"
+      },
+      {
+        "id": "florist",
+        "nameKo": "플로리스트"
+      },
+      {
+        "id": "adrenaline",
+        "nameKo": "아드레날린"
+      },
+      {
+        "id": "pioneer",
+        "nameKo": "개척자"
+      },
+      {
+        "id": "noblesse",
+        "nameKo": "노블레스"
+      },
+      {
+        "id": "guardian_angel",
+        "nameKo": "수호천사"
+      },
+      {
+        "id": "timekeeper",
+        "nameKo": "타임키퍼"
+      },
+      {
+        "id": "juggernaut",
+        "nameKo": "저거넛"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": "wraith",
+        "nameKo": "혼령",
+        "aliases": [
+          "Wraith",
+          "Spirit"
+        ],
+        "rarity": "epic"
+      },
+      {
+        "id": "barrier",
+        "nameKo": "결계",
+        "aliases": [
+          "Barrier"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "accelerator",
+        "nameKo": "엑셀러레이터",
+        "aliases": [
+          "Accelerator"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "ouroboros",
+        "nameKo": "우로보로스",
+        "aliases": [
+          "Ouroboros"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "cube",
+        "nameKo": "큐브",
+        "aliases": [
+          "Cube"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "akashic_records",
+        "nameKo": "아카식 레코드",
+        "aliases": [
+          "Akashic Records"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "reapers_scythe",
+        "nameKo": "사신의 낫",
+        "aliases": [
+          "Reaper's Scythe"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "eclipse",
+        "nameKo": "이클립스",
+        "aliases": [
+          "Eclipse"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "holy_chest",
+        "nameKo": "성궤",
+        "aliases": [
+          "Holy Chest"
+        ],
+        "rarity": "legendary",
+        "mapping": "community_name"
+      },
+      {
+        "id": "contract_box",
+        "nameKo": "계약의 상자",
+        "aliases": [
+          "Contract Box"
+        ],
+        "rarity": "legendary",
+        "mapping": "manual_check"
+      },
+      {
+        "id": "gaia",
+        "nameKo": "가이아",
+        "aliases": [
+          "Gaia"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "uranium",
+        "nameKo": "우라늄",
+        "aliases": [
+          "Uranium"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "titan",
+        "nameKo": "타이탄의 힘",
+        "aliases": [
+          "Titan"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "nexus",
+        "nameKo": "넥서스",
+        "aliases": [
+          "Nexus"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "transcendent",
+        "nameKo": "초월체",
+        "aliases": [
+          "Transcendent"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "dna",
+        "nameKo": "DNA",
+        "aliases": [
+          "DNA"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "crown",
+        "nameKo": "왕관",
+        "aliases": [
+          "Crown"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "magic_sword",
+        "nameKo": "마검",
+        "aliases": [
+          "Magic Sword"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "genome_map",
+        "nameKo": "게놈지도",
+        "aliases": [
+          "Genome Map"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "opulence",
+        "nameKo": "금은보화",
+        "aliases": [
+          "Opulence"
+        ],
+        "rarity": "legendary",
+        "mapping": "community_name_likely"
+      },
+      {
+        "id": "sacrosanct",
+        "nameKo": "신성불가침",
+        "aliases": [
+          "Sacrosanct"
+        ],
+        "rarity": "legendary"
+      },
+      {
+        "id": "roster",
+        "nameKo": "명부",
+        "aliases": [
+          "Roster"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "death_bell",
+        "nameKo": "죽음의 종",
+        "aliases": [
+          "Death Bell"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "toy_castle",
+        "nameKo": "장난감 성",
+        "aliases": [
+          "Toy Castle"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "fairy",
+        "nameKo": "페어리",
+        "aliases": [
+          "Fairy"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "werewolf",
+        "nameKo": "웨어울프",
+        "aliases": [
+          "Werewolf"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "hunter",
+        "nameKo": "사냥꾼",
+        "aliases": [
+          "Hunter"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "jet_engine",
+        "nameKo": "제트 엔진",
+        "aliases": [
+          "Jet Engine"
+        ],
+        "rarity": "special"
+      },
+      {
+        "id": "spell_backpack",
+        "nameKo": "주문 배낭",
+        "aliases": [
+          "Spell Backpack"
+        ],
+        "rarity": "normal",
+        "mapping": "manual_check"
+      },
+      {
+        "id": "sapphire",
+        "nameKo": "사파이어",
+        "aliases": [
+          "Sapphire"
+        ],
+        "rarity": "normal",
+        "mapping": "manual_check"
+      },
+      {
+        "id": "gear",
+        "nameKo": "톱니바퀴",
+        "aliases": [
+          "Gear"
+        ],
+        "rarity": "rare"
+      }
+    ],
+    "synergies": [
+      {
+        "id": "oracle",
+        "nameKo": "오라클"
+      },
+      {
+        "id": "wonderland",
+        "nameKo": "원더랜드"
+      },
+      {
+        "id": "magnum_opus",
+        "nameKo": "마그눔 오푸스",
+        "aliases": [
+          "MO"
+        ]
+      },
+      {
+        "id": "gravity",
+        "nameKo": "그래비티"
+      },
+      {
+        "id": "elixir",
+        "nameKo": "엘릭서"
+      },
+      {
+        "id": "steampunk",
+        "nameKo": "스팀펑크"
+      },
+      {
+        "id": "healing_factor",
+        "nameKo": "힐링 팩터"
+      },
+      {
+        "id": "blood_moon",
+        "nameKo": "블러드문"
+      },
+      {
+        "id": "requiem",
+        "nameKo": "레퀴엠"
+      },
+      {
+        "id": "chronos",
+        "nameKo": "크로노스"
+      },
+      {
+        "id": "paladin",
+        "nameKo": "팔라딘"
+      },
+      {
+        "id": "necromancer",
+        "nameKo": "네크로맨서"
+      },
+      {
+        "id": "zero_back",
+        "nameKo": "제로백"
+      },
+      {
+        "id": "red_dragon",
+        "nameKo": "레드드래곤"
+      }
+    ]
+  },
+  "archetypes": [
+    {
+      "id": "ultimate_survival_pe",
+      "nameKo": "궁극기 + 생존 보조 + 무한동력",
+      "patch": "0.992",
+      "goals": [
+        "stable_pb",
+        "first_60m",
+        "60_to_80m",
+        "long_survival"
+      ],
+      "core": [
+        "ultimate:ascension_or_berserk_or_cosmos",
+        "combination:perpetual_engine"
+      ],
+      "commonSupport": [
+        "active:shield_reconstruction",
+        "active:cloaking_mirage",
+        "active:frost_nova_absolute_zero",
+        "active:blizzard_sub_zero",
+        "active:tsunami_pole"
+      ],
+      "confidence": "high",
+      "notesKo": "현재 가장 반복되는 안정형 생존 골격. 보조 조합은 Meissner/Glacium/Discharge/Pyrotechnics/Phoenix 등 목적에 따라 갈림.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "reddit_jack_without_hallucination",
+        "reddit_special_artifact_meta"
+      ]
+    },
+    {
+      "id": "bishop_photon_survival",
+      "nameKo": "비숍 + 양자폭발 생존",
+      "patch": "0.992",
+      "goals": [
+        "personal_best",
+        "ultra_long_survival",
+        "record_run"
+      ],
+      "core": [
+        "class:bishop",
+        "combination:quantum_explosion"
+      ],
+      "recommended": [
+        "combination:perpetual_engine",
+        "stat:cooldown_reduction"
+      ],
+      "confidence": "high",
+      "notesKo": "Bishop이 Photon Explosion 이후에도 Shield를 유지하는 상호작용을 활용. 고점은 높지만 RNG/초반/카이팅 숙련 요구가 큼.",
+      "sourceIds": [
+        "reddit_bishop_jack",
+        "reddit_photon_pe",
+        "reddit_bishop_photon_question",
+        "reddit_build_optimize_sep5"
+      ]
+    },
+    {
+      "id": "three_combo_kiting",
+      "nameKo": "3조합 카이팅 기록런",
+      "patch": "0.992",
+      "goals": [
+        "80m_plus",
+        "record_run"
+      ],
+      "core": [
+        "survivability",
+        "cooldown",
+        "movement",
+        "crowd_control",
+        "execution_effects"
+      ],
+      "confidence": "high",
+      "notesKo": "후반 적을 순수 딜로 녹이기보다 무적·회피·이속·빙결/감속·처형 효과로 넘기는 철학.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "reddit_special_artifact_meta"
+      ]
+    },
+    {
+      "id": "dem_single_damage",
+      "nameKo": "데우스 엑스 마키나 집중형",
+      "patch": "0.992",
+      "goals": [
+        "farm",
+        "simple_build",
+        "damage_focus"
+      ],
+      "core": [
+        "combination:deus_ex_machina"
+      ],
+      "confidence": "medium_high",
+      "notesKo": "간단/파밍/화력 집중에는 실용적이나 최근 최고기록 커뮤니티에서는 지원마법 상실 때문에 생존형보다 낮게 보는 경향.",
+      "sourceIds": [
+        "dc_kiting_guide",
+        "dc_legendary_priority",
+        "reddit_meta_50plus",
+        "atwiki_artifact_tier"
+      ]
+    },
+    {
+      "id": "fast_farm",
+      "nameKo": "빠른 파밍 / 반복런",
+      "patch": "0.992",
+      "goals": [
+        "gems",
+        "currency",
+        "low_attention"
+      ],
+      "core": [
+        "fast_first_combination",
+        "pickup_range",
+        "economy"
+      ],
+      "confidence": "medium",
+      "notesKo": "PB와 다른 평가축. 빠른 완성/획득범위/경제/저관여가 중요.",
+      "sourceIds": [
+        "atwiki_build_records",
+        "reddit_patch_0993"
+      ]
+    }
+  ],
+  "phaseRules": [
+    {
+      "id": "early",
+      "nameKo": "초반",
+      "timeRangeMin": [
+        0,
+        15
+      ],
+      "notesKo": "첫 조합/레벨링/상점 경제와 생존 기반. 맵/패치에 따라 경계 변동."
+    },
+    {
+      "id": "mid",
+      "nameKo": "중반",
+      "timeRangeMin": [
+        15,
+        40
+      ],
+      "notesKo": "조합/지원 완성과 핵심 AF·시너지 수집."
+    },
+    {
+      "id": "late",
+      "nameKo": "후반",
+      "timeRangeMin": [
+        40,
+        60
+      ],
+      "notesKo": "생존/CC/AF 가동률 가치가 더 커지는 구간."
+    },
+    {
+      "id": "ultra_late",
+      "nameKo": "고기록 후반",
+      "timeRangeMin": [
+        60,
+        null
+      ],
+      "notesKo": "카이팅·무적·처형/정화·AF 쿨다운 관리 비중이 매우 높음."
+    }
+  ],
+  "metaRules": [
+    {
+      "id": "survival_meta_over_damage",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "strategy",
+        "id": "survivability_over_raw_damage"
+      },
+      "relation": "prefer",
+      "context": {
+        "goal": [
+          "long_survival",
+          "personal_best",
+          "80m_plus"
+        ],
+        "phase": [
+          "late",
+          "ultra_late"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "장기기록에서는 순수 화력보다 무적/회피/CDR/이동/CC/처형 효과가 더 반복적으로 강조된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "reddit_special_artifact_meta"
+      ]
+    },
+    {
+      "id": "pe_core_long_survival",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "combination",
+        "id": "perpetual_engine"
+      },
+      "relation": "core_for_archetype",
+      "context": {
+        "archetype": [
+          "ultimate_survival_pe",
+          "bishop_photon_survival"
+        ],
+        "goal": [
+          "long_survival",
+          "personal_best"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "무한동력의 쿨감/증폭이 보호막·유체화 가동률과 장기 생존을 뒷받침한다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "reddit_photon_pe",
+        "reddit_special_artifact_meta",
+        "reddit_jack_without_hallucination"
+      ]
+    },
+    {
+      "id": "bishop_photon_direct_synergy",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "pair",
+        "members": [
+          "class:bishop",
+          "combination:quantum_explosion"
+        ]
+      },
+      "relation": "direct_synergy",
+      "context": {
+        "goal": [
+          "long_survival",
+          "personal_best"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "Bishop이 Photon Explosion 이후에도 Shield를 유지해 조합의 쿨감/파괴장 강화와 결합된다.",
+      "sourceIds": [
+        "reddit_bishop_jack",
+        "reddit_photon_pe",
+        "reddit_build_optimize_sep5",
+        "reddit_bishop_photon_question"
+      ]
+    },
+    {
+      "id": "bishop_high_skill_rng",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "archetype",
+        "id": "bishop_photon_survival"
+      },
+      "relation": "difficulty_warning",
+      "context": {
+        "goal": [
+          "first_60m",
+          "beginner"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "medium_high",
+      "rationaleKo": "극고점 잠재력과 별개로 초반 안정화·카이팅·AF RNG 요구가 높다.",
+      "sourceIds": [
+        "reddit_jack_without_hallucination",
+        "reddit_bishop_howto"
+      ]
+    },
+    {
+      "id": "ascension_pe_reliable",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "ultimate",
+        "id": "ascension"
+      },
+      "relation": "recommended_with",
+      "context": {
+        "archetype": [
+          "ultimate_survival_pe"
+        ],
+        "goal": [
+          "first_60m",
+          "stable_pb"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "한국 80분 가이드와 최신 Reddit 모두 Ascension을 안정적인 궁극기 축으로 반복 언급한다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "reddit_jack_without_hallucination"
+      ]
+    },
+    {
+      "id": "berserk_cosmos_alternatives",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "set",
+        "members": [
+          "ultimate:berserk",
+          "ultimate:cosmos"
+        ]
+      },
+      "relation": "strong_alternatives",
+      "context": {
+        "archetype": [
+          "ultimate_survival_pe"
+        ],
+        "goal": [
+          "long_survival"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "medium_high",
+      "rationaleKo": "Berserk/Ascension/Cosmos가 v0.992 장기생존 상위 궁극기 후보로 반복 등장한다.",
+      "sourceIds": [
+        "dc_kiting_guide",
+        "atwiki_magic_tier",
+        "reddit_special_artifact_meta"
+      ]
+    },
+    {
+      "id": "mirage_over_hallucination_record",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "active",
+        "id": "cloaking_mirage"
+      },
+      "relation": "prefer_over",
+      "context": {
+        "alternative": "ultimate:hallucination",
+        "archetype": [
+          "bishop_photon_survival"
+        ],
+        "goal": [
+          "ultra_long_survival",
+          "record_run"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium",
+      "rationaleKo": "일부 최신 고기록 유저는 Hallucination의 이동 정지/복귀 위험 때문에 Mirage를 선호한다.",
+      "sourceIds": [
+        "reddit_jack_without_hallucination"
+      ],
+      "caveatKo": "Hallucination은 저관여 파밍에 장점이 있다는 사례도 있음."
+    },
+    {
+      "id": "meissner_context",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "combination",
+        "id": "meissner_effect"
+      },
+      "relation": "support_option",
+      "context": {
+        "archetype": [
+          "ultimate_survival_pe"
+        ],
+        "phase": [
+          "early",
+          "mid"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium",
+      "rationaleKo": "Meissner의 CC/증폭/Roster 연계가 장점이나 피해량·후반 효율에 반론이 있다.",
+      "sourceIds": [
+        "reddit_updated_meta_testing",
+        "reddit_jack_without_hallucination"
+      ],
+      "caveatKo": "절대추천 금지: 의견 갈림."
+    },
+    {
+      "id": "glacium_context",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "combination",
+        "id": "glacium"
+      },
+      "relation": "support_option",
+      "context": {
+        "archetype": [
+          "ultimate_survival_pe"
+        ],
+        "goal": [
+          "long_survival"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium",
+      "rationaleKo": "강한 CC 후보지만 기본 Frost Nova/Tsunami 빙결을 희생하는 기회비용으로 후반 평가는 엇갈린다.",
+      "sourceIds": [
+        "reddit_jack_without_hallucination",
+        "dc_kiting_guide"
+      ]
+    },
+    {
+      "id": "bishop_damage_slot",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "set",
+        "members": [
+          "combination:fireworks_combination",
+          "combination:discharge",
+          "combination:phoenix"
+        ]
+      },
+      "relation": "damage_slot_candidates",
+      "context": {
+        "archetype": [
+          "bishop_photon_survival"
+        ],
+        "phase": [
+          "early",
+          "mid"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium",
+      "rationaleKo": "Bishop Photon 계열은 초중반 클리어용 추가 피해조합을 넣는 선택이 반복된다.",
+      "sourceIds": [
+        "reddit_photon_pe",
+        "reddit_opulence_mo",
+        "reddit_jack_without_hallucination"
+      ]
+    },
+    {
+      "id": "shield_reconstruction_core",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "active",
+        "id": "shield_reconstruction"
+      },
+      "relation": "core_support",
+      "context": {
+        "archetype": [
+          "three_combo_kiting",
+          "ultimate_survival_pe"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "보호막 재구축은 장기생존 가이드에서 표준 지원 선택으로 반복된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "dc_three_combo_utility"
+      ]
+    },
+    {
+      "id": "cloaking_mirage_core",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "active",
+        "id": "cloaking_mirage"
+      },
+      "relation": "core_support",
+      "context": {
+        "archetype": [
+          "three_combo_kiting",
+          "ultimate_survival_pe"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "유체화 신기루는 무적·회복·재배치·쿨다운 확보 수단으로 핵심 취급된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "dc_three_combo_utility"
+      ]
+    },
+    {
+      "id": "frost_nova_core",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "active",
+        "id": "frost_nova_absolute_zero"
+      },
+      "relation": "core_support",
+      "context": {
+        "archetype": [
+          "three_combo_kiting",
+          "ultimate_survival_pe"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "절대영도 서릿발은 카이팅용 CC로 반복 추천된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide"
+      ]
+    },
+    {
+      "id": "blizzard_core",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "active",
+        "id": "blizzard_sub_zero"
+      },
+      "relation": "core_support",
+      "context": {
+        "archetype": [
+          "three_combo_kiting",
+          "ultimate_survival_pe"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "혹한기 눈보라는 적 이동 제어를 위한 표준 생존 지원으로 반복 추천된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide"
+      ]
+    },
+    {
+      "id": "tsunami_support",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "active",
+        "id": "tsunami_pole"
+      },
+      "relation": "support",
+      "context": {
+        "archetype": [
+          "three_combo_kiting",
+          "ultimate_survival_pe"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium_high",
+      "rationaleKo": "극점 해일은 빙결 지원으로 자주 들어가지만 상대적 효과 평가는 조금 낮다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide"
+      ]
+    },
+    {
+      "id": "move_speed_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "stat",
+        "id": "move_speed"
+      },
+      "relation": "prioritize",
+      "context": {
+        "goal": [
+          "long_survival",
+          "kiting"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "카이팅, 룬/상점/오브 회수, 포위 탈출 모두에 기여한다.",
+      "sourceIds": [
+        "dc_kiting_guide",
+        "dc_80min_three_combo",
+        "dc_research_order"
+      ]
+    },
+    {
+      "id": "cdr_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "stat",
+        "id": "cooldown_reduction"
+      },
+      "relation": "prioritize",
+      "context": {
+        "goal": [
+          "long_survival",
+          "kiting"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "Shield/Cloaking/CC/AF 가동률에 직접 연결된다.",
+      "sourceIds": [
+        "dc_kiting_guide",
+        "reddit_special_artifact_meta",
+        "reddit_photon_pe"
+      ]
+    },
+    {
+      "id": "duration_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "stat",
+        "id": "duration"
+      },
+      "relation": "prioritize",
+      "context": {
+        "goal": [
+          "long_survival",
+          "kiting"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "high",
+      "rationaleKo": "유체화/제어 지속시간과 연결되어 생존형에서 반복 추천된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "dc_research_order"
+      ]
+    },
+    {
+      "id": "pickup_range_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "stat",
+        "id": "pickup_range"
+      },
+      "relation": "prioritize",
+      "context": {
+        "phase": [
+          "early",
+          "mid"
+        ],
+        "goal": [
+          "long_survival",
+          "farm"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "레벨 완성도와 파밍/상점 운영 효율에 직접 기여한다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_research_order",
+        "reddit_bishop_howto"
+      ]
+    },
+    {
+      "id": "seal_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "special_passive",
+        "id": "seal"
+      },
+      "relation": "prioritize",
+      "context": {
+        "goal": [
+          "long_survival",
+          "kiting"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "적 이동속도 감소가 카이팅에 직접 기여하며 한·일 자료에서 모두 고평가된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "atwiki_magic_tier"
+      ]
+    },
+    {
+      "id": "silent_cast_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "special_passive",
+        "id": "silent_casting"
+      },
+      "relation": "prioritize",
+      "context": {
+        "goal": [
+          "long_survival"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "전 마법 쿨다운 감소가 생존형 핵심 자원과 직접 연결된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "atwiki_magic_tier"
+      ]
+    },
+    {
+      "id": "mana_factory_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "special_passive",
+        "id": "mana_factory"
+      },
+      "relation": "prioritize",
+      "context": {
+        "phase": [
+          "early",
+          "mid"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "마나/레벨 완성도를 크게 높이는 특수 패시브로 반복 고평가된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "atwiki_magic_tier",
+        "reddit_updated_meta_testing"
+      ]
+    },
+    {
+      "id": "florist_high",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "special_passive",
+        "id": "florist"
+      },
+      "relation": "prioritize",
+      "context": {
+        "phase": [
+          "early",
+          "mid"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "medium_high",
+      "rationaleKo": "상점 할인으로 필요한 AF 확보 경제를 개선한다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "atwiki_magic_tier"
+      ]
+    },
+    {
+      "id": "wraith_core",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "wraith"
+      },
+      "relation": "near_core",
+      "context": {
+        "archetype": [
+          "three_combo_kiting"
+        ],
+        "goal": [
+          "80m_plus",
+          "record_run"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "한국 80분 가이드는 혼령을 3조합 핵심으로 극찬하고 일본 기록런 필수 목록에도 포함한다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "atwiki_artifact_tier"
+      ]
+    },
+    {
+      "id": "barrier_core_late",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "barrier"
+      },
+      "relation": "near_core",
+      "context": {
+        "goal": [
+          "80m_plus",
+          "record_run"
+        ],
+        "phase": [
+          "late",
+          "ultra_late"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "후반 단발 피격이 치명적인 환경에서 결계가 핵심 생존 AF로 반복 평가된다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "dc_kiting_guide",
+        "atwiki_artifact_tier"
+      ]
+    },
+    {
+      "id": "accelerator_ouroboros",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "set",
+        "members": [
+          "artifact:accelerator",
+          "artifact:ouroboros"
+        ]
+      },
+      "relation": "high_value",
+      "context": {
+        "archetype": [
+          "three_combo_kiting",
+          "ultimate_survival_pe",
+          "bishop_photon_survival"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "쿨감 중심 생존 빌드에서 둘 다 상위 가치로 반복 등장한다.",
+      "sourceIds": [
+        "dc_legendary_priority",
+        "dc_kiting_guide",
+        "atwiki_artifact_tier"
+      ]
+    },
+    {
+      "id": "execution_late",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "set",
+        "members": [
+          "artifact:reapers_scythe",
+          "artifact:roster",
+          "artifact:death_bell",
+          "synergy:requiem"
+        ]
+      },
+      "relation": "late_game_value",
+      "context": {
+        "phase": [
+          "ultra_late"
+        ],
+        "goal": [
+          "80m_plus",
+          "record_run"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "후반 직접 화력보다 즉사/처형/정화 효과의 웨이브 돌파 가치가 커진다.",
+      "sourceIds": [
+        "dc_kiting_guide",
+        "reddit_special_artifact_meta",
+        "reddit_jack_without_hallucination"
+      ]
+    },
+    {
+      "id": "mo_power_not_force",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "synergy",
+        "id": "magnum_opus"
+      },
+      "relation": "powerful_but_do_not_force",
+      "context": {
+        "goal": [
+          "long_survival",
+          "record_run"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "MO는 시너지 요구 수를 낮춰 고점이 크지만 RNG가 높아 강한 단품을 버리며 무리하게 추격하지 말라는 원칙도 반복된다.",
+      "sourceIds": [
+        "atwiki_faq",
+        "dc_kiting_guide",
+        "reddit_magnum_opus_explain",
+        "reddit_special_artifact_meta"
+      ]
+    },
+    {
+      "id": "synergy_proximity",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "strategy",
+        "id": "synergy_completion_proximity"
+      },
+      "relation": "decision_rule",
+      "context": {
+        "decision": "artifact_choice"
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "고희귀 핵심 재료를 이미 보유하고 완성이 가까울수록 남은 시너지 재료 가치가 상승한다. 멀면 강한 단품을 우선.",
+      "sourceIds": [
+        "atwiki_faq"
+      ]
+    },
+    {
+      "id": "record_synergy_core",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "set",
+        "members": [
+          "synergy:oracle",
+          "synergy:wonderland",
+          "synergy:gravity",
+          "synergy:healing_factor",
+          "synergy:steampunk",
+          "synergy:blood_moon"
+        ]
+      },
+      "relation": "high_value",
+      "context": {
+        "goal": [
+          "record_run",
+          "80m_plus"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "한국 80분 가이드 1티어와 일본 기록런 필수 목록이 크게 겹친다.",
+      "sourceIds": [
+        "dc_80min_three_combo",
+        "atwiki_artifact_tier"
+      ]
+    },
+    {
+      "id": "dem_nexus",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "nexus"
+      },
+      "relation": "prefer_in_context",
+      "context": {
+        "archetype": [
+          "dem_single_damage"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium_high",
+      "rationaleKo": "DEM 집중형에서 Nexus 가치가 상대적으로 높다는 커뮤니티 논의.",
+      "sourceIds": [
+        "dc_legendary_priority",
+        "atwiki_artifact_tier"
+      ]
+    },
+    {
+      "id": "multi_transcendent",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "transcendent"
+      },
+      "relation": "prefer_in_context",
+      "context": {
+        "archetype": [
+          "three_combo_kiting"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium",
+      "rationaleKo": "다중조합에서는 Nexus보다 초월체가 상대적으로 낫다는 한국 커뮤니티의 기회비용 논의.",
+      "sourceIds": [
+        "dc_legendary_priority"
+      ]
+    },
+    {
+      "id": "spell_backpack_phase",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "spell_backpack"
+      },
+      "relation": "phase_dependent",
+      "context": {
+        "phase": [
+          "early"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium_high",
+      "rationaleKo": "0~25분 레벨링/마나 회수 가치가 높지만 40분 이후 매우 낮아진다는 평가.",
+      "sourceIds": [
+        "atwiki_time_value"
+      ]
+    },
+    {
+      "id": "sapphire_phase",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "sapphire"
+      },
+      "relation": "phase_dependent",
+      "context": {
+        "phase": [
+          "early"
+        ]
+      },
+      "strength": "weak_to_moderate",
+      "confidence": "medium_high",
+      "rationaleKo": "초반 레벨링 보조 가치 후 후반에는 주로 시너지 재료 역할.",
+      "sourceIds": [
+        "atwiki_time_value"
+      ]
+    },
+    {
+      "id": "gear_late_phase",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "artifact",
+        "id": "gear"
+      },
+      "relation": "phase_dependent",
+      "context": {
+        "phase": [
+          "ultra_late"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "medium_high",
+      "rationaleKo": "초반 약하지만 57:30 이후 주요 AF 쿨다운 감소로 가치가 크게 오른다는 평가.",
+      "sourceIds": [
+        "atwiki_time_value"
+      ]
+    },
+    {
+      "id": "attack_research_late",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "research",
+        "id": "attack"
+      },
+      "relation": "lower_priority",
+      "context": {
+        "archetype": [
+          "three_combo_kiting"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium",
+      "rationaleKo": "일부 한국 가이드는 공격 연구보다 마나/경제/이속/지속/회피/CDR을 먼저 완성한다.",
+      "sourceIds": [
+        "dc_research_order",
+        "dc_80min_three_combo"
+      ],
+      "caveatKo": "계정 진행도 개인차 큼."
+    },
+    {
+      "id": "early_combo_frontload",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "strategy",
+        "id": "frontload_first_combination"
+      },
+      "relation": "prioritize",
+      "context": {
+        "phase": [
+          "early"
+        ],
+        "map": [
+          "terra",
+          "terra_hard"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "medium_high",
+      "rationaleKo": "초반 생존을 위해 조합 재료를 우선 확보하고 첫 조합을 매우 빨리 완성하는 운영이 반복된다.",
+      "sourceIds": [
+        "atwiki_terra_hard",
+        "reddit_bishop_howto",
+        "dc_80min_three_combo"
+      ]
+    },
+    {
+      "id": "reroll_preserve_budget",
+      "patch": "0.992",
+      "kind": "community_meta",
+      "subject": {
+        "type": "strategy",
+        "id": "aggressive_reroll_for_plan"
+      },
+      "relation": "use_when_needed",
+      "context": {
+        "phase": [
+          "early",
+          "mid"
+        ],
+        "goal": [
+          "specific_build",
+          "ultimate_build"
+        ]
+      },
+      "strength": "moderate",
+      "confidence": "medium_high",
+      "rationaleKo": "MAX 전 레벨 예산이 한정되어 목표 재료/유틸이 아니면 리롤을 적극 사용하는 실전 조언.",
+      "sourceIds": [
+        "reddit_bishop_howto",
+        "reddit_jack_without_hallucination"
+      ]
+    },
+    {
+      "id": "growth_after_max",
+      "patch": "0.992",
+      "kind": "mechanic",
+      "subject": {
+        "type": "mechanic",
+        "id": "growth_enhancement_after_max"
+      },
+      "relation": "deterministic_fact",
+      "context": {
+        "phase": [
+          "post_max"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "현재 MAX 후 성장강화 패시브를 기본 최대 50회 습득하고 Genius로 늘릴 수 있다.",
+      "sourceIds": [
+        "atwiki_magic_tier"
+      ]
+    },
+    {
+      "id": "ultimate_level100",
+      "patch": "0.992",
+      "kind": "mechanic",
+      "subject": {
+        "type": "mechanic",
+        "id": "ultimate_consumes_level100_choice"
+      },
+      "relation": "deterministic_fact",
+      "context": {
+        "phase": [
+          "level100"
+        ]
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "요구 조건 충족 Ultimate는 100레벨 선택을 사용하므로 그 레벨에는 일반 마법을 배우지 못한다.",
+      "sourceIds": [
+        "atwiki_magic_tier"
+      ]
+    },
+    {
+      "id": "v0993_imminent",
+      "patch": "0.992",
+      "kind": "patch_watch",
+      "subject": {
+        "type": "patch",
+        "id": "0.993"
+      },
+      "relation": "invalidate_on_release",
+      "context": {
+        "dataset": "v0.992_meta"
+      },
+      "strength": "strong",
+      "confidence": "high",
+      "rationaleKo": "9/5 커뮤니티에 9/7 v0.993 예정이 공유되어 본 메타셋은 즉시 재검증 대상이다.",
+      "sourceIds": [
+        "reddit_patch_0993",
+        "reddit_patchnotes_0993"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "official_google_play_v0992",
+      "kind": "official",
+      "community": "Google Play",
+      "title": "Magic Survival – What's new",
+      "published": "2026-07",
+      "url": "https://play.google.com/store/apps/details?id=com.vkslrzm.Zombie",
+      "patch": "0.992",
+      "reliability": "high_for_patch_facts",
+      "notesKo": "공식 스토어 기준 v0.992. v0.99에서 조합마법·궁극기·아티팩트·시너지·몬스터 및 밸런스/QoL 변경."
+    },
+    {
+      "id": "atwiki_top_v0992",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "Magic Survival攻略wiki top",
+      "published": "2026-09-05 update",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/1.html",
+      "patch": "0.992",
+      "reliability": "medium_high",
+      "notesKo": "v0.992 장기생존은 쉬워지고 초반은 더 어려워졌다는 평가. Discord로 정보 중심을 옮기는 중."
+    },
+    {
+      "id": "atwiki_magic_tier",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "魔法(紹介&tier)",
+      "published": "2026-07",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/15.html",
+      "patch": "0.992-ish",
+      "reliability": "medium_high",
+      "notesKo": "일반/특수 패시브, 성장강화 50, 조합 규칙, Ultimate 조건, 장기생존 중심 조합 평가."
+    },
+    {
+      "id": "atwiki_artifact_tier",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "アーティファクト(紹介&tier)",
+      "published": "2026-07-14",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/34.html",
+      "patch": "0.99x",
+      "reliability": "medium_high",
+      "notesKo": "기록런/DEM을 나눈 AF·시너지 평가와 빌드별 필수 목록."
+    },
+    {
+      "id": "atwiki_time_value",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "時間で変わるAF・シナジーの価値について",
+      "published": "2026-07-19",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/401.html",
+      "patch": "0.99x",
+      "reliability": "medium_high",
+      "notesKo": "AF 가치가 시간대에 따라 크게 변함. 주문 배낭은 초반 강/40분 이후 약, 톱니바퀴는 ultra-late에 급상승."
+    },
+    {
+      "id": "atwiki_faq",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "よくある質問",
+      "published": "2026",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/5.html",
+      "patch": "0.99x",
+      "reliability": "medium_high",
+      "notesKo": "시너지는 완성 가망이 있을 때 추격하고 그렇지 않으면 독립적으로 강한 AF를 우선하는 원칙."
+    },
+    {
+      "id": "atwiki_build_records",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "参考記録・ビルド構築解説",
+      "published": "2026-07",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/172.html",
+      "patch": "0.991/0.982 examples",
+      "reliability": "medium",
+      "notesKo": "상위기록용 빌드와 레벨 배분/AF 획득 의도."
+    },
+    {
+      "id": "atwiki_terra_hard",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "テラ(ハード)",
+      "published": "2026-05-17",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/282.html",
+      "patch": "0.982",
+      "reliability": "medium_stale",
+      "notesKo": "첫/두 번째 조합을 빨리 완성하고 지원마법을 섞는 진행 구조."
+    },
+    {
+      "id": "atwiki_basic",
+      "kind": "community_wiki",
+      "community": "Japanese AtWiki / Discord-linked",
+      "title": "基礎情報",
+      "published": "2026",
+      "url": "https://w.atwiki.jp/magicsurvival/pages/53.html",
+      "patch": "0.99x",
+      "reliability": "medium_high",
+      "notesKo": "일반 보물상자 3택과 시너지 기본 규칙."
+    },
+    {
+      "id": "dc_80min_three_combo",
+      "kind": "forum_guide",
+      "community": "DCInside Magic Survival minor gallery",
+      "title": "당신도 80분 갈 수 있다! 3조합 공략글",
+      "published": "2026-07-16",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=magicsurvival&no=33556",
+      "patch": "0.99x",
+      "reliability": "medium_high_experienced_user",
+      "notesKo": "후반 생존/카이팅 중심 3조합 철학, 혼령·결계와 시너지 우선순위."
+    },
+    {
+      "id": "dc_kiting_guide",
+      "kind": "forum_guide",
+      "community": "DCInside Magic Survival minor gallery",
+      "title": "카이팅 해설",
+      "published": "2026-07-23",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=magicsurvival&no=33739",
+      "patch": "0.99x",
+      "reliability": "medium_high_experienced_user",
+      "notesKo": "80~100분 이상은 카이팅, 이동/감속/회피/CDR/지원마법/생존 AF/처형 효과를 체계적으로 강조."
+    },
+    {
+      "id": "dc_research_order",
+      "kind": "forum_guide",
+      "community": "DCInside Magic Survival minor gallery",
+      "title": "연구 순서 대충 요약하자면",
+      "published": "2026-04-07",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=magicsurvival&no=31538",
+      "patch": "0.98x",
+      "reliability": "medium",
+      "notesKo": "마나/행운/전리품/탐색/각성, 경제·이속·생존을 공격보다 먼저 보자는 개인 가이드."
+    },
+    {
+      "id": "dc_legendary_priority",
+      "kind": "forum_discussion",
+      "community": "DCInside Magic Survival minor gallery",
+      "title": "뉴비 전설 아티펙트 우선순위 대충 이거 맞음?",
+      "published": "2026-06-21",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=magicsurvival&no=32248",
+      "patch": "0.99x",
+      "reliability": "medium_discussion",
+      "notesKo": "Nexus↔Transcendent, Accelerator↔Ouroboros 등 빌드별 기회비용 논의."
+    },
+    {
+      "id": "dc_three_combo_utility",
+      "kind": "forum_discussion",
+      "community": "DCInside Magic Survival minor gallery",
+      "title": "3조합 유틸 관련 질문 모음",
+      "published": "2026-02-28",
+      "url": "https://gall.dcinside.com/mgallery/board/view/?id=magicsurvival&no=30699",
+      "patch": "0.98x",
+      "reliability": "medium_stale",
+      "notesKo": "Shield Reconstruction, Mirage, HP/CDR/이속/집중/획득범위, 특수패시브, 공격 과투자 경계."
+    },
+    {
+      "id": "reddit_special_artifact_meta",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Special Artifact Meta Tierlist",
+      "published": "2026-08-25",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1vy29vi/special_artifact_meta_tierlist/",
+      "patch": "0.992",
+      "reliability": "medium_recent",
+      "notesKo": "현재 생존 메타를 Bishop/PE 중심으로 보는 최근 의견. ultra-late는 Roster/Bell/Requiem류 처형/생존 도구 중시."
+    },
+    {
+      "id": "reddit_updated_meta_testing",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Updated meta, after some testing",
+      "published": "2026-07-13",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1uvkrga/updated_meta_after_some_testing/",
+      "patch": "0.99x",
+      "reliability": "medium",
+      "notesKo": "Bishop Photon+PE 핵심, Meissner vs 추가 피해조합 의견 충돌."
+    },
+    {
+      "id": "reddit_bishop_jack",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Is Bishop + Jack o'Lantern the new meta?",
+      "published": "2026-07-11",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1utwkr6/is_bishop_jack_olantern_the_new_meta_6230_with/",
+      "patch": "0.99x",
+      "reliability": "medium",
+      "notesKo": "Bishop이 Photon Explosion 이후 Shield를 유지하는 강한 상호작용 사례."
+    },
+    {
+      "id": "reddit_photon_pe",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Photon Explosion + Pyrotechnics + Perpetual Engine",
+      "published": "2026-07-10",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1us8dgz/photon_explosion_pyrotechnics_perpetual_engine/",
+      "patch": "0.99x",
+      "reliability": "medium",
+      "notesKo": "Bishop+Photon+PE 상호작용, Pyrotechnics/Discharge 추가 피해 후보."
+    },
+    {
+      "id": "reddit_bishop_howto",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Bishop, how to play?",
+      "published": "2026-07-14",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1uw6fzt/bishop_how_to_play/",
+      "patch": "0.99x",
+      "reliability": "medium",
+      "notesKo": "초반 목표 재료/이속/획득범위 외 선택을 리롤하고 첫 조합을 매우 빠르게 만드는 실전 조언."
+    },
+    {
+      "id": "reddit_bishop_photon_question",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "How? / Photon Explosion build",
+      "published": "2026-08-21",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1vul3oa/how/",
+      "patch": "0.992",
+      "reliability": "medium_recent",
+      "notesKo": "Photon build에 Bishop, 높은 CDR, 추가 피해/CC가 중요하다는 조언."
+    },
+    {
+      "id": "reddit_jack_without_hallucination",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Jack O' Lantern without Hallucination",
+      "published": "2026-09-03",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1w63t6o/jack_o_lantern_without_hallucination/",
+      "patch": "0.992",
+      "reliability": "medium_recent_mixed",
+      "notesKo": "극고기록에서 Hallucination보다 Mirage를 선호하는 의견과 Ascension+PE의 첫 60m 안정성 조언."
+    },
+    {
+      "id": "reddit_build_optimize_sep5",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "What did I do wrong / optimize this build more",
+      "published": "2026-09-05",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1w81x8u/what_did_i_do_wrong_how_can_i_have_optimized_this/",
+      "patch": "0.992",
+      "reliability": "medium_recent",
+      "notesKo": "Bishop 사용 시 Photon Explosion 핵심 상호작용을 놓치지 말라는 최신 의견."
+    },
+    {
+      "id": "reddit_meta_50plus",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "how tf can i get over 50+?",
+      "published": "2026-07-20",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1v1q8ug/how_tf_can_i_get_over_50/",
+      "patch": "0.99x",
+      "reliability": "medium",
+      "notesKo": "Bishop+Photon+PE 추천, 반면 DEM도 특정 MO/방어 고점에서 60m+ 사례."
+    },
+    {
+      "id": "reddit_opulence_mo",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Opulence to complete MO at 12:30",
+      "published": "2026-07-25",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1v6kwiv/opulence_to_complete_mo_at_1230/",
+      "patch": "0.99x",
+      "reliability": "medium",
+      "notesKo": "Bishop Photon+PE와 MO 고점, 세 번째 조합의 초반 피해 필요성."
+    },
+    {
+      "id": "reddit_magnum_opus_explain",
+      "kind": "reddit_discussion",
+      "community": "r/magic_survival",
+      "title": "Magnum Opus explanation",
+      "published": "2026-07-04",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1un57ym/a_quick_guide_for_how_to_play_magic_survival/",
+      "patch": "0.99",
+      "reliability": "medium",
+      "notesKo": "MO가 다른 시너지 필요 AF 수를 1 줄인다는 설명 및 RNG."
+    },
+    {
+      "id": "reddit_patch_0993",
+      "kind": "reddit_news",
+      "community": "r/magic_survival",
+      "title": "Major 0.993 update stuff",
+      "published": "2026-09-05",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1w7qu42/major_0993_update_stuff/",
+      "patch": "0.993_announcement",
+      "reliability": "medium_recent_patchwatch",
+      "notesKo": "9/7 v0.993 예정, Ultimate 4개/특수 AF/다수 밸런스 변경 공유."
+    },
+    {
+      "id": "reddit_patchnotes_0993",
+      "kind": "reddit_news",
+      "community": "r/magic_survival",
+      "title": "v0.993 patch-notes are out",
+      "published": "2026-09-05",
+      "url": "https://www.reddit.com/r/magic_survival/comments/1w7qhdq/v0993_patchnotes_are_out/",
+      "patch": "0.993_announcement",
+      "reliability": "medium_recent_patchwatch",
+      "notesKo": "0.993 신규 Ultimate/적/특수 AF/DoP/전설 조정 언급."
+    },
+    {
+      "id": "ms_secrets",
+      "kind": "community_knowledge_base",
+      "community": "MS Secrets / Discord-derived",
+      "title": "MS Secrets",
+      "published": "older/mixed",
+      "url": "https://ms-secrets.notion.site/MS-Secrets-5d0447d66f704a94a18fd0c8acf89258",
+      "patch": "mostly older",
+      "reliability": "low_current_meta_medium_mechanics",
+      "notesKo": "오래된 Discord 기반 지식 허브. 현재 meta보다 용어/기본 구조 참고."
+    }
+  ]
+}
