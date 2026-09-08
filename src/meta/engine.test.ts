@@ -93,7 +93,7 @@ describe("context and opportunity cost", () => {
 
 describe("deterministic gates", () => {
   it("filters consumed magic, wrong traits and blocked combinations before proactive recommendations", () => {
-    let run = runFor();
+    const run = runFor();
     const combo = data.combinations.find((c) => c.id === "quantum_explosion")!;
     for (const r of combo.requirements) {
       if (!r.magicId) continue;
@@ -101,8 +101,8 @@ describe("deterministic gates", () => {
       if (r.traitId)
         run.selectedTraits[r.magicId] = { ...(run.selectedTraits[r.magicId] ?? {}), [r.traitStage ?? 7]: r.traitId };
     }
-    run = completeCombination(run, combo.id);
-    expect(getLiveMeta(run, metaData, snapshot).some((r) => r.ref === `combination:${combo.id}`)).toBe(false);
+    const completed = completeCombination(run, combo.id);
+    expect(getLiveMeta(completed, metaData, snapshot).some((r) => r.ref === `combination:${combo.id}`)).toBe(false);
   });
   it("does not suggest disabled ordinary magic after a special combination", () => {
     const run = runFor();
