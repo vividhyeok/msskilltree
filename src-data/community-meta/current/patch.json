@@ -4,7 +4,15 @@
   "targetGameVersion": "0.992",
   "officialGameVersion": "0.993",
   "status": "stale_after_official_0.993_release",
-  "nextPatchWatch": null,
+  "nextPatchWatch": {
+    "version": "0.993",
+    "reportedReleaseDate": "2026-09-07",
+    "sourceIds": [
+      "reddit_patch_0993",
+      "reddit_patchnotes_0993"
+    ],
+    "action": "공식 v0.993 배포 확인됨. 상세 수치·레시피는 still_valid/changed/unknown/obsolete로 재검증"
+  },
   "coverage": {
     "officialRelease": "Google Play v0.993 confirmed 2026-09-08; detailed balance values are not published in store notes",
     "koreanGameTerms": "Namu mirror revision 2026-08-18",
