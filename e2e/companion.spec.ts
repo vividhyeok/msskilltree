@@ -23,7 +23,7 @@ test("tablet growth choices, separate MAX records, undo and timer", async ({
     .getByRole("button", { name: "패시브 · 성장", exact: true })
     .click();
   const dialog = page.getByRole("dialog");
-  await expect(dialog.locator(".companion-pick")).toHaveCount(10);
+  await expect(dialog.locator(".companion-pick")).toHaveCount(11);
   await dialog.getByRole("button", { name: /고속시전/ }).click();
   await expect(dialog.getByRole("button", { name: /고속시전/ })).toContainText(
     "1/3",
@@ -31,15 +31,15 @@ test("tablet growth choices, separate MAX records, undo and timer", async ({
   await dialog
     .getByRole("button", { name: "특수 패시브", exact: true })
     .click();
-  await expect(dialog.locator(".companion-pick")).toHaveCount(25);
+  await expect(dialog.locator(".companion-pick")).toHaveCount(24);
   await dialog.getByRole("button", { name: /무언영창/ }).click();
   await expect(dialog.getByRole("button", { name: /무언영창/ })).toBeDisabled();
   await dialog
-    .getByRole("button", { name: "MAX 성장강화", exact: true })
+    .getByRole("button", { name: "MAX 성장 패시브", exact: true })
     .click();
   await expect(dialog.locator(".companion-pick")).toHaveCount(9);
   await expect(dialog.getByRole("button", { name: /고속시전/ })).toBeDisabled();
-  await dialog.getByLabel("현재 MAX 이후 성장강화 중").check();
+  await dialog.getByLabel("현재 MAX 이후 성장 패시브 선택 중").check();
   await dialog.getByRole("button", { name: /고속시전/ }).click();
   await expect(dialog.getByRole("button", { name: /고속시전/ })).toContainText(
     "1/8",
@@ -51,12 +51,16 @@ test("tablet growth choices, separate MAX records, undo and timer", async ({
   await page
     .getByRole("button", { name: "패시브 · 성장", exact: true })
     .click();
+  await page
+    .getByRole("dialog")
+    .getByRole("button", { name: "MAX 성장 패시브", exact: true })
+    .click();
   await expect(
     page.getByRole("dialog").getByRole("button", { name: /고속시전/ }),
   ).toContainText("0/8");
   await page
     .getByRole("dialog")
-    .getByLabel("현재 MAX 이후 성장강화 중")
+    .getByLabel("현재 MAX 이후 성장 패시브 선택 중")
     .uncheck();
   await page
     .getByRole("dialog")
@@ -90,7 +94,7 @@ test("artifact quick search explains automatic recipe completion", async ({
   });
   await page.reload();
   await page.getByRole("button", { name: /^유물 선택/ }).click();
-  await page.getByLabel("유물 빠른 검색").fill("blood pack");
+  await page.getByLabel("유물 빠른 검색").fill("혈액팩");
   await page.locator(".artifact-quick button").click();
   await expect(page.locator(".artifact-results")).toContainText(
     "이 선택으로 힐링 팩터 완성",
