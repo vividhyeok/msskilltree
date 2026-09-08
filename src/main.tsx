@@ -30,6 +30,7 @@ import "./meta/style.css";
 import "./features/game-mode/state.css";
 import "./features/game-mode/play.css";
 import { TargetBadge } from "./components/GameState";
+import { LiveDecisionPanel } from "./decision/LiveDecisionPanel";
 import { Recipe } from "./components/Recipe";
 import { TraitChoices } from "./components/TraitChoices";
 import { MagicGrid } from "./features/game-mode/MagicGrid";
@@ -361,6 +362,9 @@ function App() {
             </button>
           )}
         </div>
+      )}
+      {!audit && (
+        <LiveDecisionPanel run={run} onChange={change} onRecord={tap} />
       )}
       {audit ? (
         <main className="audit">
