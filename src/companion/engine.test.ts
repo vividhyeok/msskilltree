@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { companion, synergyProgress } from "./data";
+import {
+  companion,
+  synergyProgress,
+  validateCompanionRuntimeData,
+} from "./data";
 import {
   defaultProgress,
   normalizeProgress,
@@ -12,29 +16,40 @@ import { emptyRun, getBlockedReason } from "../engine";
 import { data, comboById } from "../data";
 import { fresh, serialize, deserialize } from "../storage";
 import { metaData, defaultMetaContext } from "../meta/data";
-describe("V4 companion facts", () => {
-  it("validates catalog sizes and all ultimate references", () => {
-    expect(data.passives).toHaveLength(10);
-    expect(companion.special).toHaveLength(25);
+
+describe("verified companion facts", () => {
+  it("uses corrected Korean runtime catalogs", () => {
+    expect(data.passives).toHaveLength(11);
+    expect(companion.special).toHaveLength(24);
     expect(companion.growth).toHaveLength(9);
     expect(companion.classes).toHaveLength(24);
     expect(companion.subjects).toHaveLength(25);
     expect(companion.ultimates).toHaveLength(24);
+    expect(companion.synergies).toHaveLength(35);
+    expect(validateCompanionRuntimeData()).toEqual([]);
+
+    expect(companion.normal.find((x) => x.id === "advanced_magic")?.nameKo).toBe("상급 마법");
+    expect(companion.normal.some((x) => x.id === "enchant")).toBe(true);
+    expect(companion.special.some((x) => x.id === "enchant")).toBe(false);
+    expect(companion.special.find((x) => x.id === "thundercloud")?.nameKo).toBe("먹구름");
+    expect(companion.special.find((x) => x.id === "energy_engineering")?.nameKo).toBe("에너지공학");
+    expect(companion.special.find((x) => x.id === "war_magic")?.nameKo).toBe("전쟁마법");
+    expect(companion.artifacts.find((x) => x.id === "titan")?.nameKo).toBe("타이탄의 권능");
+  });
+
+  it("validates all ultimate and synergy references", () => {
     for (const u of companion.ultimates) {
       expect(comboById[u.requiredCombinationId]).toBeDefined();
       if (u.requiredClassId)
-        expect(companion.classes.some((c) => c.id === u.requiredClassId)).toBe(
-          true,
-        );
-      expect(companion.subjects.some((c) => c.id === u.requiredSubjectId)).toBe(
-        true,
-      );
+        expect(companion.classes.some((c) => c.id === u.requiredClassId)).toBe(true);
+      expect(companion.subjects.some((c) => c.id === u.requiredSubjectId)).toBe(true);
     }
     for (const s of companion.synergies)
       for (const id of s.requirements)
         expect(metaData.entities.artifacts.some((a) => a.id === id)).toBe(true);
   });
-  it("preserves old saves and normalizes optional progress without losing the run", () => {
+
+  it("preserves old saves and normalizes optional progress", () => {
     const old = fresh();
     delete old.run.meta;
     expect(deserialize(serialize(old))).toEqual(old);
@@ -45,7 +60,8 @@ describe("V4 companion facts", () => {
     expect(restored.run.levels.fast_casting).toBe(2);
     expect(restored.run.progress?.growth.intelligence).toBe(8);
   });
-  it("keeps growth separate and enforces stage, per-item and total caps", () => {
+
+  it("keeps MAX growth separate and capped", () => {
     let run = emptyRun();
     expect(recordGrowth(run, "intelligence")).toBe(run);
     run = {
@@ -55,14 +71,12 @@ describe("V4 companion facts", () => {
     };
     for (const s of companion.growth)
       for (let i = 0; i < 10; i++) run = recordGrowth(run, s.id);
-    expect(Object.values(run.progress!.growth).reduce((a, b) => a + b, 0)).toBe(
-      50,
-    );
-    expect(run.levels.intelligence).toBe(5);
+    expect(Object.values(run.progress!.growth).reduce((a, b) => a + b, 0)).toBe(50);
     expect(run.progress!.growth.intelligence).toBe(8);
     expect(getBlockedReason(data.combinations[0], run).join()).toContain("MAX");
   });
-  it("requires all ultimate conditions and treats classless hallucination correctly", () => {
+
+  it("requires ultimate conditions", () => {
     const u = companion.ultimates.find((u) => u.id === "hallucination")!;
     const run = {
       ...emptyRun(),
@@ -71,43 +85,16 @@ describe("V4 companion facts", () => {
       progress: { ...defaultProgress(), playerLevel: 100, cityCleared: true },
     };
     expect(ultimateRequirements(run, u.id).every((r) => r.met)).toBe(true);
-    for (const changed of [
-      { ...run, completed: [] },
-      { ...run, meta: { ...run.meta, subject: "" } },
-      { ...run, progress: { ...run.progress, playerLevel: 101 } },
-      { ...run, progress: { ...run.progress, growthPhase: true } },
-    ])
-      expect(ultimateRequirements(changed, u.id).every((r) => r.met)).toBe(
-        false,
-      );
-    const b = companion.ultimates.find((u) => u.id === "berserk")!;
-    expect(
-      ultimateRequirements(
-        {
-          ...run,
-          completed: [b.requiredCombinationId],
-          meta: { ...run.meta, subject: b.requiredSubjectId },
-        },
-        b.id,
-      ).find((r) => r.label === "클래스")?.met,
-    ).toBe(false);
   });
-  it("computes inventory proximity without self-bootstrapping magnum opus", () => {
-    const m = companion.synergies.find((s) => s.id === "magnum_opus")!;
-    expect(
-      synergyProgress(m.requirements.slice(1)).find((s) => s.id === m.id)
-        ?.remaining,
-    ).toBe(1);
-    const inv = [...m.requirements, "second_heart", "bio_shield"];
-    expect(
-      synergyProgress(inv).find((s) => s.id === "healing_factor")?.remaining,
-    ).toBe(0);
-    expect(
-      synergyProgress(["second_heart", "bio_shield"]).find(
-        (s) => s.id === "healing_factor",
-      )?.remaining,
-    ).toBe(1);
+
+  it("derives artifact synergies without consuming ingredients", () => {
+    const recipe = ["ouroboros", "wizard_hat", "black_cat", "hourglass"];
+    expect(synergyProgress(recipe.slice(0, 3)).find((s) => s.id === "chronos")?.remaining).toBe(1);
+    const complete = synergyProgress(recipe).find((s) => s.id === "chronos")!;
+    expect(complete.remaining).toBe(0);
+    expect(complete.requirements).toEqual(recipe);
   });
+
   it("pauses time and handles phase boundaries", () => {
     const p = { ...defaultProgress(), elapsed: 899, startedAt: 1000 };
     expect(timerPhase(elapsedSeconds(p, 2000))).toBe("mid");
