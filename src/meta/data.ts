@@ -1,27 +1,39 @@
 import rawRules from "../../src-data/community-meta/current/rules.json";
 import originalEntities from "../../src-data/community-meta/current/entities.json";
 import { companion } from "../companion/data";
+
 const merge = <T extends { id: string; nameKo: string }>(
   old: T[],
   next: { id: string; nameKo: string }[],
 ): T[] => [
-  ...old,
+  ...old.map((o) => {
+    const verified = next.find((n) => n.id === o.id);
+    return verified ? ({ ...o, ...verified } as T) : o;
+  }),
   ...next.filter((n) => !old.some((o) => o.id === n.id)).map((n) => n as T),
 ];
+
 const artifacts = merge(originalEntities.artifacts, companion.artifacts);
+const artifactIds = new Set(artifacts.map((a) => a.id));
+const missingArtifactRefs = [
+  ...new Set(companion.synergies.flatMap((s) => s.requirements)),
+].filter((id) => !artifactIds.has(id));
+
 const entities = {
   ...originalEntities,
   classes: merge(originalEntities.classes, companion.classes),
   subjects: merge(originalEntities.subjects, companion.subjects),
   ultimates: merge(originalEntities.ultimates, companion.ultimates),
-  artifacts: merge(
-    artifacts,
-    [...new Set(companion.synergies.flatMap((s) => s.requirements))].map(
-      (id) => ({ id, nameKo: `${id.replaceAll("_", " ")} · 명칭 확인 대기` }),
-    ),
-  ),
+  artifacts: [
+    ...artifacts,
+    ...missingArtifactRefs.map((id) => ({
+      id,
+      nameKo: `데이터 누락 · ${id}`,
+    })),
+  ],
   synergies: merge(originalEntities.synergies, companion.synergies),
 };
+
 import archetypes from "../../src-data/community-meta/current/archetypes.json";
 import phases from "../../src-data/community-meta/current/phases.json";
 import sources from "../../src-data/community-meta/current/sources.json";
@@ -46,6 +58,7 @@ export type MetaPatch = {
   datasetVersion: string;
   createdAt: string;
   targetGameVersion: string;
+  officialGameVersion?: string;
   status: string;
   nextPatchWatch?: {
     version: string;
