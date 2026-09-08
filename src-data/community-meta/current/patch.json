@@ -2,19 +2,15 @@
   "datasetVersion": "meta-v1.0",
   "createdAt": "2026-09-06",
   "targetGameVersion": "0.992",
-  "status": "snapshot_at_risk_of_immediate_staleness",
-  "nextPatchWatch": {
-    "version": "0.993",
-    "reportedReleaseDate": "2026-09-07",
-    "sourceIds": [
-      "reddit_patch_0993",
-      "reddit_patchnotes_0993"
-    ],
-    "action": "release 확인 즉시 모든 meta rule을 still_valid/changed/unknown/obsolete로 재검증"
-  },
+  "officialGameVersion": "0.993",
+  "status": "stale_after_official_0.993_release",
+  "nextPatchWatch": null,
   "coverage": {
+    "officialRelease": "Google Play v0.993 confirmed 2026-09-08; detailed balance values are not published in store notes",
+    "koreanGameTerms": "Namu mirror revision 2026-08-18",
+    "artifactSynergyRecipes": "Korean artifact page snapshot; v0.993 revalidation required",
     "naverCafe": "direct crawl unavailable",
-    "discord": "direct crawl unavailable; indirect through public community sources"
+    "discord": "direct crawl unavailable"
   },
-  "important": "deterministic game facts와 community meta를 분리해서 사용."
+  "important": "deterministic game facts와 community meta를 분리. v0.992 meta rule은 v0.993에 자동 승격하지 않음."
 }
