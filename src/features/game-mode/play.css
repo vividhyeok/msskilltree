@@ -248,6 +248,9 @@
   min-height: 40px;
 }
 .section-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 15px;
   color: #eef4ff;
 }
@@ -382,6 +385,106 @@
   line-height: 1.7;
   color: #9aadc6;
   padding: 8px 0 12px;
+}
+.live-decision-accuracy {
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #374151;
+  color: #d1d5db;
+  white-space: nowrap;
+}
+.live-decision-accuracy.synced {
+  background: #065f46;
+  color: #a7f3d0;
+}
+.live-decision-accuracy.partial {
+  background: #92400e;
+  color: #fde68a;
+}
+.live-extra-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+.live-extra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #1a222d;
+  border: 1px solid #323c49;
+  border-left-width: 3px;
+  min-height: 46px;
+}
+.live-extra.normalPassive {
+  border-left-color: #34d399;
+}
+.live-extra.specialPassive {
+  border-left-color: #a78bfa;
+}
+.live-extra.growth {
+  border-left-color: #f472b6;
+}
+.live-extra.artifact,
+.live-extra.synergyArtifact {
+  border-left-color: #fbbf24;
+}
+.live-extra.synergyArtifact {
+  border-left-color: #f97316;
+}
+.live-extra-info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.live-extra-info strong {
+  font-size: 13px;
+  color: #f3f4f6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.live-extra-category {
+  font-size: 10px;
+  color: #9ca3af;
+}
+.live-extra-reason {
+  font-size: 11px;
+  color: #d1d5db;
+  line-height: 1.3;
+}
+.live-extra-reason small {
+  color: #9ca3af;
+}
+.live-extra-record {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex-shrink: 0;
+  min-width: 56px;
+  min-height: 32px;
+  padding: 5px 8px;
+  border: 0;
+  border-radius: 5px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.live-extra-record:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+.live-extra-record:disabled {
+  background: #4b5563;
+  cursor: not-allowed;
 }
 .target-section {
   max-height: 40%;

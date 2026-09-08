@@ -59,4 +59,20 @@ describe("live decision engine", () => {
     );
     expect(decisions.length).toBeGreaterThan(0);
   });
+
+  it("does not repeat the same active magic for multiple combinations", () => {
+    // Several combinations share energy_bolt as a material.
+    const run = { ...emptyRun(), pinned: ["demon_equation", "lightning_blast"] };
+    const active = getLiveDecisions(run).filter(
+      (d) => d.category === "activeMagic" && d.id === "energy_bolt",
+    );
+    expect(active).toHaveLength(1);
+  });
+
+  it("mixes categories instead of showing only active magic", () => {
+    const run = emptyRun();
+    const decisions = getLiveDecisions(run).slice(0, 6);
+    const categories = new Set(decisions.map((d) => d.category));
+    expect(categories.size).toBeGreaterThanOrEqual(2);
+  });
 });

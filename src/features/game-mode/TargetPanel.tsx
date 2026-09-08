@@ -29,6 +29,7 @@ type Props = {
   onSetup: () => void;
   onFocus: (id: string) => void;
   onRecord: (id: string) => void;
+  onChange: (run: Run) => void;
   onBrowse: () => void;
 };
 export function TargetPanel({
@@ -41,6 +42,7 @@ export function TargetPanel({
   onSetup,
   onFocus,
   onRecord,
+  onChange,
   onBrowse,
 }: Props) {
   const [showBlocked, setShowBlocked] = useState(false);
@@ -83,6 +85,7 @@ export function TargetPanel({
         onRecord={onRecord}
         onEdit={onEdit}
         onFocus={onFocus}
+        onChange={onChange}
       />
       <section className="focus-section" aria-label="선택한 마법 경로">
         <div className="focus-title">

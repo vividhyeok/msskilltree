@@ -65,8 +65,9 @@ function impactFromEffects(
 
 function activeMagicDecisions(run: Run): Decision[] {
   const used = locks(run);
-  const completed = completedMagicStates(run);
-  const result: Decision[] = [];
+  const byMagic = new Map<string, Decision>();
+  const pinnedIds = new Set(run.pinned);
+
   for (const c of data.combinations) {
     if (run.completed.includes(c.id)) continue;
     const e = evaluateCombination(c, run);
@@ -83,38 +84,52 @@ function activeMagicDecisions(run: Run): Decision[] {
       const required = Math.max(r.minLevel ?? 1, stage?.level ?? 1);
       if (current >= required) continue;
       const isCarrier = r.role === "primary" || r.role === "carrier";
-      result.push({
+      const isPinnedTarget = pinnedIds.has(c.id);
+      const existing = byMagic.get(r.magicId);
+      const label = isCarrier
+        ? `${c.nameKo} 승계 재료`
+        : `${c.nameKo} 병합 재료`;
+      if (existing) {
+        if (!existing.reasons.some((x) => x.label === label)) {
+          existing.reasons.push({ label });
+        }
+        // Pinned target material gets higher priority.
+        if (isPinnedTarget) existing.priority = CATEGORY_ORDER.activeMagic;
+        continue;
+      }
+      byMagic.set(r.magicId, {
         id: r.magicId,
-        ref: `active:${c.id}:${r.magicId}`,
+        ref: `active:${r.magicId}`,
         name: m.nameKo,
         category: "activeMagic",
-        priority: CATEGORY_ORDER.activeMagic,
-        reasons: [
-          {
-            label: isCarrier
-              ? `${c.nameKo} 조합의 승계 재료`
-              : `${c.nameKo} 조합의 병합 재료`,
-          },
-        ],
+        priority: isPinnedTarget
+          ? CATEGORY_ORDER.activeMagic
+          : CATEGORY_ORDER.activeMagic + 1,
+        reasons: [{ label }],
         action: "+1 기록",
       });
     }
   }
-  // Also include active support recommendations from meta when unlocked.
+
+  // Include active support recommendations from meta when unlocked and not already listed.
   for (const rec of getLiveMeta(run).filter((r) => r.magicId)) {
     if (used[rec.magicId!]) continue;
     if (run.levels[rec.magicId!] ?? 0 > 0) continue;
-    result.push({
+    if (byMagic.has(rec.magicId!)) continue;
+    byMagic.set(rec.magicId!, {
       id: rec.magicId!,
       ref: rec.ref,
       name: rec.name,
       category: "activeMagic",
-      priority: CATEGORY_ORDER.activeMagic + 1,
+      priority: CATEGORY_ORDER.activeMagic + 2,
       reasons: [{ label: rec.evidence[0]?.rule.rationaleKo ?? "상황별 추천" }],
       action: "+1 기록",
     });
   }
-  return result;
+
+  return [...byMagic.values()]
+    .sort((a, b) => a.priority - b.priority || a.name.localeCompare(b.name, "ko"))
+    .slice(0, 6);
 }
 
 function normalPassiveDecisions(run: Run): Decision[] {
@@ -262,20 +277,44 @@ function artifactDecisions(run: Run): Decision[] {
 }
 
 export function getLiveDecisions(run: Run): Decision[] {
-  const decisions: Decision[] = [
-    ...activeMagicDecisions(run),
-    ...normalPassiveDecisions(run),
-    ...specialPassiveDecisions(run),
-    ...growthDecisions(run),
-    ...artifactDecisions(run),
+  const active = activeMagicDecisions(run).slice(0, 3);
+  const normal = normalPassiveDecisions(run);
+  const special = specialPassiveDecisions(run);
+  const growth = growthDecisions(run);
+  const artifacts = artifactDecisions(run).slice(0, 3);
+
+  // Round-robin mix so one category does not dominate the glance view.
+  const byCategory: Record<DecisionCategory, Decision[]> = {
+    activeMagic: active,
+    synergyArtifact: artifacts.filter((d) => d.category === "synergyArtifact"),
+    artifact: artifacts.filter((d) => d.category === "artifact"),
+    specialPassive: special,
+    normalPassive: normal,
+    growth,
+  };
+
+  const mixed: Decision[] = [];
+  const categories: DecisionCategory[] = [
+    "activeMagic",
+    "synergyArtifact",
+    "artifact",
+    "specialPassive",
+    "normalPassive",
+    "growth",
   ];
-  decisions.sort((a, b) => {
-    const pa = a.disabled ? 1000 : a.priority;
-    const pb = b.disabled ? 1000 : b.priority;
-    if (pa !== pb) return pa - pb;
-    return a.name.localeCompare(b.name, "ko");
-  });
-  return decisions;
+  let added = true;
+  while (added) {
+    added = false;
+    for (const cat of categories) {
+      const next = byCategory[cat].shift();
+      if (next) {
+        mixed.push(next);
+        added = true;
+      }
+    }
+  }
+
+  return mixed;
 }
 
 export function applyDecision(run: Run, decision: Decision): Run {
