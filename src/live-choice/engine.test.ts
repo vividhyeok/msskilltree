@@ -23,6 +23,19 @@ describe("live level-up choices", () => {
     expect(ranked[0].reasons.join(" ")).toContain("대폭발");
   });
 
+  it("uses direct passive effects as a useful fallback instead of marking everything situation-dependent", () => {
+    const ranked = rankLiveChoices(
+      ["normal_passive:haste", "normal_passive:intelligence", "normal_passive:fast_casting"],
+      emptyRun(),
+    );
+    expect(ranked[0].key).toBe("normal_passive:fast_casting");
+    expect(ranked[0].label).toBe("추천");
+    expect(ranked.find((r) => r.key === "normal_passive:intelligence")?.label).toBe("추천");
+    expect(ranked.find((r) => r.key === "normal_passive:haste")?.label).toBe("고려");
+    expect(ranked.every((r) => r.label === "상황 따라")).toBe(false);
+    expect(ranked[0].reasons.join(" ")).toContain("쿨타임");
+  });
+
   it("uses recorded stat investment only as an explainable complement signal", () => {
     const run = emptyRun();
     run.levels.rupture = 1;
@@ -32,6 +45,18 @@ describe("live level-up choices", () => {
     );
     expect(ranked[0].key).toBe("normal_passive:snipe");
     expect(ranked[0].reasons.join(" ")).toContain("치명타 배율");
+  });
+
+  it("prefers continuing an already-invested magic over equally unsupported new magic", () => {
+    const run = emptyRun();
+    run.levels.fireball = 2;
+    const ranked = rankLiveChoices(
+      ["active_magic:cyclone", "active_magic:fireball", "active_magic:meteor"],
+      run,
+    );
+    expect(ranked[0].key).toBe("active_magic:fireball");
+    expect(ranked[0].label).toBe("추천");
+    expect(ranked[0].reasons.join(" ")).toContain("이미 Lv.2 투자 중");
   });
 
   it("does not offer normal level-up choices after MAX growth mode starts", () => {
