@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Plus } from "lucide-react";
 import type { ReactNode } from "react";
 import { MagicSymbol } from "../../components/MagicSymbol";
 import { data, comboById } from "../../data";
 import { completedMagicStates, locks, type Run } from "../../engine";
 import { summarizeEffects } from "../../help";
+import { LiveChoiceDialog } from "../../live-choice/LiveChoiceDialog";
+import type { LiveChoiceKind } from "../../live-choice/engine";
 import {
   getMagicTargetBadges,
   getNeededMagicForTargets,
@@ -25,6 +28,7 @@ export function MagicGrid({
   onRecord,
   contextBar,
 }: Props) {
+  const [choiceOpen, setChoiceOpen] = useState(false);
   const used = locks(run);
   const completed = completedMagicStates(run);
   const needs = getNeededMagicForTargets(run).filter((n) =>
@@ -34,12 +38,28 @@ export function MagicGrid({
   const liveMagics = [...data.magics].sort((a, b) =>
     a.nameKo.localeCompare(b.nameKo, "ko"),
   );
+  function recordChoice(kind: LiveChoiceKind, id: string) {
+    if (kind === "special_passive") {
+      window.dispatchEvent(
+        new CustomEvent("ms-special-passive-record", { detail: { id } }),
+      );
+      return;
+    }
+    onRecord(id);
+  }
   return (
     <section className="magic-workspace" aria-label="마법 기록">
-      <div className="hud-label">
+      <div className="hud-label live-hud-title">
         <h1>
           내 마법 <span>위치는 항상 고정 · 이름은 조합 보기 · +1은 기록</span>
         </h1>
+        <button
+          className="live-choice-launch primary"
+          onClick={() => setChoiceOpen(true)}
+          disabled={run.progress?.growthPhase}
+        >
+          이번 3택 비교
+        </button>
       </div>
       {contextBar}
       <div className="mobile-now-strip" aria-label="모바일 지금 필요한 것">
@@ -72,8 +92,8 @@ export function MagicGrid({
             ? `${m.nameKo} ${completion.role === "carrier" ? "→" : "×"} ${comboById[completion.combinationId].nameKo}${completion.role === "carrier" ? "로 승계됨" : "에 병합되어 소멸"} · 원본 재사용 불가`
             : "";
           const targetText = badges.length
-            ? `현재 목표 ${badges.join("/")} 조합에 필요한 마법입니다. 이름을 누르면 필요한 레벨·특성과 조합 후 승계/병합 여부를 볼 수 있습니다.`
-            : "이름을 누르면 이 마법으로 갈 수 있는 조합과 필요한 특성을 볼 수 있습니다.";
+            ? `현재 목표 ${badges.join("/")} 조합에 필요한 마법입니다. ${m.summary} 이름을 누르면 필요한 레벨·특성과 조합 후 승계/병합 여부를 볼 수 있습니다.`
+            : `${m.summary} 이름을 누르면 이 마법으로 갈 수 있는 조합과 필요한 특성을 볼 수 있습니다.`;
           const level = run.levels[m.id] ?? 0;
           const traits = m.traitStages.flatMap((s) =>
             s.traits
@@ -190,6 +210,13 @@ export function MagicGrid({
             );
           })}
       </div>
+      {choiceOpen && (
+        <LiveChoiceDialog
+          run={run}
+          onRecord={recordChoice}
+          onClose={() => setChoiceOpen(false)}
+        />
+      )}
     </section>
   );
 }
