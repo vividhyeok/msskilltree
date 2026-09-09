@@ -16,6 +16,13 @@ async function configure(page: Page) {
   await dialog.getByRole("button", { name: "설정 저장" }).click();
 }
 
+async function openStrategy(page: Page) {
+  const drawer = page.locator(".strategy-drawer").last();
+  if (!(await drawer.getAttribute("open")))
+    await drawer.locator(":scope > summary").click();
+  return drawer;
+}
+
 test.beforeEach(async ({ page }) => {
   await page.clock.setFixedTime(new Date("2026-09-06T10:00:00Z"));
   await page.setViewportSize({ width: 1024, height: 768 });
@@ -31,6 +38,7 @@ test("tablet live flow: setup, contextual goal, fixed tiles, level budget and Un
       .evaluateAll((els) => els.map((el) => el.getAttribute("data-magic-id")));
   const before = await positions();
   await configure(page);
+  await openStrategy(page);
   const pe = page.locator('[data-meta-ref="combination:perpetual_engine"]');
   await expect(pe).toContainText("현재 빌드 핵심");
   await pe.getByRole("button", { name: "목표 지정", exact: true }).click();
@@ -65,6 +73,7 @@ test("tablet live flow: setup, contextual goal, fixed tiles, level budget and Un
   await expect(page.locator(".run-context-bar")).toContainText("첫 60분");
   await expect(page.locator(".context-budget")).toContainText("15회");
   await expect(page.locator(".target-section")).toContainText("무한동력");
+  await expect(page.locator(".strategy-drawer")).not.toHaveAttribute("open", "");
 });
 
 test("artifact compare records only the chosen item, survives reload, and undoes", async ({
@@ -84,9 +93,7 @@ test("artifact compare records only the chosen item, survives reload, and undoes
   ).toHaveAttribute("data-artifact-result", "ouroboros");
   const top = dialog.locator('[data-artifact-result="ouroboros"]');
   await top.getByText("이유·근거 보기", { exact: true }).click();
-  await expect(
-    top.locator('a[href*="gall.dcinside.com"]').first(),
-  ).toBeVisible();
+  await expect(top.locator('a[href*="gall.dcinside.com"]').first()).toBeVisible();
   await top.getByText("이유·근거 보기", { exact: true }).click();
   await page.screenshot({ path: "test-results/meta-artifact-compare.png" });
   await top.getByRole("button", { name: "우로보로스 선택 기록" }).click();
@@ -95,15 +102,13 @@ test("artifact compare records only the chosen item, survives reload, and undoes
   await page.reload();
   expect(
     await page.evaluate(
-      () =>
-        JSON.parse(localStorage.getItem("ms-companion-v1")!).run.meta.artifacts,
+      () => JSON.parse(localStorage.getItem("ms-companion-v1")!).run.meta.artifacts,
     ),
   ).toEqual(["ouroboros"]);
   await page.getByRole("button", { name: "되돌리기", exact: true }).click();
   expect(
     await page.evaluate(
-      () =>
-        JSON.parse(localStorage.getItem("ms-companion-v1")!).run.meta.artifacts,
+      () => JSON.parse(localStorage.getItem("ms-companion-v1")!).run.meta.artifacts,
     ),
   ).toEqual([]);
 });
@@ -132,9 +137,7 @@ test("manual synergy proximity changes comparison and patch mismatch is cautious
   await setup.getByLabel("게임 버전", { exact: true }).fill("0.993");
   await setup.getByRole("button", { name: "설정 저장" }).click();
   await expect(artifacts.locator(".meta-stamp")).toContainText("재검증 필요");
-  await expect(artifacts.locator(".meta-priority")).toHaveText(
-    "조건 확인 필요",
-  );
+  await expect(artifacts.locator(".meta-priority")).toHaveText("조건 확인 필요");
 });
 
 test("four artifact choices remain comparable on a landscape tablet", async ({
@@ -155,20 +158,14 @@ test("four artifact choices remain comparable on a landscape tablet", async ({
   ].entries())
     await dialog.getByLabel(`유물 후보 ${index + 1}`).selectOption(id);
   await expect(dialog.locator("[data-artifact-result]")).toHaveCount(4);
-  for (const button of await dialog
-    .getByRole("button", { name: /선택 기록$/ })
-    .all())
+  for (const button of await dialog.getByRole("button", { name: /선택 기록$/ }).all())
     await expect(button).toBeInViewport({ ratio: 1 });
   await page.screenshot({ path: "test-results/meta-artifact-four.png" });
   await page.setViewportSize({ width: 768, height: 1024 });
   expect(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= innerWidth,
-    ),
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
   ).toBe(true);
-  await page.screenshot({
-    path: "test-results/meta-artifact-four-portrait.png",
-  });
+  await page.screenshot({ path: "test-results/meta-artifact-four-portrait.png" });
 });
 
 test("support trait picker labels meta as advice and never offers consumed support", async ({
@@ -188,6 +185,7 @@ test("support trait picker labels meta as advice and never offers consumed suppo
   await dialog
     .getByRole("button", { name: "재구축 선택", exact: true })
     .click();
+  await openStrategy(page);
   await expect(page.locator(".meta-overview")).toBeVisible();
   await expect(
     page.locator('[data-meta-ref="active:shield_reconstruction"]'),
@@ -203,19 +201,18 @@ for (const [width, height] of [
     await page.setViewportSize({ width, height });
     await configure(page);
     expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
-      ),
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
     ).toBe(true);
     for (const button of await page.locator(".tile-add,.tile-inspect").all()) {
       const box = await button.boundingBox();
       expect(box!.width).toBeGreaterThanOrEqual(44);
       expect(box!.height).toBeGreaterThanOrEqual(44);
     }
-    if (width === 390)
-      await page
-        .getByRole("button", { name: "목표 / 조합 보기", exact: true })
-        .click();
+    if (width === 390) {
+      await expect(page.locator(".mobile-now-strip")).toBeVisible();
+      await page.locator(".mobile-toggle").click();
+    }
+    await openStrategy(page);
     await expect(
       page.getByRole("region", { name: "상황별 추천", exact: true }).last(),
     ).toBeVisible();
