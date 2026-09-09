@@ -40,9 +40,10 @@ export function MagicGrid({
   );
   function recordChoice(kind: LiveChoiceKind, id: string) {
     if (kind === "special_passive") {
-      window.dispatchEvent(
-        new CustomEvent("ms-special-passive-record", { detail: { id } }),
+      const passiveButton = [...document.querySelectorAll<HTMLButtonElement>(".companion-actions button")].find(
+        (button) => button.textContent?.includes("패시브 · 성장"),
       );
+      passiveButton?.click();
       return;
     }
     onRecord(id);
