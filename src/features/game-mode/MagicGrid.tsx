@@ -10,6 +10,7 @@ import {
   targetBadge,
 } from "./selectors";
 import { TargetBadge } from "../../components/GameState";
+import "./live-refine.css";
 type Props = {
   run: Run;
   selected: string;
@@ -26,13 +27,10 @@ export function MagicGrid({
 }: Props) {
   const used = locks(run);
   const completed = completedMagicStates(run);
-  const needed = new Set(
-    getNeededMagicForTargets(run)
-      .filter((n) =>
-        ["not_owned", "leveling", "trait_needed"].includes(n.state),
-      )
-      .map((n) => n.magicId),
+  const needs = getNeededMagicForTargets(run).filter((n) =>
+    ["not_owned", "leveling", "trait_needed"].includes(n.state),
   );
+  const needed = new Set(needs.map((n) => n.magicId));
   const liveMagics = [...data.magics].sort((a, b) =>
     a.nameKo.localeCompare(b.nameKo, "ko"),
   );
@@ -44,6 +42,25 @@ export function MagicGrid({
         </h1>
       </div>
       {contextBar}
+      <div className="mobile-now-strip" aria-label="모바일 지금 필요한 것">
+        <strong>지금</strong>
+        {needs.slice(0, 2).map((n) => (
+          <button key={n.key} onClick={() => onFocus(n.magicId)}>
+            {n.name}
+            <span>
+              {n.targetCombinationIds
+                .map((id) => targetBadge(run, id))
+                .filter(Boolean)
+                .join("/") || `Lv.${n.requiredLevel}`}
+            </span>
+          </button>
+        ))}
+        {!needs.length && (
+          <span className="mobile-now-empty">
+            {run.pinned.length ? "목표 재료 기록 완료" : "목표를 정하면 필요한 선택이 보여요"}
+          </span>
+        )}
+      </div>
       <div className="magic-grid">
         {liveMagics.map((m) => {
           const completion = completed[m.id];
