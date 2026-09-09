@@ -1,5 +1,6 @@
 import { comboById, type Combination } from "../data";
 import type { Run } from "../engine";
+import { participantRoleHelp } from "../help";
 import { describeRequirement } from "../features/game-mode/selectors";
 import { RoleMark } from "./GameState";
 import { MagicSymbol } from "./MagicSymbol";
@@ -16,10 +17,13 @@ export function Recipe({
       {c.requirements.map((r, i) => {
         const info = describeRequirement(r, run);
         const completedHere = info.completion?.combinationId === c.id;
+        const roleHelp = participantRoleHelp(info.role);
         return (
           <div
             className={`recipe-ingredient ${info.met || completedHere ? "is-ready" : ""} ${info.completion && !completedHere ? "is-unusable" : ""}`}
             key={i}
+            title={`${roleHelp.label}: ${roleHelp.description}`}
+            aria-description={roleHelp.description}
           >
             <MagicSymbol id={r.magicId ?? ""} />
             <div className="ingredient-copy">
