@@ -11,6 +11,9 @@ for (const [width, height] of [
     page.on("pageerror", (e) => errors.push(e.message));
     await page.setViewportSize({ width, height });
     await page.goto("/");
+    const fixedOrder = await page
+      .locator(".magic-tile")
+      .evaluateAll((els) => els.map((el) => el.getAttribute("data-magic-id")));
     await page.getByRole("button", { name: "조합 찾기", exact: true }).click();
     const catalog = page.getByRole("dialog");
     await catalog.getByLabel("조합 검색").fill("데몬방정식");
@@ -49,17 +52,20 @@ for (const [width, height] of [
     await expect(
       page.locator('.need-row[data-need-magic="fireball"]'),
     ).toContainText("0/7");
-    await page.getByRole("button", { name: "목표 재료", exact: true }).click();
-    await expect(page.locator(".magic-tile")).toHaveCount(2);
-    await page.getByLabel("마법 검색", { exact: true }).fill("에너지 탄");
-    await expect(page.locator(".magic-tile")).toHaveCount(1);
-    await expect(page.locator(".magic-tile")).toHaveAttribute(
-      "data-magic-id",
-      "energy_bolt",
-    );
-    await page.getByLabel("마법 검색", { exact: true }).fill("");
-    await page.getByRole("button", { name: "전체", exact: true }).click();
+
+    // Live play keeps all magic tiles in one fixed spatial layout. Search/filter
+    // belongs to the catalog, not the glance-and-record surface.
+    await expect(page.getByLabel("마법 검색", { exact: true })).toHaveCount(0);
+    await expect(
+      page.getByRole("button", { name: "목표 재료", exact: true }),
+    ).toHaveCount(0);
     await expect(page.locator(".magic-tile")).toHaveCount(21);
+    expect(
+      await page
+        .locator(".magic-tile")
+        .evaluateAll((els) => els.map((el) => el.getAttribute("data-magic-id"))),
+    ).toEqual(fixedOrder);
+
     await page
       .getByRole("button", { name: "화염구 경로 보기", exact: true })
       .click();
