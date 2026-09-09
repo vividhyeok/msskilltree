@@ -1,3 +1,15 @@
+.live-hud-title {
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.live-choice-launch {
+  min-height: 34px;
+  padding: 5px 10px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
 .live-choice-dialog {
   width: min(760px, calc(100vw - 24px));
 }
@@ -197,6 +209,16 @@
 }
 
 @media (max-width: 650px) {
+  .live-hud-title h1 {
+    min-width: 0;
+  }
+
+  .live-choice-launch {
+    min-height: 32px;
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
   .live-choice-slots {
     grid-template-columns: 1fr;
   }
