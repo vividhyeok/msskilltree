@@ -122,7 +122,9 @@ export function LiveChoiceDialog({
                     onClose();
                   }}
                 >
-                  {choice.nameKo} 선택 기록
+                  {choice.kind === "special_passive"
+                    ? `${choice.nameKo} 기록 화면 열기`
+                    : `${choice.nameKo} 선택 기록`}
                 </button>
               </article>
             ))}
@@ -131,7 +133,8 @@ export function LiveChoiceDialog({
 
         <p className="live-choice-footnote">
           같은 등급처럼 보이더라도 근거가 부족하면 억지로 순위를 만들지 않습니다. 특성 선택이
-          필요한 마법은 기록 후 기존 특성 선택 화면으로 이어집니다.
+          필요한 마법은 기록 후 기존 특성 선택 화면으로 이어집니다. 특수 패시브는 기존
+          패시브 기록 화면에서 마지막 확인 후 기록합니다.
         </p>
       </div>
     </Dialog>
