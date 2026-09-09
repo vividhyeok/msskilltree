@@ -139,6 +139,58 @@ function metaSignal(option: LiveChoiceOption, run: Run) {
   return null;
 }
 
+function numberEffect(effects: Record<string, unknown>, key: string) {
+  return typeof effects[key] === "number" ? (effects[key] as number) : 0;
+}
+
+function genericEffectSignal(
+  effects: Record<string, unknown>,
+  phase: string,
+): { score: number; reason: string | null } {
+  let score = 0;
+  const add = (points: number, condition: boolean) => {
+    if (condition) score += points;
+  };
+
+  add(10, numberEffect(effects, "attackPercent") > 0);
+  add(14, numberEffect(effects, "attackAmplificationPercent") > 0 || numberEffect(effects, "attackAmpPercent") > 0);
+  add(14, numberEffect(effects, "allMagicDamagePercent") > 0);
+  add(12, numberEffect(effects, "combinationMagicDamagePercent") > 0);
+  add(13, numberEffect(effects, "cooldownPercent") < 0);
+  add(7, numberEffect(effects, "durationPercent") > 0 || numberEffect(effects, "magicSizePercent") > 0);
+  add(10, numberEffect(effects, "critChancePercent") > 0);
+  add(8, numberEffect(effects, "critMultiplierPercent") > 0);
+  add(9, numberEffect(effects, "maxHpPercent") > 0);
+  add(8, numberEffect(effects, "hpRegenPerSecondPercent") > 0 || numberEffect(effects, "lifeOrbHealPercent") > 0);
+  add(13, numberEffect(effects, "damageTakenPercent") < 0);
+  add(10, numberEffect(effects, "evasionPercent") > 0);
+  add(7, numberEffect(effects, "moveSpeedPercent") > 0);
+  add(10, numberEffect(effects, "enemyMoveSpeedPercent") < 0);
+  add(13, numberEffect(effects, "enemyMaxHpPercent") < 0 || numberEffect(effects, "eliteMaxHpPercent") < 0);
+  add(18, numberEffect(effects, "revives") > 0);
+
+  const growthEffect = [
+    "manaGainPercent",
+    "manaOrbGainPercent",
+    "manaBeadDropPercent",
+    "pickupRangePercent",
+    "maxPlayerLevel",
+    "allGrowthEnhancementLevels",
+  ].some((key) => numberEffect(effects, key) > 0);
+  add(phase === "early" ? 11 : 7, growthEffect);
+
+  add(7, numberEffect(effects, "merchantDiscountPercent") > 0 || numberEffect(effects, "spawnNormalChest") > 0);
+  add(10, effects.chooseCombatMagicToEnhance === true);
+
+  score = Math.min(score, 32);
+  if (score < 7) return { score, reason: null };
+  const help = summarizeEffects(effects);
+  return {
+    score,
+    reason: `단독으로도 도움이 되는 ${help.categories.join(" · ")} 효과 · ${help.short}`,
+  };
+}
+
 export function rankLiveChoices(keys: string[], run: Run): RankedLiveChoice[] {
   const options = getLiveChoiceOptions(run);
   const byKey = new Map(options.map((o) => [o.key, o]));
@@ -174,6 +226,10 @@ export function rankLiveChoices(keys: string[], run: Run): RankedLiveChoice[] {
       }
 
       const effects = candidateEffects(option);
+      const generic = genericEffectSignal(effects, context.phase);
+      score += generic.score;
+      if (generic.reason) reasons.push(generic.reason);
+
       const critChance = typeof effects.critChancePercent === "number" ? effects.critChancePercent : 0;
       const critMultiplier =
         typeof effects.critMultiplierPercent === "number" ? effects.critMultiplierPercent : 0;
@@ -214,16 +270,16 @@ export function rankLiveChoices(keys: string[], run: Run): RankedLiveChoice[] {
 
       const current = run.levels[option.id] ?? 0;
       if (current > 0 && option.kind !== "special_passive") {
-        score += 4;
-        reasons.push(`이미 Lv.${current} 투자 중`);
+        score += 10;
+        reasons.push(`이미 Lv.${current} 투자 중 · 새 마법보다 기존 투자를 이어가기 쉬움`);
       }
 
       const label: RankedLiveChoice["label"] =
         score >= 100
           ? "목표 우선"
-          : score >= 45
+          : score >= 28
             ? "추천"
-            : score >= 15
+            : score >= 7
               ? "고려"
               : "상황 따라";
 
@@ -231,7 +287,7 @@ export function rankLiveChoices(keys: string[], run: Run): RankedLiveChoice[] {
         ...option,
         rank: score,
         label,
-        reasons: reasons.length ? reasons : ["현재 기록만으로 확실한 우선 근거가 부족함"],
+        reasons: reasons.length ? reasons : ["현재 기록만으로 다른 두 선택지보다 우선할 근거가 부족함"],
         detail: option.summary,
         inputIndex,
       };
