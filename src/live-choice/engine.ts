@@ -1,4 +1,4 @@
-import { data, magicById } from "../data";
+import { data } from "../data";
 import { companion } from "../companion/data";
 import { normalizeProgress } from "../companion/engine";
 import { locks, type Run } from "../engine";
@@ -218,10 +218,19 @@ export function rankLiveChoices(keys: string[], run: Run): RankedLiveChoice[] {
         reasons.push(`이미 Lv.${current} 투자 중`);
       }
 
+      const label: RankedLiveChoice["label"] =
+        score >= 100
+          ? "목표 우선"
+          : score >= 45
+            ? "추천"
+            : score >= 15
+              ? "고려"
+              : "상황 따라";
+
       return {
         ...option,
         rank: score,
-        label: score >= 100 ? "목표 우선" : score >= 45 ? "추천" : score >= 15 ? "고려" : "상황 따라",
+        label,
         reasons: reasons.length ? reasons : ["현재 기록만으로 확실한 우선 근거가 부족함"],
         detail: option.summary,
         inputIndex,
