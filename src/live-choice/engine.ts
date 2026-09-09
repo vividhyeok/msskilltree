@@ -277,7 +277,7 @@ export function rankLiveChoices(keys: string[], run: Run): RankedLiveChoice[] {
       const label: RankedLiveChoice["label"] =
         score >= 100
           ? "목표 우선"
-          : score >= 28
+          : score >= 10
             ? "추천"
             : score >= 7
               ? "고려"
