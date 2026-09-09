@@ -72,7 +72,7 @@ for (const [width, height] of [
     await page.screenshot({
       path: `test-results/roles-trait-expanded-${width}.png`,
     });
-    await page.getByRole("button", { name: "닫기", exact: true }).click();
+    await dialog.getByRole("button", { name: "닫기", exact: true }).click();
     await page.getByRole("button", { name: "되돌리기", exact: true }).click();
     await expect(carrier).not.toHaveAttribute(
       "data-completion-role",
