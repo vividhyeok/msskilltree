@@ -228,6 +228,13 @@
 
   .mobile-toggle {
     height: 46px;
+    font-size: 0;
+  }
+
+  .mobile-toggle::after {
+    content: "지금 / 목표 보기";
+    font-size: 13px;
+    font-weight: 650;
   }
 
   dialog:has(.hud-panel) .pick-grid {
