@@ -1,0 +1,32 @@
+.game-header {
+  height: 52px !important;
+}
+
+.game-layout {
+  height: calc(100dvh - 52px) !important;
+}
+
+.live-hud-title {
+  min-height: 56px !important;
+  padding-block: 6px !important;
+}
+
+.deck-board-launch,
+.live-choice-launch {
+  min-height: 44px !important;
+}
+
+.workspace-tabs {
+  top: 52px !important;
+}
+
+@media (max-width: 650px) {
+  .live-hud-title {
+    min-height: 0 !important;
+  }
+
+  .deck-board-launch,
+  .live-choice-launch {
+    min-height: 46px !important;
+  }
+}

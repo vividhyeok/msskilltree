@@ -54,11 +54,17 @@ export function MagicGrid({
     <section className="magic-workspace" aria-label="마법 기록">
       <div className="hud-label live-hud-title">
         <h1>
-          내 마법 <span>위치는 항상 고정 · 이름은 조합 보기 · +1은 기록</span>
+          내 마법 <span>세부 기록은 여기서 · 전체 덱은 빠른 탐색으로</span>
         </h1>
         <div className="live-hud-actions">
-          <a className="deck-board-launch" href="/deck-board.html">
-            덱 보드
+          <a
+            className="deck-board-launch"
+            href="/deck-board.html"
+            aria-label="중급자용 전체 덱 빠르게 보기"
+          >
+            <span className="deck-board-launch-kicker">중급자 · 빠른 탐색</span>
+            <strong>전체 덱 보기</strong>
+            <small>레벨 입력 없이 덱·조합 후보 확인</small>
           </a>
           <button
             className="live-choice-launch primary"

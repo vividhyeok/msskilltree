@@ -45,19 +45,19 @@ function DeckBoardApp() {
     <>
       <header className="game-header">
         <a className="brand" href="/">
-          MS <span>Companion</span>
+          MS <span>Build Lab</span>
         </a>
         <div className="header-actions">
           <a className="deck-board-back" href="/">
-            Live 기록
+            Live Run 열기
           </a>
         </div>
       </header>
       <nav className="workspace-tabs" aria-label="사용 모드">
         <a className="active" href="/deck-board.html">
-          덱 보드
+          덱 · 메타
         </a>
-        <a href="/">Live 기록</a>
+        <a href="/">Live Run</a>
       </nav>
       <DeckBoard
         run={run}

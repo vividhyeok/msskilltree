@@ -5,11 +5,13 @@ test("deck board narrows builds from important magic choices and returns targets
 }) => {
   await page.setViewportSize({ width: 1180, height: 820 });
   await page.goto("/");
-  await page.getByRole("link", { name: "덱 보드", exact: true }).click();
+  await page
+    .getByRole("link", { name: "중급자용 전체 덱 빠르게 보기", exact: true })
+    .click();
   await expect(page).toHaveURL(/deck-board\.html/);
   await expect(
     page.getByRole("heading", {
-      name: "중요한 선택만 눌러서 갈 수 있는 덱을 좁혀보세요.",
+      name: "전체 덱을 먼저 보고, 지금 뜬 마법으로 바로 좁혀보세요.",
       exact: true,
     }),
   ).toBeVisible();
@@ -26,5 +28,7 @@ test("deck board narrows builds from important magic choices and returns targets
   await expect(usable).toBeVisible();
   await usable.click();
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.getByRole("link", { name: "덱 보드", exact: true })).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "중급자용 전체 덱 빠르게 보기", exact: true }),
+  ).toBeVisible();
 });
