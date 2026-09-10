@@ -90,7 +90,7 @@ export function MagicGrid({
         )}
       </div>
       {focusIsMagic && (
-        <div className="relationship-hint" role="status">
+        <div className="relationship-hint">
           <strong>{liveMagics.find((magic) => magic.id === selected)?.nameKo}</strong>
           <span>기준 · 같은 조합이나 같은 덱에서 연결되는 마법일수록 더 선명하게 표시</span>
         </div>
