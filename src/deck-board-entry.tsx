@@ -11,6 +11,7 @@ import {
 } from "./storage";
 import "./style.css";
 import "./meta/style.css";
+import "./deck-board/entry.css";
 
 function readSaved(): Saved {
   try {
