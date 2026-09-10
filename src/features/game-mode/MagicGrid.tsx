@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { MagicSymbol } from "../../components/MagicSymbol";
 import { data, comboById } from "../../data";
 import { completedMagicStates, locks, type Run } from "../../engine";
 import { summarizeEffects } from "../../help";
 import { LiveChoiceDialog } from "../../live-choice/LiveChoiceDialog";
 import type { LiveChoiceKind } from "../../live-choice/engine";
+import { magicDeckHeat } from "../../deck-board/engine";
 import {
   getMagicTargetBadges,
   getNeededMagicForTargets,
@@ -38,6 +39,7 @@ export function MagicGrid({
   const liveMagics = [...data.magics].sort((a, b) =>
     a.nameKo.localeCompare(b.nameKo, "ko"),
   );
+  const focusIsMagic = liveMagics.some((magic) => magic.id === selected);
   function recordChoice(kind: LiveChoiceKind, id: string) {
     if (kind === "special_passive") {
       const passiveButton = [...document.querySelectorAll<HTMLButtonElement>(".companion-actions button")].find(
@@ -54,13 +56,18 @@ export function MagicGrid({
         <h1>
           내 마법 <span>위치는 항상 고정 · 이름은 조합 보기 · +1은 기록</span>
         </h1>
-        <button
-          className="live-choice-launch primary"
-          onClick={() => setChoiceOpen(true)}
-          disabled={run.progress?.growthPhase}
-        >
-          이번 3택 비교
-        </button>
+        <div className="live-hud-actions">
+          <a className="deck-board-launch" href="/deck-board.html">
+            덱 보드
+          </a>
+          <button
+            className="live-choice-launch primary"
+            onClick={() => setChoiceOpen(true)}
+            disabled={run.progress?.growthPhase}
+          >
+            이번 3택 비교
+          </button>
+        </div>
       </div>
       {contextBar}
       <div className="mobile-now-strip" aria-label="모바일 지금 필요한 것">
@@ -82,7 +89,13 @@ export function MagicGrid({
           </span>
         )}
       </div>
-      <div className="magic-grid">
+      {focusIsMagic && (
+        <div className="relationship-hint" role="status">
+          <strong>{liveMagics.find((magic) => magic.id === selected)?.nameKo}</strong>
+          <span>기준 · 같은 조합이나 같은 덱에서 연결되는 마법일수록 더 선명하게 표시</span>
+        </div>
+      )}
+      <div className={`magic-grid ${focusIsMagic ? "is-relating" : ""}`}>
         {liveMagics.map((m) => {
           const completion = completed[m.id];
           const badges = getMagicTargetBadges(run, m.id);
@@ -92,6 +105,15 @@ export function MagicGrid({
           const completionText = completion
             ? `${m.nameKo} ${completion.role === "carrier" ? "→" : "×"} ${comboById[completion.combinationId].nameKo}${completion.role === "carrier" ? "로 승계됨" : "에 병합되어 소멸"} · 원본 재사용 불가`
             : "";
+          const relation = focusIsMagic ? magicDeckHeat(selected, m.id) : 0;
+          const relationText =
+            focusIsMagic && selected !== m.id
+              ? relation >= 0.75
+                ? "직접 조합 또는 같은 덱에서 강하게 연결됩니다."
+                : relation >= 0.3
+                  ? "일부 덱에서 함께 쓰이는 연결이 있습니다."
+                  : "현재 선택과의 직접 연결은 적습니다."
+              : "";
           const targetText = badges.length
             ? `현재 목표 ${badges.join("/")} 조합에 필요한 마법입니다. ${m.summary} 이름을 누르면 필요한 레벨·특성과 조합 후 승계/병합 여부를 볼 수 있습니다.`
             : `${m.summary} 이름을 누르면 이 마법으로 갈 수 있는 조합과 필요한 특성을 볼 수 있습니다.`;
@@ -104,20 +126,25 @@ export function MagicGrid({
           const pending = m.traitStages.some(
             (s) => s.level <= level && !run.selectedTraits[m.id]?.[s.level],
           );
+          const relationStyle = focusIsMagic
+            ? ({ "--live-relation": Math.max(0.08, relation) } as CSSProperties)
+            : undefined;
           return (
             <div
-              className={`magic-tile ${level > 0 ? "invested" : ""} ${selected === m.id ? "selected" : ""} ${used[m.id] ? `consumed ${completion?.role}` : ""} ${needed.has(m.id) ? "is-needed" : ""}`}
+              className={`magic-tile ${level > 0 ? "invested" : ""} ${selected === m.id ? "selected" : ""} ${used[m.id] ? `consumed ${completion?.role}` : ""} ${needed.has(m.id) ? "is-needed" : ""} ${focusIsMagic ? "relationship-tile" : ""}`}
               key={m.id}
+              style={relationStyle}
               data-magic-id={m.id}
               data-target={linkBadge}
               data-completion-role={completion?.role}
+              data-relation={focusIsMagic ? (relation >= 0.75 ? "strong" : relation >= 0.3 ? "medium" : "weak") : undefined}
             >
               <button
                 className="tile-inspect"
                 aria-label={`${m.nameKo} 경로 보기`}
                 aria-pressed={selected === m.id}
-                aria-description={completionText || targetText}
-                title={completionText || targetText}
+                aria-description={completionText || `${targetText} ${relationText}`.trim()}
+                title={completionText || `${targetText} ${relationText}`.trim()}
                 onClick={() => onFocus(m.id)}
               >
                 <MagicSymbol id={m.id} />
